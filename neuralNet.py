@@ -1,7 +1,7 @@
 """
-  matrixTest.py
+  neuralNet.py
   by David Weinman
-  4/21/13, 5:30p
+  4/23/13, 3:30a
 
 """
 
@@ -38,25 +38,22 @@ class neuralNet():
 	def __init__(self, numInputs, numOutputs, numHidden, numNeuronsPerHidden):
 		self.n_inputs = numInputs
 		self.n_outputs = numOutputs
-		self.n_hiiddenLayers = numHidden
+		self.n_hiddenLayers = numHidden
 		self.n_neuronsPerHiddenLyr = numNeuronsPerHidden
 		if (numHidden > 0):
-			self.layers[0] = neuralNetLayer(numNeuronsPerHidden, numInputs)
+			self.layers.append(neuralNetLayer(numNeuronsPerHidden, numInputs))
 			for i in range(0, self.n_hiddenLayers):
-				self.layers[i + 1] = neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden)
-			numOfLayers = len(self.layers) #create an output layer
-			self.layers[numOfLayers + 1] = neuralNetLayer(numOutputs, numInputs)
+				self.layers.append(neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden))
+			self.layers.append(neuralNetLayer(numOutputs, numInputs))
 
 # get weights?
 	#returns a list of the weights in the net
 	def getWeights(self):
 		weights = []
-		weightsLen = 0
 		for i in range(0, self.n_hiddenLayers + 2): #+ 2 because range and [output layer?]
 			for j in range(0, self.layers[i].n_neurons + 1):
 				for k in range(0, self.layers[i].neurons[j].n_inputs + 1):
-					weightsLen += 1
-					weights[weightsLen] = self.layers[i].neurons[j].weight[k]
+					weights.append(self.layers[i].neurons[j].l_weights[k])
 		return weights
 
 	#replaces the weights in the net with the given values
@@ -66,16 +63,16 @@ class neuralNet():
 			for j in range(0, self.layers[i].n_neurons + 1):
 				for k in range(0, self.layers[i].neurons[j].n_inputs + 1):
 					counter += 1
-					self.layers[i].neurons[j].weights[k] = weights[counter]
+					self.layers[i].neurons[j].l_weights[k] = weights[counter]
 
 	#returns the number of weights in the net
 	def getNumWeights(self):
-		weights = 0
+		num = 0
 		for i in range(0, self.n_hiddenLayers + 1):
 			for j in range(0, self.layers[i].n_neurons + 1):
 				for k in range(self.layers[i].neurons[j].n_inputs + 1):
-					weights += 1
-		return weights
+					num += 1
+		return num
 
 	#given an input list it calculates the output
 """	def update(self, inputs):
