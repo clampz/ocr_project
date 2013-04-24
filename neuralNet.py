@@ -1,7 +1,7 @@
 """
   neuralNet.py
   by David Weinman
-  4/23/13, 3:30a
+  4/21/13, 5:30p
 
 """
 
@@ -27,6 +27,8 @@ class neuralNetLayer():
 		self.n_neurons = numNeurons
 		for i in range(0, numNeurons + 1):
 			self.neurons.append(neuron(numInputsPerNeuron))
+
+	
 
 class neuralNet():
 	n_inputs = 0
@@ -73,6 +75,9 @@ class neuralNet():
 				for k in range(self.layers[i].neurons[j].n_inputs + 1):
 					num += 1
 		return num
+
+	#def activationValue(self):
+		
 
 	#given an input list it calculates the output
 """	def update(self, inputs):
