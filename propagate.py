@@ -47,6 +47,9 @@ while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
 def backProp(max_iterations, error_threshhold):
 	n_iterations = 0 #counter for the number of propagation loops
+
+
+def signals(neuron):
 	
 
 
@@ -54,7 +57,7 @@ def error():
 
 
 
-def errorSignal():
+def errorSignal(weight):
 
 
 def signalError(layer, nodeIndex):
