@@ -45,9 +45,21 @@ while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
 """
 
-def backProp(max_iterations, error_threshhold):
-	n_iterations = 0 #counter for the number of propagation loops
-
+def backProp(inputNN, input, max_iterations, error_threshhold):
+	n_iterations = 0 # counter for the number of propagation loops
+	for i in trainingSet:
+		inputNN.update(input)
+		for j in range(0, (inputNN.n_hiddenLayers + 2)): # 
+			for k in range(0, inputNN.layers[j].n_neurons):
+				#calc the weight sum of the inputs to the node
+				#calc the activation for the node
+		for i in inputNN.layers[-1]:
+			#calc the error signal
+		for i in range(1, n_hiddenLayers):
+			for j in range(0, inputNN.layers[i].n_neurons):
+				#calc the node's signal error
+				#update each node's weight in the network
+		#calc the error fn
 
 def signals(neuron):
 	

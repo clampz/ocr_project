@@ -7,17 +7,21 @@
 
 import sys
 import random
+import math
+
+def sigmoid(self, activation):
+	return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
 class neuron():
 	n_inputs = 0
 	l_weights = []
 
-	def __init__ (self, numberOfInputs):
+	def __init__(self, numberOfInputs):
 		self.n_inputs = numberOfInputs
 		for i in range(0,(numberOfInputs + 2)): #for each input + threshhold & buf for range
 			self.l_weights.append(random.randint(-1,1))
 
-	# what getters and setters do I want for a neuron?
+
 
 class neuralNetLayer():
 	n_neurons = 0
@@ -76,10 +80,8 @@ class neuralNet():
 					num += 1
 		return num
 
-	#def activationValue(self):
 		
-
-	#given an input list it calculates the output
+	# given some inputs, returns the output of the net
 """	def update(self, inputs):
 		outputs = []
 		counter = 0
@@ -92,8 +94,9 @@ class neuralNet():
 			for j in range(0, self.layers[i].n_neurons + 1):
 				netInput = 0
 				numInputs = self.layers[i].neurons[j].n_inputs
-				for k in range(0, numInputs):"""
-#					netInput += self.layers[i].neurons[j].weights[numInputs - 1] * 	
+				for k in range(0, numInputs + 1):# num inputs + buf for range
+					netInput += self.layers[i].neurons[j].weights[numInputs - 1] * 	
 
+"""
 
 
