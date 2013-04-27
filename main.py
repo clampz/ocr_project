@@ -6,20 +6,6 @@
 
 """
 
-fully_trained = FALSE
-DO UNTIL (fully_trained):
-	fully_trained = TRUE
-	FOR EACH training_vector = <X1, X2, ..., Xn, theta, target>::
-		#Weights compared to theta
-		a = (X1 * W1) + (X2 * W2) + ... + (Xn * Wn) - theta
-		y = sigma(a)
-		IF y != target:
-			fully_trained = FALSE
-		FOR EACH Wi:
-		MODIFY_WEIGHT(Wi)
-	IF (fully_trained):
-		BREAK
-
 """
 
 

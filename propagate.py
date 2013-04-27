@@ -45,7 +45,15 @@ while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
 """
 
+
 """
+backProp takes a neural network (inputNN), a set of input training values (input),
+a number of maximum allowed iterations (max_iterations), and a threshold for the
+calculated error values, this last value is used as a way to tell when the network
+has been sufficiently trained. back propagation is an algorithm for training a
+neural network.
+"""
+
 def backProp(inputNN, input, max_iterations, error_threshhold):
 	n_iterations = 0 # counter for the number of propagation loops
 	for i in trainingSet:
@@ -61,7 +69,7 @@ def backProp(inputNN, input, max_iterations, error_threshhold):
 				#calc the node's signal error
 				#update each node's weight in the network
 		#calc the error fn
-"""
+
 
 """
 target takes p, an element in the training set, and n, a node in the neural
