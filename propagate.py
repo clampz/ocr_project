@@ -53,7 +53,6 @@ calculated error values, this last value is used as a way to tell when the netwo
 has been sufficiently trained. back propagation is an algorithm for training a
 neural network.
 """
-
 def backProp(inputNN, input, max_iterations, error_threshhold):
 	n_iterations = 0 # counter for the number of propagation loops
 	for i in trainingSet:
@@ -62,30 +61,25 @@ def backProp(inputNN, input, max_iterations, error_threshhold):
 			for k in range(0, inputNN.layers[j].n_neurons):
 				#calc the weight sum of the inputs to the node
 				#calc the activation for the node
-		for i in inputNN.layers[-1]:
+		for j in inputNN.layers[-1]:
 			#calc the error signal
-		for i in range(1, n_hiddenLayers):
-			for j in range(0, inputNN.layers[i].n_neurons):
+		for j in range(1, n_hiddenLayers):# need to find where hidden layers begin in the layers[] array
+			for k in range(0, inputNN.layers[j].n_neurons):
 				#calc the node's signal error
 				#update each node's weight in the network
 		#calc the error fn
-
-
-"""
-target takes p, an element in the training set, and n, a node in the neural
-net for which the target value is produced.
-"""
-#def target(p, n):
-
-
 
 """
 y takes the same params as target and produces the output for the specified
 node in the neural net.
 """
-#def y(p, n):
-
-
+def y(p, n):
+	yN = 0 #output value
+	if (len(p) != n.n_inputs): # if the node has a different number of inputs than specified in params, throw error.
+		raise ValueError('wrong number of inputs: y(p, n) in propagate.')
+	for i in range(0, len(p)): # for each input to the node
+		yN += p[i] * n.l_weights[i] # sum the value of the input * weight for each input & weight
+	return yN
 
 
 
