@@ -14,8 +14,10 @@ project in ocr. components:
      * need to finish writing tools for NN objects
 * propagate
   * backprop
+  * target
+  * y
   * todo:
-     * need to start
+     * need to write backprop, target & y
 * fileLib
   * f'n to read params
   * todo:

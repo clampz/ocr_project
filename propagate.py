@@ -1,10 +1,11 @@
 """
-
+  propagate.py
+  by David Weinman
+  4/26/13, 9:10p
 """
 from neuralNet import *
 
 """
-
 backprop algorithm:
 while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
@@ -42,9 +43,9 @@ while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
 }
 
-
 """
 
+"""
 def backProp(inputNN, input, max_iterations, error_threshhold):
 	n_iterations = 0 # counter for the number of propagation loops
 	for i in trainingSet:
@@ -60,19 +61,22 @@ def backProp(inputNN, input, max_iterations, error_threshhold):
 				#calc the node's signal error
 				#update each node's weight in the network
 		#calc the error fn
+"""
 
-def signals(neuron):
-	
-
-
-def error():
-
-
-
-def errorSignal(weight):
+"""
+target takes p, an element in the training set, and n, a node in the neural
+net for which the target value is produced.
+"""
+#def target(p, n):
 
 
-def signalError(layer, nodeIndex):
+
+"""
+y takes the same params as target and produces the output for the specified
+node in the neural net.
+"""
+#def y(p, n):
+
 
 
 

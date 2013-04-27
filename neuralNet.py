@@ -21,7 +21,7 @@ class neuron():
 		for i in range(0,(numberOfInputs + 2)): #for each input + threshhold & buf for range
 			self.l_weights.append(random.randint(-1,1))
 
-
+	#def errorSignal():
 
 class neuralNetLayer():
 	n_neurons = 0
@@ -32,7 +32,9 @@ class neuralNetLayer():
 		for i in range(0, numNeurons + 1):
 			self.neurons.append(neuron(numInputsPerNeuron))
 
-	
+	#return the set of activation values for the layer
+	#def activationValues(self):
+		
 
 class neuralNet():
 	n_inputs = 0
@@ -79,7 +81,6 @@ class neuralNet():
 				for k in range(self.layers[i].neurons[j].n_inputs + 1):
 					num += 1
 		return num
-
 		
 	# given some inputs, returns the output of the net
 """	def update(self, inputs):
