@@ -6,47 +6,6 @@
 from neuralNet import *
 
 """
-backprop algorithm:
-while (number of iterations < max_iterations && error_fn > error_threshhold) {
-
-        for every pattern in the training set {
-
-                present the pattern to the network
-                for each layer in the network {
-
-                        for each node in the layer {
-
-                                calculate the weight sum of the inputs to the node
-                                calculate the activation for the node
-
-                        }
-
-                }
-                for every node in the output layer {
-
-                        calculate the error signal
-
-                }
-                for all hidden layers {
-
-                        for every node in the layer {
-
-                                calculate the node's signal error
-                                update each node's weight in the network
-
-                        }
-
-                }
-                calculate the error fn
-
-        }
-
-}
-
-"""
-
-
-"""
 backProp takes a neural network (inputNN), a set of input training values (input),
 a number of maximum allowed iterations (max_iterations), and a threshold for the
 calculated error values, this last value is used as a way to tell when the network
@@ -70,8 +29,16 @@ def backProp(inputNN, input, max_iterations, error_threshhold):
 		#calc the error fn
 
 """
+errorSignal takes ...
+returns the error for some given neuron and input
+"""
+#def errorSignal():
+	
+
+"""
 y takes a set of patterns or inputs (p), and a neuron (n) and returns the 
-output for the specified node in the neural net.
+output for the specified node in the neural net. [keep in mind that the output
+of some neuron is dependent upon which layer it is in.]
 """
 def y(p, n):
 	if (len(p) != n.n_inputs): # if the node has a different number of inputs than specified in params, throw error.
@@ -84,6 +51,25 @@ function on the activation value
 """
 def sigmoid(activation):
         return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
+
+"""
+sigmoid f'ns derivative.
+"""
+def derivSigmoid(activation):
+	return sigmoid(activation) * (1 - sigmoid(activation))
+
+"""
+errorGradient takes an output of some neuron, n (outputN) and a target
+value for the same neuron, n (targetN) and produces the basic error gradient
+f'n for some output neuron. [this f'n is specific to the output layer of neurons]
+"""
+def errorGradientOutputLayer(outputN, targetN):
+	return outputN * (1 - outputN) * (targetN - outputN)
+
+"""
+errorGradientHiddenLayer takes an output of some neuron, n (outputN) and a
+target value for the same neuron, n (targetN) and a 
+"""
 
 """
 activation takes a neuron (n) and a set of patterns or inputs (p) and returns
@@ -122,4 +108,43 @@ def sum(lst):
 		return lst[0] + sum(lst[1:])
 
 
+"""
+backprop algorithm:
+while (number of iterations < max_iterations && error_fn > error_threshhold) {
+
+        for every pattern in the training set {
+
+                present the pattern to the network
+                for each layer in the network {
+
+                        for each node in the layer {
+
+                                calculate the weight sum of the inputs to the node
+                                calculate the activation for the node
+
+                        }
+
+                }
+                for every node in the output layer {
+
+                        calculate the error signal
+
+                }
+                for all hidden layers {
+
+                        for every node in the layer {
+
+                                calculate the node's signal error
+                                update each node's weight in the network
+
+                        }
+
+                }
+                calculate the error fn
+
+        }
+
+}
+
+"""
 
