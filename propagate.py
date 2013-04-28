@@ -56,10 +56,10 @@ neural network.
 def backProp(inputNN, input, max_iterations, error_threshhold):
 	n_iterations = 0 # counter for the number of propagation loops
 	for i in trainingSet:
-		inputNN.update(input)
-		for j in range(0, (inputNN.n_hiddenLayers + 2)): # 
+		y = inputNN.update(input) # present the pattern to the network
+		for j in range(0, (inputNN.n_hiddenLayers + 2)):
 			for k in range(0, inputNN.layers[j].n_neurons):
-				#calc the weight sum of the inputs to the node
+				weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
 				#calc the activation for the node
 		for j in inputNN.layers[-1]:
 			#calc the error signal
@@ -70,8 +70,8 @@ def backProp(inputNN, input, max_iterations, error_threshhold):
 		#calc the error fn
 
 """
-y takes the same params as target and produces the output for the specified
-node in the neural net.
+y takes a set of patterns or inputs (p), and a neuron (n) and returns the 
+output for the specified node in the neural net.
 """
 def y(p, n):
 	yN = 0 #output value
@@ -81,6 +81,30 @@ def y(p, n):
 		yN += p[i] * n.l_weights[i] # sum the value of the input * weight for each input & weight
 	return yN
 
+"""
+deltaThreshhold takes a target value for some pattern (targetP), an output value 
+for some pattern; for some node (outputP) and returns the change in threshhold value
+for that input on that node.
+"""
+def deltaThreshhold(targetP, outputP):
+	return (-1) * (targetP - outputP)
+
+"""
+deltaWeight takes a target value for some pattern (targetP), an output value 
+for some pattern; for some node (outputP), an input value for some pattern
+for the same node and returns the change in weight for that input on that node.
+"""
+def deltaWeight(targetP, outputP, inputPI):
+	return (targetP - outputP) * inputPI
+
+"""
+sum takes a list of numbers and returns the sum of a list of numbers.
+"""
+def sum(lst):
+	if (len(lst) == 1):
+		return lst[0]
+	else:
+		return lst[0] + sum(lst[1:])
 
 
 

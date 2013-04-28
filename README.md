@@ -7,6 +7,7 @@ project in ocr. components:
   * todo:
      * need to start
 * neuralNet
+  * sigmoid
   * neuron
   * neuralNetLayer
   * neuralNet
@@ -15,8 +16,11 @@ project in ocr. components:
 * propagate
   * backprop
   * y
+  * deltaThreshhold
+  * deltaWeight
+  * sum
   * todo:
-     * need to write backprop
+     * need to finish backprop code
 * fileLib
   * f'n to read params
   * todo:
@@ -32,3 +36,5 @@ Sources:
    - http://www.ai-junkie.com/ann/evolved/nnt1.html
    - http://books.google.com/books/about/Neural_Networks_for_Pattern_Recognition.html?id=-aAwQO_-rXwC
    - http://www.engineering.upm.ro/master-ie/sacpi/mat_did/info068/docum/Neural%20Networks%20for%20Pattern%20Recognition.pdf
+   - http://itee.uq.edu.au/~cogs2010/cmc/chapters/BackProp/
+

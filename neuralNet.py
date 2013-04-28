@@ -9,7 +9,7 @@ import sys
 import random
 import math
 
-def sigmoid(self, activation):
+def sigmoid(activation):
 	return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
 class neuron():
