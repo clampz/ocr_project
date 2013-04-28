@@ -7,7 +7,6 @@ project in ocr. components:
   * todo:
      * need to start
 * neuralNet
-  * sigmoid
   * neuron
   * neuralNetLayer
   * neuralNet
@@ -15,6 +14,8 @@ project in ocr. components:
      * need to finish writing tools for NN objects
 * propagate
   * backprop
+  * sigmoid
+  * activation
   * y
   * deltaThreshhold
   * deltaWeight

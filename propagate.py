@@ -60,7 +60,7 @@ def backProp(inputNN, input, max_iterations, error_threshhold):
 		for j in range(0, (inputNN.n_hiddenLayers + 2)):
 			for k in range(0, inputNN.layers[j].n_neurons):
 				weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
-				#calc the activation for the node
+				activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
 		for j in inputNN.layers[-1]:
 			#calc the error signal
 		for j in range(1, n_hiddenLayers):# need to find where hidden layers begin in the layers[] array
@@ -74,12 +74,27 @@ y takes a set of patterns or inputs (p), and a neuron (n) and returns the
 output for the specified node in the neural net.
 """
 def y(p, n):
-	yN = 0 #output value
 	if (len(p) != n.n_inputs): # if the node has a different number of inputs than specified in params, throw error.
 		raise ValueError('wrong number of inputs: y(p, n) in propagate.')
-	for i in range(0, len(p)): # for each input to the node
-		yN += p[i] * n.l_weights[i] # sum the value of the input * weight for each input & weight
-	return yN
+	return sigmoid(activation(p, n))
+
+"""
+sigmoid takes an activation value (activation) and calculates the sigmoid 
+function on the activation value
+"""
+def sigmoid(activation):
+        return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
+
+"""
+activation takes a neuron (n) and a set of patterns or inputs (p) and returns
+the activation value of the neuron on that input pattern.
+"""
+def activation(p, n)
+	activationValue = 0
+	for i in range(0, len(p)):
+		activationValue += p[i] * n.l_weights[i]
+	activationValue += (-1) * l_weights[-1] # threshhold?
+	return activationValue
 
 """
 deltaThreshhold takes a target value for some pattern (targetP), an output value 

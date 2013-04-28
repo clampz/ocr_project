@@ -9,9 +9,6 @@ import sys
 import random
 import math
 
-def sigmoid(activation):
-	return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
-
 class neuron():
 	n_inputs = 0
 	l_weights = []
@@ -20,8 +17,6 @@ class neuron():
 		self.n_inputs = numberOfInputs
 		for i in range(0,(numberOfInputs + 2)): #for each input + threshhold & buf for range
 			self.l_weights.append(random.randint(-1,1))
-
-	#def errorSignal():
 
 class neuralNetLayer():
 	n_neurons = 0
