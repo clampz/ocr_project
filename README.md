@@ -15,13 +15,17 @@ project in ocr. components:
 * propagate
   * backprop
   * sigmoid
+  * derivSigmoid
+  * errorGradientOutputLayer
+  * errorGradientHiddenLayer
+  * errorSignal
   * activation
   * y
   * deltaThreshhold
   * deltaWeight
   * sum
   * todo:
-     * need to finish backprop code
+     * need to finish backprop & error code
 * fileLib
   * f'n to read params
   * todo:
@@ -35,7 +39,6 @@ Sources:
    - http://www.ibm.com/developerworks/library/l-neural/
    - http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html
    - http://www.ai-junkie.com/ann/evolved/nnt1.html
-   - http://books.google.com/books/about/Neural_Networks_for_Pattern_Recognition.html?id=-aAwQO_-rXwC
    - http://www.engineering.upm.ro/master-ie/sacpi/mat_did/info068/docum/Neural%20Networks%20for%20Pattern%20Recognition.pdf
    - http://itee.uq.edu.au/~cogs2010/cmc/chapters/BackProp/
 
