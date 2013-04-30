@@ -1,7 +1,9 @@
 cpat_project
 ============
 
-project in ocr. components:
+this project is for computing practice & theory at the evergreen state college.
+
+project in neural networks. components:
 * main
   * main
   * todo:
