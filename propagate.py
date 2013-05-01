@@ -5,6 +5,7 @@
 """
 from neuralNet import *
 
+
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
 a number of maximum allowed iterations (max_iterations), and a threshold for the
@@ -12,7 +13,8 @@ calculated error values, this last value is used as a way to tell when the netwo
 has been sufficiently trained. back propagation is an algorithm for training a
 neural network.
 """
-def backProp(inputNN, input, max_iterations, error_threshhold):
+
+def backProp(inputNN, input, targets, max_iterations, error_threshhold):
 	n_iterations = 0 # counter for the number of propagation loops
 	for i in trainingSet:
 		y = inputNN.update(input) # present the pattern to the network
@@ -20,13 +22,14 @@ def backProp(inputNN, input, max_iterations, error_threshhold):
 			for k in range(0, inputNN.layers[j].n_neurons):
 				weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
 				activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
-		for j in inputNN.layers[-1]:
-			#calc the error signal
+		outputLayerErrorSignal = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[j]) #calc the error signal, assumes that output layer has only 1 node.
 		for j in range(1, n_hiddenLayers):# need to find where hidden layers begin in the layers[] array
 			for k in range(0, inputNN.layers[j].n_neurons):
-				#calc the node's signal error
+				#calc the node's errorSignal
 				#update each node's weight in the network
 		#calc the error fn
+	return
+
 
 """
 errorSignal takes ...
@@ -59,7 +62,7 @@ def derivSigmoid(activation):
 	return sigmoid(activation) * (1 - sigmoid(activation))
 
 """
-errorGradient takes an output of some neuron, n (outputN) and a target
+errorGradientOutputLayer takes an output of some neuron, n (outputN) and a target
 value for the same neuron, n (targetN) and produces the basic error gradient
 f'n for some output neuron. [this f'n is specific to the output layer of neurons]
 """
@@ -67,20 +70,28 @@ def errorGradientOutputLayer(outputN, targetN):
 	return outputN * (1 - outputN) * (targetN - outputN)
 
 """
-errorGradientHiddenLayer takes an output of some neuron, n (outputN) and a
-target value for the same neuron, n (targetN) and a 
+errorGradientHiddenLayer takes a layer index for which the hidden neuron (layerIndex),
+an error value for the prior layer (errorValue), and a neuralNet to which the hiddenN belongs
+(neuralNet) and returns the basic error gradient f'n for some hidden neuron.
 """
+def errorGradientHiddenLayer(layerIndex, neuralNet, errorValue):
+	weights = neuralNet.layers[layerIndex + 1].getWeights()
+	sumOut = 0
+	for i in range(0, len(weights) + 1):
+		for j in range(0, len(weights[i]) + 1):
+			sumOut += errorValue * weights[i][j]
+	return sumOut
 
 """
 activation takes a neuron (n) and a set of patterns or inputs (p) and returns
 the activation value of the neuron on that input pattern.
 """
-def activation(p, n)
+def activation(p, n):
 	activationValue = 0
 	for i in range(0, len(p)):
 		activationValue += p[i] * n.l_weights[i]
 	activationValue += (-1) * l_weights[-1] # threshhold?
-	return activationValue
+	return sigmoid(activationValue)
 
 """
 deltaThreshhold takes a target value for some pattern (targetP), an output value 
@@ -102,10 +113,10 @@ def deltaWeight(targetP, outputP, inputPI):
 sum takes a list of numbers and returns the sum of a list of numbers.
 """
 def sum(lst):
-	if (len(lst) == 1):
-		return lst[0]
-	else:
-		return lst[0] + sum(lst[1:])
+	output = 0
+	for i in range(0, len(lst)):
+		output += lst[i]
+	return output
 
 
 """

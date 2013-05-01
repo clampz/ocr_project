@@ -27,6 +27,15 @@ class neuralNetLayer():
 		for i in range(0, numNeurons + 1):
 			self.neurons.append(neuron(numInputsPerNeuron))
 
+	def getWeights(self):
+		weights = []
+		for i in range(0, self.n_neurons + 1):
+			i_weights = []
+			for j in range(0, len(self.neurons[i].l_weights) + 1):
+				i_weights.append(neurons[i].l_weights[j])
+			weights.append(i_weights)
+		return weights
+
 	#return the set of activation values for the layer
 	#def activationValues(self):
 		
