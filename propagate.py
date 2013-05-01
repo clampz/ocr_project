@@ -22,7 +22,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold):
 			for k in range(0, inputNN.layers[j].n_neurons):
 				weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
 				activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
-		outputLayerErrorSignal = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[j]) #calc the error signal, assumes that output layer has only 1 node.
+		outputLayerErrorSignal = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0]) #calc the error signal, assumes that output layer has only 1 node.
 		for j in range(1, n_hiddenLayers):# need to find where hidden layers begin in the layers[] array
 			for k in range(0, inputNN.layers[j].n_neurons):
 				#calc the node's errorSignal
