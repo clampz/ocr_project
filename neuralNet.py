@@ -8,6 +8,7 @@
 import sys
 import random
 import math
+from propagate import *
 
 class neuron():
 	n_inputs = 0
@@ -36,10 +37,6 @@ class neuralNetLayer():
 			weights.append(i_weights)
 		return weights
 
-	#return the set of activation values for the layer
-	#def activationValues(self):
-		
-
 class neuralNet():
 	n_inputs = 0
 	n_outputs = 0
@@ -58,7 +55,6 @@ class neuralNet():
 				self.layers.append(neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden))
 			self.layers.append(neuralNetLayer(numOutputs, numInputs))
 
-# get weights?
 	#returns a list of the weights in the net
 	def getWeights(self):
 		weights = []
@@ -87,21 +83,21 @@ class neuralNet():
 		return num
 		
 	# given some inputs, returns the output of the net
-"""	def update(self, inputs):
-		outputs = []
-		counter = 0
+	def update(self, inputs):
 		if (len(inputs) != self.n_inputs):
-			return outputs
-		for i in range(0, self.n_hiddenLayers + 1):
-			# my neural nets tutorial had some weird assignment here, whats with that?
-			counter = 0
+			raise ValueError('wrong number of inputs: update() in neuralNet.')
+		for i in range(0, self.n_hiddenLayers + 1): # I need to do this for every hidden layer + input layer.
 			outputs = []
-			for j in range(0, self.layers[i].n_neurons + 1):
-				netInput = 0
-				numInputs = self.layers[i].neurons[j].n_inputs
-				for k in range(0, numInputs + 1):# num inputs + buf for range
-					netInput += self.layers[i].neurons[j].weights[numInputs - 1] * 	
+			for j in range(0, self.layers[i].n_neurons):
+				if i != 0:# if current layer is not input layer
+					outputs.append(y(outputPriorLayer, self.layers[i].neurons[j]))
+				else:
+					outputs.append(y(inputs, self.layers[i].neurons[j]))
+			outputPriorLayer = outputs
+		if n_outputs == 1:
+			return outputs[0]
+		else:
+			return outputs[0:n_outputs]
 
-"""
 
 

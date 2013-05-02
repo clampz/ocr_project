@@ -14,7 +14,7 @@ project in neural networks. components:
   * neuralNetLayer
   * neuralNet
   * todo:
-     * need to finish writing tools for NN objects
+     * need to test (needs real RNG)
 * propagate
   * backprop
   * sigmoid
