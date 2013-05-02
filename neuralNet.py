@@ -56,6 +56,9 @@ class neuralNet():
 			for i in range(0, self.n_hiddenLayers):
 				self.layers.append(neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden))
 			self.layers.append(neuralNetLayer(numOutputs, numInputs))
+		else:
+			self.layers.append(neuralNetLayer(numInputs, numInputs))
+			self.layers.append(neuralNetLayer(numOutputs, numInputs))
 
 	#returns a list of the weights in the net
 	def getWeights(self):
