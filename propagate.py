@@ -16,19 +16,22 @@ neural network.
 
 def backProp(inputNN, input, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
-	priorLayerErrors = []
 	for i in trainingSet:
 		y = inputNN.update(input) # present the pattern to the network
 		for j in range(0, (inputNN.n_hiddenLayers + 1)): # for every layer in the network; range 2nd param -> hidden layers + 1 for input layer
 			for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 				weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
 				activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
-		priorLayerErrors.append(errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0])) #calc the error signal, assumes that output layer has only 1 node.
+		outputError = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0]) #calc the error signal, assumes that output layer has only 1 node.
 		counter = 0
 		layersFromOut = range(0, n_hiddenLayers + 1) # + 1 for input layer
 		layersFromOut.reverse()
 		layersFromOut.pop(0) # remove the output layer
-
+		error2DArray = []
+		for j in range(0, n_hiddenLayers + 1): # + 1 for input layer
+			error2DArray.append([])
+		for j in layersFromOut:
+			
 		
 
 
