@@ -6,8 +6,9 @@ this project is for computing practice & theory at the evergreen state college.
 project in neural networks. components:
 * main
   * main
+  * hasKey
   * todo:
-     * need to start
+     * need to test
 * neuralNet
   * neuron
   * neuralNetLayer
@@ -29,9 +30,9 @@ project in neural networks. components:
   * todo:
      * need to finish backprop & error code
 * fileLib
-  * f'n to read params
+  * getDataFromFile
   * todo:
-     * need to start
+     * seems finished
 
 the following sources are the inspiration for the code
 i've written and the resources that i've found useful.

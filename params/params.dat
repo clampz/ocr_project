@@ -1,7 +1,10 @@
-x1 = 4
-x2 = 4.5
-x3 = 12
-param5 = nlerp
-
-
-
+n_inputs = 4
+n_outputs = 4
+n_hiddenLayer = 12
+n_neuronsPerHidden = 5
+target = 3
+rateOfLearning = 2.0
+maxIterations = 10
+errorThreshhold = 0.1
+stuff2 = 3
+stuff45 = 2
