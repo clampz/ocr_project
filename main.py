@@ -28,8 +28,7 @@ dStruct = {
 def hasKey(string, dictionary):
 	if string in dictionary.keys():
 		return True
-	else:
-		return False
+	return False
 
 def main():
 	# i want to print some rad prompt here..
