@@ -19,6 +19,8 @@ class neuron():
 		for i in range(0,(numberOfInputs + 2)): #for each input + threshhold & buf for range
 			self.l_weights.append(random.randint(-1,1))
 
+	#def putWeights
+
 class neuralNetLayer():
 	n_neurons = 0
 	neurons = []

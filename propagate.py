@@ -18,15 +18,21 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold):
 	n_iterations = 0 # counter for the number of propagation loops
 	for i in trainingSet:
 		y = inputNN.update(input) # present the pattern to the network
-		for j in range(0, (inputNN.n_hiddenLayers + 2)):
-			for k in range(0, inputNN.layers[j].n_neurons):
+		for j in range(0, (inputNN.n_hiddenLayers + 1)): # for every layer in the network; range 2nd param -> hidden layers + 1 for input layer
+			for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 				weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
 				activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
 		outputLayerErrorSignal = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0]) #calc the error signal, assumes that output layer has only 1 node.
 		for j in range(1, n_hiddenLayers):# need to find where hidden layers begin in the layers[] array
+			jLayerErrors = []
 			for k in range(0, inputNN.layers[j].n_neurons):
-				#calc the node's errorSignal
-				#update each node's weight in the network
+				if j != 1:
+					jLayerErrors.append(errorGradientHiddenLayer(j, inputNN, priorLayerErrors[k]))
+				else:
+					jLayerErrors.append(errorGradientHiddenLayer(j, inputNN, outputLayerErrorSignal)) #calc the node's errorSignal
+				#for h in range() #update each node's weight in the network
+			priorLayerErrors = jLayerErrors
+		n_iterations += 1
 		#calc the error fn
 	return
 
@@ -40,8 +46,8 @@ returns the error for some given neuron and input
 
 """
 y takes a set of patterns or inputs (p), and a neuron (n) and returns the 
-output for the specified node in the neural net. [keep in mind that the output
-of some neuron is dependent upon which layer it is in.]
+output for the specified node in the neural net. [keep in mind that the
+input of some neuron is really in terms of the layer above it.]
 """
 def y(p, n):
 	if (len(p) != n.n_inputs): # if the node has a different number of inputs than specified in params, throw error.
@@ -50,10 +56,12 @@ def y(p, n):
 
 """
 sigmoid takes an activation value (activation) and calculates the sigmoid 
-function on the activation value
+function on the activation value. [here I use the tanh function]
 """
 def sigmoid(activation):
-        return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
+	return float(math.e**activation - math.e**((-1) * activation))/float(math.e**activation + math.e**((-1) * activation))
+
+        #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
 """
 sigmoid f'ns derivative.
@@ -69,12 +77,14 @@ f'n for some output neuron. [this f'n is specific to the output layer of neurons
 def errorGradientOutputLayer(outputN, targetN):
 	return outputN * (1 - outputN) * (targetN - outputN)
 
+############################# UPDATE THE FN BELOW AND IMPLIMENT ABOVE...
 """
-errorGradientHiddenLayer takes a layer index for which the hidden neuron (layerIndex),
-an error value for the prior layer (errorValue), and a neuralNet to which the hiddenN belongs
-(neuralNet) and returns the basic error gradient f'n for some hidden neuron.
+errorGradientHiddenLayer takes a neuron index for some hidden neuron, n (hiddenN), 
+a layer index for this neuron(layerIndex), an error value for the prior layer 
+(errorValue), and a neuralNet to which the hiddenN belongs (neuralNet) and returns
+the basic error gradient f'n for some hidden neuron.
 """
-def errorGradientHiddenLayer(layerIndex, neuralNet, errorValue):
+def errorGradientHiddenLayer(hiddenN, layerIndex, neuralNet, errorValue):
 	weights = neuralNet.layers[layerIndex + 1].getWeights()
 	sumOut = 0
 	for i in range(0, len(weights) + 1):
@@ -94,6 +104,11 @@ def activation(p, n):
 	return sigmoid(activationValue)
 
 """
+activation f'ns derivative
+"""
+#def derivActivation():
+
+"""
 deltaThreshhold takes a target value for some pattern (targetP), an output value 
 for some pattern; for some node (outputP) and returns the change in threshhold value
 for that input on that node.
@@ -102,12 +117,13 @@ def deltaThreshhold(targetP, outputP):
 	return (-1) * (targetP - outputP)
 
 """
-deltaWeight takes a target value for some pattern (targetP), an output value 
-for some pattern; for some node (outputP), an input value for some pattern
-for the same node and returns the change in weight for that input on that node.
+deltaWeight takes ...
+returns the change in weight for the given oldWeight
 """
-def deltaWeight(targetP, outputP, inputPI):
-	return (targetP - outputP) * inputPI
+def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
+	return oldWeight + (learningRate * errorValue * derivAct * x)
+#def deltaWeight(targetP, outputP, inputPI):
+#	return (targetP - outputP) * inputPI
 
 """
 sum takes a list of numbers and returns the sum of a list of numbers.

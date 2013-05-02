@@ -21,7 +21,7 @@ project in neural networks. components:
   * derivSigmoid
   * errorGradientOutputLayer
   * errorGradientHiddenLayer
-  * errorSignal
+  * derivActivation
   * activation
   * y
   * deltaThreshhold
