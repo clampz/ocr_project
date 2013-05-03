@@ -41,8 +41,8 @@ def main():
 	backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
 	answer = eval(input('do you want to run some input on the neural net? (enter True or False): '))
 	while (answer):
-		print("output:\n")
-		print(inputNeuralNet.update(eval(input('ok .. so liek what\'s the input? (enter in the right form):'))))
+		#print("output:\n" + inputNeuralNet.update(eval(input('ok .. so liek what\'s the input? (enter in the right form):'))))
+		print("output:\n%s", inputNeuralNet.update(dStruct['input'][eval(input('which input do you want to use from the input patterns?(enter an int): '))]))
 		print("\n\n\done ..\n\n")
 		answer = eval(input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
 	return
