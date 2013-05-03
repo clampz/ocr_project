@@ -22,24 +22,36 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 			for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 				weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
 				activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
-		outputError = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0]) #calc the error signal, assumes that output layer has only 1 node.
+		outputLayerError = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0]) #calc the error signal, assumes that output layer has only 1 node.
+		newWeights = []
+		inputsForWeightChangeLoop = input
 		counter = 0
-		layersFromOut = range(0, n_hiddenLayers + 1) # + 1 for input layer
+		layersFromOut = list(range(0, n_hiddenLayers + 1)) # + 1 for input layer
 		layersFromOut.reverse()
-		layersFromOut.pop(0) # remove the output layer
 		error2DArray = []
 		for j in range(0, n_hiddenLayers + 1): # + 1 for input layer
 			error2DArray.append([])
-		for j in layersFromOut:
-			
-		
-
-
+		for j in layersFromOut: # for every layer, starting with the hidden layer closest to output.
+			for k in range(0, inputNN.layers[j].n_neurons):
+				if counter != 0:
+					error2DArray[j][k].append(errorGradientHiddenLayer(inputNN.layers[j].neurons[k], j, inputNN, error2DArray[j + 1][k]))  # 
+				else:
+					error2DArray[j][k].append(errorGradientHiddenLayer(inputNN.layers[j].neurons[k], j, inputNN, outputLayerError)) #
+			counter += 1
+		for j in range(0, inputNN.n_hiddenLayers + 2): # for every layer, + 2 in range for output and input layers.
+			for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
+				newWeights = []
+				for h in range(0, inputNN.layers[j].neurons[k].n_inputs):
+					newWeights.append(deltaWeight(inputNN.layers[j].neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop, error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.layers[j].neurons[k]))) # get the change in weight
+				inputNN.layers[j].neurons[k].putWeights(newWeights) #update the weight
+			oldInputsWeightChange = inputsForWeightChangeLoop
+			inputsForWeightChangeLoop = []
+			for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
+				inputsForWeightChangeLoop.append(y(oldInputsForWeightChange, inputNN.layers[j].neurons[k]))
 		priorLayerErrors = []
 		n_iterations += 1
 		#calc the error fn for the net?
 	return
-
 
 """
 errorSignal takes ...
@@ -105,12 +117,13 @@ def activation(p, n):
 	for i in range(0, len(p)):
 		activationValue += p[i] * n.l_weights[i]
 	activationValue += (-1) * l_weights[-1] # threshhold?
-	return sigmoid(activationValue)
+	return activationValue
 
 """
 activation f'ns derivative
 """
-#def derivActivation():
+def derivActivation(p, n):
+	return activation(p, n) * sigmoid(activation(p, n)) * (1 - sigmoid(activation(p, n)))
 
 """
 deltaThreshhold takes a target value for some pattern (targetP), an output value 
@@ -179,22 +192,3 @@ while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
 """
 
-"""
-#FIRST ATTEMPT AT ERROR BACKPROP
-		for j in layersFromOut:# for every layer in the network
-			jLayerErrors = []
-			jLayerOutputK = []
-			for k in range(0, inputNN.layers[j].n_neurons):# for every neuron in the layer
-				jLayerOutputK.append(y())
-				if counter != n_hiddenLayers: # if the layer isn't the input layer
-					jLayerErrors.append(errorGradientHiddenLayer(inputNN.layers[j].neurons[k], j, inputNN, priorLayerErrors[k]))#calculate the error gradient for that neuron
-					for h in range(0, inputNN.layers[j].neurons[k].n_inputs): #update each input's weight in the neuron
-						deltaWeight(inputNN.layers[j].neurons[k].l_weights[h], learningRate,  priorLayerOutput[h], priorLayerErrors[k], derivActivation("""unknown inputs  so far"""))
-				else: # then the layer is the input layer
-					jLayerErrors.append(errorGradientHiddenLayer(inputNN.layers[j].neurons[k], j, inputNN, priorLayerErrors[k])) #calc the node's errorSignal
-					for h in range(0, inputNN.layers[j].neurons[k].n_inputs):
-						deltaWeight(inputNN.layers[j].neurons[k].l_weights[h], learningRate, input[h], priorLayerErrors[k], derivActivation("""unknown inputs  so far"""))
-				priorLayerOutput = jLayerOutputK
-			priorLayerErrors = jLayerErrors
-			counter += 1
-"""

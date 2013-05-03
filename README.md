@@ -28,7 +28,7 @@ project in neural networks. components:
   * deltaWeight
   * sum
   * todo:
-     * need to finish backprop & error code
+     * need to start testing
 * fileLib
   * getDataFromFile
   * todo:

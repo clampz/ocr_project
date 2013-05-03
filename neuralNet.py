@@ -19,7 +19,10 @@ class neuron():
 		for i in range(0,(numberOfInputs + 2)): #for each input + threshhold & buf for range
 			self.l_weights.append(random.randint(-1,1))
 
-	#def putWeights
+	# replace the weights in this neuron
+	def putWeights(weights):
+		for i in range(0, len(weights)):
+			self.l_weights[i] = weights[i]
 
 class neuralNetLayer():
 	n_neurons = 0
@@ -51,14 +54,14 @@ class neuralNet():
 		self.n_outputs = numOutputs
 		self.n_hiddenLayers = numHidden
 		self.n_neuronsPerHiddenLyr = numNeuronsPerHidden
-		if (numHidden > 0):
-			self.layers.append(neuralNetLayer(numNeuronsPerHidden, numInputs))
+		if (numHidden > 0):# if user wants hidden layers
+			self.layers.append(neuralNetLayer(numNeuronsPerHidden, numInputs))# make input layer
 			for i in range(0, self.n_hiddenLayers):
-				self.layers.append(neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden))
-			self.layers.append(neuralNetLayer(numOutputs, numInputs))
+				self.layers.append(neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden))# make hidden layers
+			self.layers.append(neuralNetLayer(numOutputs, numInputs))# make output layer
 		else:
-			self.layers.append(neuralNetLayer(numInputs, numInputs))
-			self.layers.append(neuralNetLayer(numOutputs, numInputs))
+			self.layers.append(neuralNetLayer(numInputs, numInputs))# make input layer
+			self.layers.append(neuralNetLayer(numOutputs, numInputs))# make output layer
 
 	#returns a list of the weights in the net
 	def getWeights(self):
@@ -74,9 +77,7 @@ class neuralNet():
 		counter = 0
 		for i in range(0, self.n_hiddenLayers + 1):
 			for j in range(0, self.layers[i].n_neurons + 1):
-				for k in range(0, self.layers[i].neurons[j].n_inputs + 1):
-					counter += 1
-					self.layers[i].neurons[j].l_weights[k] = weights[counter]
+				self.layers[i].neurons[j].putweights(weights[i][j])
 
 	#returns the number of weights in the net
 	def getNumWeights(self):
