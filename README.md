@@ -8,7 +8,7 @@ project in neural networks. components:
   * main
   * hasKey
   * todo:
-     * need to test
+     * need to make prompt and interactivity
 * neuralNet
   * neuron
   * neuralNetLayer
@@ -28,7 +28,7 @@ project in neural networks. components:
   * deltaWeight
   * sum
   * todo:
-     * need to start testing
+     * need to debug, no learning yet
 * fileLib
   * getDataFromFile
   * todo:

@@ -16,7 +16,7 @@ neural network.
 
 def backProp(inputNN, input, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
-	while (n_iterations < max_iterations && netError < error_threshhold):
+	while (n_iterations < max_iterations and netError < error_threshhold):
 		for i in trainingSet:
 			y = inputNN.update(input) # present the pattern to the network
 			for j in range(0, (inputNN.n_hiddenLayers + 1)): # for every layer in the network; range 2nd param -> hidden layers + 1 for input layer
@@ -122,7 +122,7 @@ def activation(p, n):
 	activationValue = 0
 	for i in range(0, len(p)):
 		activationValue += p[i] * n.l_weights[i]
-	activationValue += (-1) * l_weights[-1] # threshhold?
+	activationValue += (-1) * n.l_weights[-1] # threshhold?
 	return activationValue
 
 """
