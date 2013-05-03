@@ -11,7 +11,7 @@ import math
 from propagate import *
 
 """
-There may be some bugs in the ranges in this functions, esp causing the wrong number of outputs in the testing!!
+There may be some bugs in the ranges in the inits, esp causing the wrong number of outputs in the testing!!
 
 """
 
@@ -36,7 +36,7 @@ class neuralNetLayer():
 	def __init__(self, numNeurons, numInputsPerNeuron):
 		self.n_neurons = numNeurons
 		for i in range(0, numNeurons):
-			print("neural net layer -> %d", i)
+			print("neural net layer makes a neuron -> %d", i)
 			self.neurons.append(neuron(numInputsPerNeuron))
 
 	def getWeights(self):
@@ -63,10 +63,10 @@ class neuralNet():
 		self.layers.append(neuralNetLayer(numInputs, numInputs))# make input layer
 		for i in range(0, self.n_hiddenLayers):
 			self.layers.append(neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden))# make hidden layers
-		if numHidden > 0:
+		if numHidden > 0: # if you have hidden neurons, output will connect to them
 			self.layers.append(neuralNetLayer(numOutputs, numNeuronsPerHidden))
 		else:
-			self.layers.append(neuralNetLayer(numOutputs, numInputs))# make output layer
+			self.layers.append(neuralNetLayer(numOutputs, numInputs))# make output layer connect to input layer
 
 	#returns a list of the weights in the net
 	def getWeights(self):
