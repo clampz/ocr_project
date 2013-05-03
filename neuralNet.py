@@ -19,7 +19,7 @@ class neuron():
 		for i in range(0,(numberOfInputs + 2)): #for each input + threshhold & buf for range
 			self.l_weights.append(random.randint(-1,1))
 
-	# replace the weights in this neuron
+	#
 	def putWeights(weights):
 		for i in range(0, len(weights)):
 			self.l_weights[i] = weights[i]
@@ -100,10 +100,7 @@ class neuralNet():
 				else:
 					outputs.append(y(inputs, self.layers[i].neurons[j]))
 			outputPriorLayer = outputs
-		if n_outputs == 1:
-			return outputs[0]
-		else:
-			return outputs[0:n_outputs]
+		return outputs
 
 
 
