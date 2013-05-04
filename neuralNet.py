@@ -42,8 +42,8 @@ class neuralNetLayer():
 		weights = []
 		for i in range(0, self.n_neurons):
 			i_weights = []
-			for j in range(0, len(self.neurons[i].l_weights) + 1):
-				i_weights.append(neurons[i].l_weights[j])
+			for j in range(0, len(self.neurons[i].l_weights)):
+				i_weights.append(self.neurons[i].l_weights[j])
 			weights.append(i_weights)
 		return weights
 

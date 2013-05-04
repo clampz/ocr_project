@@ -1,0 +1,294 @@
+[22:20][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+%s [-0.2339894384604587]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+%s [-0.7615941559557649]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+%s [-0.7615941559557649]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[22:21][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
+[22:21][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+%s [0.9426807890983485]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[22:22][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
+[22:22][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+%s [-0.7615941559557649]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+%s [-0.2339894384604587]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+%s [-0.2339894384604587]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+%s [-0.7615941559557649]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[22:22][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
+[22:24][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
+[22:24][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
+[22:24][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+%s [0.6420149920119999]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+%s [-0.6420149920119999]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+%s [0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+%s [0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[22:25][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
+[22:26][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+do you want to run some input on the neural net? (enter True or False): 0
+[22:26][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
+[22:26][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
+[22:27][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
+[22:27][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
+[22:27][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+%s [0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+%s [0.6420149920119999]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+%s [0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+%s [0.6420149920119999]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+
+
+
+---------------------------------------------------------------------------------------------------------------- DIFFERENT SESSION, ERROR LOG
+
+
+[01:46][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+max_iterations: 100, error_threshhold: 0.001000, netError: 1.001000, n_iterations: 0
+eval of while loop: True
+1backProp iteration = 0, netError = 1.001000
+Traceback (most recent call last):
+  File "main.py", line 51, in <module>
+    if __name__ == "__main__": main()
+  File "main.py", line 41, in main
+    backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
+  File "/home/nab/Documents/cpat_project-master/propagate.py", line 42, in backProp
+    error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
+  File "/home/nab/Documents/cpat_project-master/propagate.py", line 117, in errorGradientHiddenLayer
+    sumOut += errorValue[i] * weights[j][neuronIndex] # sum the error value of 
+TypeError: 'float' object is not subscriptable
+[01:47][nab@deimos:~/Documents/cpat_project-master]$ 
+
+
+
+
+---------------------------------------------------------------------------------------------------------------- DIFFERENT SESSION, INTERPRETER LOG ..
+
+[01:56][nab@deimos:~/Documents/cpat_project-master]$ python3
+Python 3.2.3 (default, Jun  8 2012, 05:36:09) 
+[GCC 4.7.0 20120507 (Red Hat 4.7.0-5)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from neuralNet import *
+>>> from propagate import *
+>>> from fileReader import *
+>>> 
+>>> 
+>>> dStruct = {
+...         'input' : [],
+...         'max_iterations' : 0,
+...         'error_threshhold' : 0,
+...         'n_inputs' : 0,
+...         'n_outputs' : 0,
+...         'n_hiddenLayers' : 0,
+...         'n_neuronsPerHidden' : 0,
+...         'rateOfLearning' : 0,
+...         'target' : 0
+... }
+>>> 
+>>> 
+>>> def hasKey(string, dictionary):
+...         if string in dictionary.keys():
+...                 return True
+...         return False
+... 
+>>> 
+>>> 
+>>> filename = 
+  File "<stdin>", line 1
+    filename = 
+              ^
+SyntaxError: invalid syntax
+>>> filename = 'params.dat'
+>>> datas = getDataFromFile(filename)
+>>> for i in datas:
+...         if hasKey(i[0], dStruct):
+...                 dStruct[i[0]] = eval(i[1])
+... inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])
+  File "<stdin>", line 4                                                                                                                                                                                                                     
+    inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])                                                                                                          
+                 ^                                                                                                                                                                                                                           
+SyntaxError: invalid syntax                                                                                                                                                                                                                  
+>>> for i in datas:                                                                                                                                                                                                                          
+...         if hasKey(i[0], dStruct):                                                                                                                                                                                                        
+...                 dStruct[i[0]] = eval(i[1])                                                                                                                                                                                               
+...                                                                                                                                                                                                                                          
+>>> inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])
+>>> dStruct                                                                                                                                                                                                                                  
+{'n_outputs': 1, 'rateOfLearning': 0.2459, 'n_neuronsPerHidden': 2, 'n_inputs': 2, 'target': [0, 0, 1, 0], 'error_threshhold': 0.001, 'input': [[0, 1], [1, 0], [1, 1], [0, 0]], 'n_hiddenLayers': 0, 'max_iterations': 100}                 
+>>> weights = neuralNet.layers[layerIndex + 1].getWeights()
+Traceback (most recent call last):                                                                                                                                                                                                           
+  File "<stdin>", line 1, in <module>                                                                                                                                                                                                        
+NameError: name 'layerIndex' is not defined                                                                                                                                                                                                  
+>>> weights = inputNeuralNet.layers[1].getWeights()                                                                                                                                                                             
+>>> weights                                                                                                                                                                                                                                  
+[[0, -1, 1]]                                                                                                                                                                                                                                 
+>>> weights = inputNeuralNet.layers[0].getWeights()                                                                                                                                                                                         
+>>> weights
+[[0, -1, -1], [0, -1, -1]]                                                                                                                                                                                                                   
+>>> weights = inputNeuralNet.layers[2].getWeights()                                                                                                                                                                                         
+Traceback (most recent call last):                                                                                                                                                                                                           
+  File "<stdin>", line 1, in <module>                                                                                                                                                                                                        
+IndexError: list index out of range                                                                                                                                                                                                          
+>>> weights
+[[0, -1, -1], [0, -1, -1]]
+>>> exit()
+
+
+
+

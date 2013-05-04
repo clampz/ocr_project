@@ -16,28 +16,30 @@ neural network.
 
 def backProp(inputNN, input, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
-	while (n_iterations < max_iterations and netError < error_threshhold):
-		for i in trainingSet:
-			y = inputNN.update(input) # present the pattern to the network
+	netError = float(error_threshhold + 1.0)
+	print('max_iterations: %d, error_threshhold: %f, netError: %f, n_iterations: %d' % (max_iterations, error_threshhold, netError, n_iterations))
+	print('eval of while loop: %s' % (n_iterations < max_iterations and netError > error_threshhold))
+	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
+		print('1backProp iteration = %d, netError = %f' % (n_iterations, netError))
+		for i in input:
+			y = inputNN.update(i) # present the pattern to the network
 			#for j in range(0, (inputNN.n_hiddenLayers + 1)): # for every layer in the network; range 2nd param -> hidden layers + 1 for input layer
 			#	for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 			#		weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
 			#		activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
-			outputLayerError = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0]) #calc the error signal, assumes that output layer has only 1 node.
+			outputLayerError = errorGradientOutputLayer(sum(y), targets[n_iterations]) #calc the error signal, assumes that output layer has only 1 node.
 			newWeights = [] # to collect new weights for updating the neurons
 			inputsForWeightChangeLoop = input # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
 			counter = 0 # used for a condition to compute the error value in the hidden layer above the output layer.
-			layersFromOut = list(range(0, n_hiddenLayers + 1)) # this is in order to get the reverse of a list to do a backwards propagation,  + 1 for input layer
+			layersFromOut = list(range(0, inputNN.n_hiddenLayers + 1)) # this is in order to get the reverse of a list to do a backwards propagation,  + 1 for input layer
 			layersFromOut.reverse() # reverses the list
 			error2DArray = [] # this collects error values for use in the change of the weights
-			for j in range(0, n_hiddenLayers + 1): # this loop populates the list with lists, + 1 for input layer
-				error2DArray.append([])
 			for j in layersFromOut: # for every layer, starting with the hidden layer closest to output.
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 					if counter != 0: # if the neuron isn't in the hidden layer above the output
-						error2DArray[j][k].append(errorGradientHiddenLayer(k, j, inputNN, error2DArray[j + 1]))  # compute the error gradient for the neuron
+						error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, error2DArray[j + 1]))  # compute the error gradient for the neuron
 					else:
-						error2DArray[j][k].append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
+						error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
 				counter += 1
 			for j in range(0, inputNN.n_hiddenLayers + 2): # for every layer, + 2 in range for output and input layers.
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
@@ -55,7 +57,9 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 				for k in range(0, len(inputNN.layers[-1].n_neurons)): # for every output to the net
 					errorVal += errorSignal(targets[k], y[k])
 			netError = .5  *  errorVal #calc the error fn for the net?
+			print('2backProp iteration = %d, netError = %f' % (n_iterations, netError))
 		#
+	print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
 	return
 
 """
