@@ -8,18 +8,15 @@
 import sys
 import random
 import math
-from propagate import *
+import propagate
 
-"""
-There may be some bugs in the ranges in the inits, esp causing the wrong number of outputs in the testing!!
-
-"""
 
 class neuron():
 	n_inputs = 0
 	l_weights = []
 
 	def __init__(self, numberOfInputs):
+		self.l_weights = []
 		self.n_inputs = numberOfInputs
 		for i in range(0,(numberOfInputs + 1)): #for each input + threshhold
 			self.l_weights.append(random.randint(-1,1))
@@ -34,9 +31,11 @@ class neuralNetLayer():
 	neurons = []
 
 	def __init__(self, numNeurons, numInputsPerNeuron):
+		self.neurons = []
 		self.n_neurons = numNeurons
 		for i in range(0, numNeurons):
-			print("neural net layer makes a neuron -> %d", i)
+			#print('neuralNetLayer -> length of self.neurons: %d' % len(self.neurons))
+			#print("neural net layer makes a neuron -> %d" % i)
 			self.neurons.append(neuron(numInputsPerNeuron))
 
 	def getWeights(self):
@@ -56,16 +55,21 @@ class neuralNet():
 	layers = []
 
 	def __init__(self, numInputs, numOutputs, numHidden, numNeuronsPerHidden):
+		self.layers = []
 		self.n_inputs = numInputs
 		self.n_outputs = numOutputs
 		self.n_hiddenLayers = numHidden
 		self.n_neuronsPerHiddenLyr = numNeuronsPerHidden
+		#print('making input layer with %d neurons and %d inputs to the neurons' % (numInputs, numInputs))
 		self.layers.append(neuralNetLayer(numInputs, numInputs))# make input layer
 		for i in range(0, self.n_hiddenLayers):
+			#print('making hidden layer with %d neurons and %d inputs to the neurons' % (numNeuronsPerHidden, numNeuronsPerHidden))
 			self.layers.append(neuralNetLayer(numNeuronsPerHidden, numNeuronsPerHidden))# make hidden layers
 		if numHidden > 0: # if you have hidden neurons, output will connect to them
+			#print('making output layer with %d neurons and %d inputs to the neurons' % (numOutputs, numNeuronsPerHidden))
 			self.layers.append(neuralNetLayer(numOutputs, numNeuronsPerHidden))
 		else:
+			#print('making output layer with %d neurons and %d inputs to the neurons' % (numOutputs, numInputs))
 			self.layers.append(neuralNetLayer(numOutputs, numInputs))# make output layer connect to input layer
 
 	#returns a list of the weights in the net
@@ -101,11 +105,11 @@ class neuralNet():
 			outputs = []
 			for j in range(0, self.layers[i].n_neurons):
 				if i != 0:# if current layer is not input layer
-					outputs.append(y(outputPriorLayer, self.layers[i].neurons[j]))
+					outputs.append(propagate.y(outputPriorLayer, self.layers[i].neurons[j]))
 				else:
-					outputs.append(y(inputs, self.layers[i].neurons[j]))
+					outputs.append(propagate.y(inputs, self.layers[i].neurons[j]))
 			outputPriorLayer = outputs
-		return outputs
+		return outputs[0:len(self.layers[-1].neurons)]
 
 
 
