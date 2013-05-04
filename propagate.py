@@ -19,10 +19,10 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 	while (n_iterations < max_iterations and netError < error_threshhold):
 		for i in trainingSet:
 			y = inputNN.update(input) # present the pattern to the network
-			for j in range(0, (inputNN.n_hiddenLayers + 1)): # for every layer in the network; range 2nd param -> hidden layers + 1 for input layer
-				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
-					weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
-					activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
+			#for j in range(0, (inputNN.n_hiddenLayers + 1)): # for every layer in the network; range 2nd param -> hidden layers + 1 for input layer
+			#	for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
+			#		weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
+			#		activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
 			outputLayerError = errorGradientOutputLayer(inputNN.layers[-1].neurons[0], targets[0]) #calc the error signal, assumes that output layer has only 1 node.
 			newWeights = [] # to collect new weights for updating the neurons
 			inputsForWeightChangeLoop = input # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
