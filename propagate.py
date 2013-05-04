@@ -37,7 +37,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 			for j in layersFromOut: # for every layer, starting with the hidden layer closest to output.
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 					if counter != 0: # if the neuron isn't in the hidden layer above the output
-						error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, error2DArray[j + 1]))  # compute the error gradient for the neuron
+						error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, error2DArray[j + 1][k]))  # compute the error gradient for the neuron
 					else:
 						error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
 				counter += 1
@@ -112,9 +112,9 @@ the basic error gradient f'n for some hidden neuron.
 def errorGradientHiddenLayer(neuronIndex, layerIndex, neuralNet, errorValue):
 	weights = neuralNet.layers[layerIndex + 1].getWeights()
 	sumOut = 0
-	for i in range(0, len(weights) + 1): # for every neuron in the layer below
-		for j in range(0, len(weights[i]) + 1): # for every weight connected to the neuron
-			sumOut += errorValue[i] * weights[j][neuronIndex] # sum the error value of 
+	for i in range(0, len(neuralNet.layers[layerIndex + 1].neurons)): # for every neuron in the layer below
+		for j in range(0, len(weights[i])): # for every weight connected to the neuron
+			sumOut += errorValue * weights[j][neuronIndex] # sum the error value of 
 #				#the neuron by the weight connected to the neuron @ neuronIndex
 	return sumOut
 

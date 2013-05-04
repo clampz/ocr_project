@@ -3,7 +3,19 @@ cpat_project
 
 this project is for computing practice & theory at the evergreen state college.
 
-project in neural networks. components:
+this project is in neural networks.
+
+the end goal is to implement optical character recognition.
+
+in order to run, clone the repo and navigate to the clone folder in the command line.
+
+dependancies: python3
+
+there you can change the inputs to the neural network in the params/params.dat subfolder.
+then you can run main with 'python main.py'.
+
+components:
+============
 * main
   * main
   * hasKey
@@ -14,7 +26,7 @@ project in neural networks. components:
   * neuralNetLayer
   * neuralNet
   * todo:
-     * need to test (needs real RNG)
+     * might need some more tools (+ needs real RNG), seems functional otherwise
 * propagate
   * backprop
   * sigmoid

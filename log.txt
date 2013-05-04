@@ -289,6 +289,25 @@ IndexError: list index out of range
 [[0, -1, -1], [0, -1, -1]]
 >>> exit()
 
+---------------------------------------------------------------------------------------------------------------- DIFFERENT SESSION, ERROR LOG
+
+[03:25][Inspector_Detector@detection-squad:~/Desktop/cpat_project]$ python3 main.py
+enter a filename: params.dat
+max_iterations: 100, error_threshhold: 0.001000, netError: 1.001000, n_iterations: 0
+eval of while loop: True
+1backProp iteration = 0, netError = 1.001000
+Traceback (most recent call last):
+  File "main.py", line 51, in <module>
+    if __name__ == "__main__": main()
+  File "main.py", line 41, in main
+    backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
+  File "/Users/Inspector_Detector/Desktop/cpat_project/propagate.py", line 42, in backProp
+    error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
+  File "/Users/Inspector_Detector/Desktop/cpat_project/propagate.py", line 117, in errorGradientHiddenLayer
+    sumOut += errorValue * weights[j][neuronIndex] # sum the error value of
+IndexError: list index out of range
+
+
 
 
 

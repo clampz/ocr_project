@@ -4,6 +4,6 @@ n_hiddenLayer = 0
 n_neuronsPerHidden = 2
 target = [0, 0, 1, 0]
 rateOfLearning = .9
-maxIterations = 100
+max_iterations = 100
 error_threshhold = .001
 input = [[0, 1], [1, 0], [1, 1], [0, 0]]
