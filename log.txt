@@ -1,10 +1,24 @@
-[22:20][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+
+[04:54][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
 enter a filename: params.dat
-k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+1backProp iteration = 0, netError = 1.000100
+[0, 1]
+[0.0, 0.0]
+2backProp iteration = 1, netError = 0.000000
+[1, 0]
+[0.7615941559557649, 0.0]
+2backProp iteration = 2, netError = 1.160051
+[1, 1]
+[0.7615232962945169, -0.7621171778917123]
+2backProp iteration = 3, netError = 1.160051
+[0, 0]
+[0.0, 0.7615941559557649]
+2backProp iteration = 4, netError = 0.000000
+ok, so my neural net has 0.154200 rate of learning and 0.000100 error threshhold
 do you want to run some input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 0
 output:
-%s [-0.2339894384604587]
+[-8.43510549366035e-05]
 
 
 \done ..
@@ -14,7 +28,7 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 1
 output:
-%s [-0.7615941559557649]
+[0.7615587284010923]
 
 
 \done ..
@@ -24,57 +38,7 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 2
 output:
-%s [-0.7615941559557649]
-
-
-\done ..
-
-
-
-ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
-[22:21][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
-[22:21][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
-enter a filename: params.dat
-k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
-do you want to run some input on the neural net? (enter True or False): 1
-which input do you want to use from the input patterns?(enter an int): 0
-output:
-%s [0.9426807890983485]
-
-
-\done ..
-
-
-
-ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
-[22:22][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
-[22:22][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
-enter a filename: params.dat
-k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
-do you want to run some input on the neural net? (enter True or False): 1
-which input do you want to use from the input patterns?(enter an int): 0
-output:
-%s [-0.7615941559557649]
-
-
-\done ..
-
-
-
-ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
-which input do you want to use from the input patterns?(enter an int): 1
-output:
-%s [-0.2339894384604587]
-
-
-\done ..
-
-
-
-ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
-which input do you want to use from the input patterns?(enter an int): 2
-output:
-%s [-0.2339894384604587]
+[0.7615232962945169]
 
 
 \done ..
@@ -84,7 +48,7 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 3
 output:
-%s [-0.7615941559557649]
+[0.0]
 
 
 \done ..
@@ -92,16 +56,28 @@ output:
 
 
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
-[22:22][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
-[22:24][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
-[22:24][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
-[22:24][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+
+
+[05:09][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
 enter a filename: params.dat
-k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+1backProp iteration = 0, netError = 1.000100
+[0, 1]
+[0.763215334711396, 0.0]
+2backProp iteration = 1, netError = 1.160051
+[1, 0]
+[-0.65762572730753, 0.0]
+2backProp iteration = 2, netError = 1.160051
+[1, 1]
+[0.21236405721496873, 0.7624256913029389]
+2backProp iteration = 3, netError = 0.089879
+[0, 0]
+[0.0, -0.7615941559557649]
+2backProp iteration = 4, netError = 0.000000
+ok, so my neural net has 0.154200 rate of learning and 0.000100 error threshhold
 do you want to run some input on the neural net? (enter True or False): 1
-which input do you want to use from the input patterns?(enter an int): 0
+which input do you want to use from the input patterns?(enter an int): 1
 output:
-%s [0.6420149920119999]
+[-0.6575142767980957]
 
 
 \done ..
@@ -109,9 +85,9 @@ output:
 
 
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
-which input do you want to use from the input patterns?(enter an int): 1
+which input do you want to use from the input patterns?(enter an int): 0
 output:
-%s [-0.6420149920119999]
+[0.7632973004247138]
 
 
 \done ..
@@ -121,7 +97,7 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 2
 output:
-%s [0.0]
+[0.21236405721496873]
 
 
 \done ..
@@ -131,7 +107,7 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 3
 output:
-%s [0.0]
+[0.0]
 
 
 \done ..
@@ -139,22 +115,26 @@ output:
 
 
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
-[22:25][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
-[22:26][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+[05:10][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
 enter a filename: params.dat
-k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
-do you want to run some input on the neural net? (enter True or False): 0
-[22:26][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
-[22:26][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
-[22:27][nab@deimos:~/Documents/cpat_project-master]$ vi params/params.dat
-[22:27][nab@deimos:~/Documents/cpat_project-master]$ vi main.py
-[22:27][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
-enter a filename: params.dat
-k, so this neural net has learning rate of: 0.001000, and error threshhold: 0.000000
+1backProp iteration = 0, netError = 1.000100
+[0, 1]
+[-0.7615941559557649, 0.7615941559557649]
+2backProp iteration = 1, netError = 1.160051
+[1, 0]
+[0.7615941559557649, 0.7615941559557649]
+2backProp iteration = 2, netError = 1.160051
+[1, 1]
+[0.0, 0.964027580075817]
+2backProp iteration = 3, netError = 0.000000
+[0, 0]
+[0.0, 0.0]
+2backProp iteration = 4, netError = 0.000000
+ok, so my neural net has 0.154200 rate of learning and 0.000100 error threshhold
 do you want to run some input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 0
 output:
-%s [0.0]
+[-0.7615941559557649]
 
 
 \done ..
@@ -164,7 +144,7 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 1
 output:
-%s [0.6420149920119999]
+[0.7615941559557649]
 
 
 \done ..
@@ -174,7 +154,7 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 2
 output:
-%s [0.0]
+[0.0]
 
 
 \done ..
@@ -184,7 +164,126 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
 which input do you want to use from the input patterns?(enter an int): 3
 output:
-%s [0.6420149920119999]
+[0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[05:10][nab@deimos:~/Documents/cpat_project-master]$ 
+
+
+[05:11][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+1backProp iteration = 0, netError = 1.000100
+[0, 1]
+[-0.653718260550335, 0.7737217676720081]
+2backProp iteration = 1, netError = 1.160051
+[1, 0]
+[-0.653718260550335, 0.0]
+2backProp iteration = 2, netError = 1.160051
+[1, 1]
+[-0.15764977720669768, 0.029959198782523882]
+2backProp iteration = 3, netError = 1.678076
+[0, 0]
+[0.0, 0.7615941559557649]
+2backProp iteration = 4, netError = 0.000000
+ok, so my neural net has 0.159200 rate of learning and 0.000100 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[-0.07932083867870714]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[-0.07932083867870714]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[-0.15764977720669768]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 
+
+
+[05:12][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+1backProp iteration = 0, netError = 1.000100
+[0, 1]
+[-0.653718260550335, -0.8818493508603108]
+2backProp iteration = 1, netError = 1.160051
+[1, 0]
+[0.7632914862836186, -0.7487239263774872]
+2backProp iteration = 2, netError = 1.160051
+[1, 1]
+[0.21912556066051567, -0.868730222519587]
+2backProp iteration = 3, netError = 0.095659
+[0, 0]
+[0.0, -0.7615941559557649]
+2backProp iteration = 4, netError = 0.000000
+ok, so my neural net has 0.159200 rate of learning and 0.000100 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[-0.6535900331011256]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[0.7633849170911199]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[0.21912556066051567]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[0.0]
 
 
 \done ..
@@ -194,118 +293,492 @@ output:
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
 
 
-
----------------------------------------------------------------------------------------------------------------- DIFFERENT SESSION, ERROR LOG
-
-
-[01:46][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+[05:16][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
 enter a filename: params.dat
-max_iterations: 100, error_threshhold: 0.001000, netError: 1.001000, n_iterations: 0
-eval of while loop: True
-1backProp iteration = 0, netError = 1.001000
-Traceback (most recent call last):
-  File "main.py", line 51, in <module>
-    if __name__ == "__main__": main()
-  File "main.py", line 41, in main
-    backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
-  File "/home/nab/Documents/cpat_project-master/propagate.py", line 42, in backProp
-    error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
-  File "/home/nab/Documents/cpat_project-master/propagate.py", line 117, in errorGradientHiddenLayer
-    sumOut += errorValue[i] * weights[j][neuronIndex] # sum the error value of 
-TypeError: 'float' object is not subscriptable
-[01:47][nab@deimos:~/Documents/cpat_project-master]$ 
+1backProp iteration = 0, netError = 1.000000
+[0, 1]
+[0.7615941559557649, 0.0]
+2backProp iteration = 1, netError = 1.160051
+[1, 0]
+[0.0, 0.7615941559557649]
+2backProp iteration = 2, netError = 0.000000
+[1, 1]
+[0.7615941559557649, 0.7615941559557649]
+2backProp iteration = 3, netError = 1.160051
+[0, 0]
+[0.0, 0.0]
+2backProp iteration = 4, netError = 0.000000
+ok, so my neural net has 0.259200 rate of learning and 0.000000 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[0.7615941559557649]
+
+
+\done ..
 
 
 
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[0.0]
 
----------------------------------------------------------------------------------------------------------------- DIFFERENT SESSION, INTERPRETER LOG ..
 
-[01:56][nab@deimos:~/Documents/cpat_project-master]$ python3
-Python 3.2.3 (default, Jun  8 2012, 05:36:09) 
-[GCC 4.7.0 20120507 (Red Hat 4.7.0-5)] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
->>> from neuralNet import *
->>> from propagate import *
->>> from fileReader import *
->>> 
->>> 
->>> dStruct = {
-...         'input' : [],
-...         'max_iterations' : 0,
-...         'error_threshhold' : 0,
-...         'n_inputs' : 0,
-...         'n_outputs' : 0,
-...         'n_hiddenLayers' : 0,
-...         'n_neuronsPerHidden' : 0,
-...         'rateOfLearning' : 0,
-...         'target' : 0
-... }
->>> 
->>> 
->>> def hasKey(string, dictionary):
-...         if string in dictionary.keys():
-...                 return True
-...         return False
-... 
->>> 
->>> 
->>> filename = 
-  File "<stdin>", line 1
-    filename = 
-              ^
-SyntaxError: invalid syntax
->>> filename = 'params.dat'
->>> datas = getDataFromFile(filename)
->>> for i in datas:
-...         if hasKey(i[0], dStruct):
-...                 dStruct[i[0]] = eval(i[1])
-... inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])
-  File "<stdin>", line 4                                                                                                                                                                                                                     
-    inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])                                                                                                          
-                 ^                                                                                                                                                                                                                           
-SyntaxError: invalid syntax                                                                                                                                                                                                                  
->>> for i in datas:                                                                                                                                                                                                                          
-...         if hasKey(i[0], dStruct):                                                                                                                                                                                                        
-...                 dStruct[i[0]] = eval(i[1])                                                                                                                                                                                               
-...                                                                                                                                                                                                                                          
->>> inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])
->>> dStruct                                                                                                                                                                                                                                  
-{'n_outputs': 1, 'rateOfLearning': 0.2459, 'n_neuronsPerHidden': 2, 'n_inputs': 2, 'target': [0, 0, 1, 0], 'error_threshhold': 0.001, 'input': [[0, 1], [1, 0], [1, 1], [0, 0]], 'n_hiddenLayers': 0, 'max_iterations': 100}                 
->>> weights = neuralNet.layers[layerIndex + 1].getWeights()
-Traceback (most recent call last):                                                                                                                                                                                                           
-  File "<stdin>", line 1, in <module>                                                                                                                                                                                                        
-NameError: name 'layerIndex' is not defined                                                                                                                                                                                                  
->>> weights = inputNeuralNet.layers[1].getWeights()                                                                                                                                                                             
->>> weights                                                                                                                                                                                                                                  
-[[0, -1, 1]]                                                                                                                                                                                                                                 
->>> weights = inputNeuralNet.layers[0].getWeights()                                                                                                                                                                                         
->>> weights
-[[0, -1, -1], [0, -1, -1]]                                                                                                                                                                                                                   
->>> weights = inputNeuralNet.layers[2].getWeights()                                                                                                                                                                                         
-Traceback (most recent call last):                                                                                                                                                                                                           
-  File "<stdin>", line 1, in <module>                                                                                                                                                                                                        
-IndexError: list index out of range                                                                                                                                                                                                          
->>> weights
-[[0, -1, -1], [0, -1, -1]]
->>> exit()
+\done ..
 
----------------------------------------------------------------------------------------------------------------- DIFFERENT SESSION, ERROR LOG
 
-[03:25][Inspector_Detector@detection-squad:~/Desktop/cpat_project]$ python3 main.py
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[0.7615941559557649]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+
+
+[05:18][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
 enter a filename: params.dat
-max_iterations: 100, error_threshhold: 0.001000, netError: 1.001000, n_iterations: 0
-eval of while loop: True
-1backProp iteration = 0, netError = 1.001000
-Traceback (most recent call last):
-  File "main.py", line 51, in <module>
-    if __name__ == "__main__": main()
-  File "main.py", line 41, in main
-    backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
-  File "/Users/Inspector_Detector/Desktop/cpat_project/propagate.py", line 42, in backProp
-    error2DArray.append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
-  File "/Users/Inspector_Detector/Desktop/cpat_project/propagate.py", line 117, in errorGradientHiddenLayer
-    sumOut += errorValue * weights[j][neuronIndex] # sum the error value of
-IndexError: list index out of range
+1backProp iteration = 0, netError = 1.000000
+[0, 1]
+[0.76431378112751, 0.9642027925454398]
+2backProp iteration = 1, netError = 1.160051
+[1, 0]
+[0.0, 0.7615941559557649]
+2backProp iteration = 2, netError = 0.000000
+[1, 1]
+[0.7695356616005844, 0.9645410951545057]
+2backProp iteration = 3, netError = 1.168351
+[0, 0]
+[0.0, 0.7615941559557649]
+2backProp iteration = 4, netError = 0.000000
+ok, so my neural net has 0.259200 rate of learning and 0.000000 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[0.7669374168636788]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[0.006340053749484146]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[0.7695356616005844]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[0.0]
+
+
+\done ..
+
+
+
+
+[05:20][nab@deimos:~/Documents/cpat_project-master]$ python3 main.py
+enter a filename: params.dat
+1backProp iteration = 0, netError = 1.000000
+[0, 1]
+[0.0, -0.7615941559557649]
+2backProp iteration = 1, netError = 0.000000
+[1, 0]
+[0.0, 0.0]
+2backProp iteration = 2, netError = 0.000000
+[1, 1]
+[0.7615941559557649, -0.7615941559557649]
+2backProp iteration = 3, netError = 1.160051
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 4, netError = 1.160051
+1backProp iteration = 4, netError = 1.160051
+[0, 1]
+[0.0, -0.7615941559557649]
+2backProp iteration = 5, netError = 0.000000
+[1, 0]
+[0.0, 0.0]
+2backProp iteration = 6, netError = 0.000000
+[1, 1]
+[0.7614000770182665, -0.7630239890531332]
+2backProp iteration = 7, netError = 1.160051
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 8, netError = 1.160051
+1backProp iteration = 8, netError = 1.160051
+[0, 1]
+[-0.00023097918949459227, -0.7623100031981708]
+2backProp iteration = 9, netError = 0.000000
+[1, 0]
+[-0.00023097918949459227, -0.0017067165620586538]
+2backProp iteration = 10, netError = 0.000000
+[1, 1]
+[0.7610112500339065, -0.7658802679518608]
+2backProp iteration = 11, netError = 1.159460
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 12, netError = 1.160051
+1backProp iteration = 12, netError = 1.160051
+[0, 1]
+[-0.0006932455492811995, -0.763745637414358]
+2backProp iteration = 13, netError = 0.000001
+[1, 0]
+[-0.0006932455492811995, -0.00514293412263489]
+2backProp iteration = 14, netError = 0.000001
+[1, 1]
+[0.7604266711246844, -0.7701615277524947]
+2backProp iteration = 15, netError = 1.158276
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 16, netError = 1.160051
+1backProp iteration = 16, netError = 1.160051
+[0, 1]
+[-0.0013870139623845276, -0.7659118826678858]
+2backProp iteration = 17, netError = 0.000004
+[1, 0]
+[-0.0013870139623845276, -0.010361947583218258]
+2backProp iteration = 18, netError = 0.000004
+[1, 1]
+[0.7596450160330908, -0.775866525357092]
+2backProp iteration = 19, netError = 1.156497
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 20, netError = 1.160051
+1backProp iteration = 20, netError = 1.160051
+[0, 1]
+[-0.0023123854198036464, -0.7688262357826174]
+2backProp iteration = 21, netError = 0.000011
+[1, 0]
+[-0.0023123854198036464, -0.017448676612314848]
+2backProp iteration = 22, netError = 0.000011
+[1, 1]
+[0.7586646608803376, -0.7829916282373733]
+2backProp iteration = 23, netError = 1.154121
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 24, netError = 1.160051
+1backProp iteration = 24, netError = 1.160051
+[0, 1]
+[-0.003469318663635926, -0.7725125603046267]
+2backProp iteration = 25, netError = 0.000024
+[1, 0]
+[-0.003469318663635926, -0.026521548863249637]
+2backProp iteration = 26, netError = 0.000024
+[1, 1]
+[0.7574837082937059, -0.7915271372296159]
+2backProp iteration = 27, netError = 1.151144
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 28, netError = 1.160051
+1backProp iteration = 28, netError = 1.160051
+[0, 1]
+[-0.004857595976350656, -0.7770006106322601]
+2backProp iteration = 29, netError = 0.000047
+[1, 0]
+[-0.004857595976350656, -0.037735083147454905]
+2backProp iteration = 30, netError = 0.000047
+[1, 1]
+[0.7561000180642157, -0.8014523471127695]
+2backProp iteration = 31, netError = 1.147563
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 32, netError = 1.160051
+1backProp iteration = 32, netError = 1.160051
+[0, 1]
+[-0.006476784735671088, -0.7823252726003649]
+2backProp iteration = 33, netError = 0.000084
+[1, 0]
+[-0.006476784735671088, -0.05128303560315329]
+2backProp iteration = 34, netError = 0.000084
+[1, 1]
+[0.7545112416643526, -0.812729140680178]
+2backProp iteration = 35, netError = 1.143374
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 36, netError = 1.160051
+1backProp iteration = 36, netError = 1.160051
+[0, 1]
+[-0.008326196224465985, -0.7885253585077521]
+2backProp iteration = 37, netError = 0.000139
+[1, 0]
+[-0.008326196224465985, -0.06740184537470334]
+2backProp iteration = 38, netError = 0.000139
+[1, 1]
+[0.7527148601425079, -0.8252939661887979]
+2backProp iteration = 39, netError = 1.138574
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 40, netError = 1.160051
+1backProp iteration = 40, netError = 1.160051
+[0, 1]
+[-0.01040484300602762, -0.7956417354255525]
+2backProp iteration = 41, netError = 0.000217
+[1, 0]
+[-0.01040484300602762, -0.0863738972318085]
+2backProp iteration = 42, netError = 0.000217
+[1, 1]
+[0.7507082251268313, -0.8390482112326566]
+2backProp iteration = 43, netError = 1.133159
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 44, netError = 1.160051
+1backProp iteration = 44, netError = 1.160051
+[0, 1]
+[-0.012711395941046118, -0.803714498371369]
+2backProp iteration = 45, netError = 0.000323
+[1, 0]
+[-0.012711395941046281, -0.10852975938709485]
+2backProp iteration = 46, netError = 0.000323
+[1, 1]
+[0.7484886029209725, -0.8538473236205862]
+2backProp iteration = 47, netError = 1.127126
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 48, netError = 1.160051
+1backProp iteration = 48, netError = 1.160051
+[0, 1]
+[-0.015244141636339376, -0.8127788347335743]
+2backProp iteration = 49, netError = 0.000465
+[1, 0]
+[-0.01524414163633982, -0.1342479947800795]
+2backProp iteration = 50, netError = 0.000465
+[1, 1]
+[0.7460532219488764, -0.8694896165492125]
+2backProp iteration = 51, netError = 1.120470
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 52, netError = 1.160051
+1backProp iteration = 52, netError = 1.160051
+[0, 1]
+[-0.018000940796746356, -0.8228591866004229]
+2backProp iteration = 53, netError = 0.000648
+[1, 0]
+[-0.01800094079674769, -0.16395031867363988]
+2backProp iteration = 54, netError = 0.000648
+[1, 1]
+[0.7433993240740584, -0.8857065830466943]
+2backProp iteration = 55, netError = 1.113191
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 56, netError = 1.160051
+1backProp iteration = 56, netError = 1.160051
+[0, 1]
+[-0.02097918764541149, -0.8339613476527205]
+2backProp iteration = 57, netError = 0.000880
+[1, 0]
+[-0.02097918764541471, -0.19808874616642277]
+2backProp iteration = 58, netError = 0.000880
+[1, 1]
+[0.7405242205179706, -0.902157689823245]
+2backProp iteration = 59, netError = 1.105285
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 60, netError = 1.160051
+1backProp iteration = 60, netError = 1.160051
+[0, 1]
+[-0.02417577036013728, -0.8460623025120478]
+2backProp iteration = 61, netError = 0.001169
+[1, 0]
+[-0.02417577036014438, -0.23711999818224547]
+2backProp iteration = 62, netError = 0.001169
+[1, 1]
+[0.7374253531346417, -0.9184337650130608]
+2backProp iteration = 63, netError = 1.096752
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 64, netError = 1.160051
+1backProp iteration = 64, netError = 1.160051
+[0, 1]
+[-0.027587032449885168, -0.8590980248571667]
+2backProp iteration = 65, netError = 0.001522
+[1, 0]
+[-0.027587032449899254, -0.2814611021596794]
+2backProp iteration = 66, netError = 0.001522
+[1, 1]
+[0.7341003615445352, -0.9340736332726137]
+2backProp iteration = 67, netError = 1.087592
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 68, netError = 1.160051
+1backProp iteration = 68, netError = 1.160051
+[0, 1]
+[-0.031208735279644663, -0.8729501896681087]
+2backProp iteration = 69, netError = 0.001948
+[1, 0]
+[-0.031208735279669164, -0.33141956037284137]
+2backProp iteration = 70, netError = 0.001948
+[1, 1]
+[0.7305471559870856, -0.9485976183609767]
+2backProp iteration = 71, netError = 1.077806
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 72, netError = 1.160051
+1backProp iteration = 72, netError = 1.160051
+[0, 1]
+[-0.035036022616532866, -0.8874338458010641]
+2backProp iteration = 73, netError = 0.002455
+[1, 0]
+[-0.03503602261656927, -0.387093052960413]
+2backProp iteration = 74, netError = 0.002455
+[1, 1]
+[0.7267639947074982, -0.961557928018899]
+2backProp iteration = 75, netError = 1.067398
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 76, netError = 1.160051
+1backProp iteration = 76, netError = 1.160051
+[0, 1]
+[-0.03906338906952774, -0.9022893703415369]
+2backProp iteration = 77, netError = 0.003052
+[1, 0]
+[-0.0390633890695721, -0.44823947245417384]
+2backProp iteration = 78, netError = 0.003052
+[1, 1]
+[0.7227495634128799, -0.9725995808792814]
+2backProp iteration = 79, netError = 1.056371
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 80, netError = 1.160051
+1backProp iteration = 80, netError = 1.160051
+[0, 1]
+[-0.04328465539294455, -0.9171830151059255]
+2backProp iteration = 81, netError = 0.003747
+[1, 0]
+[-0.043284655392989334, -0.5141303031601864]
+2backProp iteration = 82, netError = 0.003747
+[1, 1]
+[0.7185030531854903, -0.9815181784783491]
+2backProp iteration = 83, netError = 1.044732
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 84, netError = 1.160051
+1backProp iteration = 84, netError = 1.160051
+[0, 1]
+[-0.047692954392123295, -0.9317203006943694]
+2backProp iteration = 85, netError = 0.004549
+[1, 0]
+[-0.0476929543921846, -0.5834193709872298]
+2backProp iteration = 86, netError = 0.004549
+[1, 1]
+[0.7140242327063968, -0.9882964245011661]
+2backProp iteration = 87, netError = 1.032491
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 88, netError = 1.160051
+1backProp iteration = 88, netError = 1.160051
+[0, 1]
+[-0.05228073113112316, -0.94547467556998]
+2backProp iteration = 89, netError = 0.005466
+[1, 0]
+[-0.052280731131343634, -0.654080421323988]
+2backProp iteration = 90, netError = 0.005466
+[1, 1]
+[0.7093135110836583, -0.9931041849388399]
+2backProp iteration = 91, netError = 1.019657
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 92, netError = 1.160051
+1backProp iteration = 92, netError = 1.160051
+[0, 1]
+[-0.05703976002434472, -0.9580300984986018]
+2backProp iteration = 93, netError = 0.006507
+[1, 0]
+[-0.057039760025275346, -0.7234790579275373]
+2backProp iteration = 94, netError = 0.006507
+[1, 1]
+[0.7043719890195136, -0.9962581571947499]
+2backProp iteration = 95, netError = 1.006245
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 96, netError = 1.160051
+1backProp iteration = 96, netError = 1.160051
+[0, 1]
+[-0.061961179334465835, -0.9690314635605829]
+2backProp iteration = 97, netError = 0.007678
+[1, 0]
+[-0.06196117933770913, -0.7886298800352343]
+2backProp iteration = 98, netError = 0.007678
+[1, 1]
+[0.6992014981301011, -0.9981523381917663]
+2backProp iteration = 99, netError = 0.992271
+[0, 0]
+[-0.7615941559557649, 0.0]
+2backProp iteration = 100, netError = 1.160051
+ok, so my neural net has 0.259200 rate of learning and 0.000000 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[-0.06703105936734546]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[-0.06703105937058666]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[0.6992014981301011]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[-0.7615941559557649]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[05:20][nab@deimos:~/Documents/cpat_project-master]$ 
 
 
 

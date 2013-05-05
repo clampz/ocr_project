@@ -22,7 +22,7 @@ class neuron():
 			self.l_weights.append(random.randint(-1,1))
 
 	#
-	def putWeights(weights):
+	def putWeights(self, weights):
 		for i in range(0, len(weights)):
 			self.l_weights[i] = weights[i]
 
