@@ -17,8 +17,6 @@ neural network.
 def backProp(inputNN, input, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
 	netError = float(error_threshhold + 1.0)
-	#print('max_iterations: %d, error_threshhold: %f, netError: %f, n_iterations: %d' % (max_iterations, error_threshhold, netError, n_iterations))
-	#print('eval of while loop: %s' % (n_iterations < max_iterations and netError > error_threshhold))
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
 		print('1backProp iteration = %d, netError = %f' % (n_iterations, netError))
 		countPatterns = 0
@@ -27,8 +25,6 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 			outputLayerError = errorGradientOutputLayer(sum(outputCurrentPattern), targets[countPatterns]) #calc the error signal, assumes that output layer has only 1 node.
 			newWeights = [] # to collect new weights for updating the neurons
 			inputsForWeightChangeLoop = i # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
-			#print('2backProp iteration = %d, netError = %f, inputsForWeightChangeLoop:' % (n_iterations, netError))
-			#print(inputsForWeightChangeLoop)
 			counter = 0 # used for a condition to compute the error value in the hidden layer above the output layer.
 			layersFromOut = list(range(0, inputNN.n_hiddenLayers + 1)) # this is in order to get the reverse of a list to do a backwards propagation,  + 1 for input layer
 			layersFromOut.reverse() # reverses the list
@@ -47,21 +43,10 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 #deltaWeight(float oldWeight, float learningRate, list[float] inputsToNeuron, list[float] errorValues, float derivitiveOfActivationFn)
 						newWeights.append(deltaWeight(inputNN.layers[j].neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j], derivActivation(inputsForWeightChangeLoop, inputNN.layers[j].neurons[k]))) # get the change in weight
 					inputNN.layers[j].neurons[k].putWeights(newWeights) #update the weights
-				#print('3backProp iteration = %d, netError = %f, inputsForWeightChangeLoop:' % (n_iterations, netError))
 				print(inputsForWeightChangeLoop)
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
-					#print('4backProp iteration = %d, netError = %f, inputsForWeightChangeLoop:' % (n_iterations, netError))
-					#print(inputsForWeightChangeLoop)
-					#print('5backProp, oldInputsWeightChange:')
-					#print(oldInputsWeightChange)
-					#print('6backProp, inputNN.layers[j].neurons[k]:')
-					#print(inputNN.layers[j].neurons[k])
-					#print('8backProp, y(stuff):')
-					#print(float(math.e**activation(oldInputsWeightChange, inputNN.layers[j].neurons[k]) - math.e**((-1) * activation(oldInputsWeightChange, inputNN.layers[j].neurons[k])))/float(math.e**activation(oldInputsWeightChange, inputNN.layers[j].neurons[k]) + math.e**((-1) * activation(oldInputsWeightChange, inputNN.layers[j].neurons[k]))))
-					#print('9backProp, y(stuff):')
-					#print(sigmoid(activation(oldInputsWeightChange, inputNN.layers[j].neurons[k])))
 					#print('7backProp, y(stuff):')
 					#print(y(oldInputsWeightChange, inputNN.layers[j].neurons[k]))
 					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.layers[j].neurons[k])))
