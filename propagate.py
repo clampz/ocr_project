@@ -4,7 +4,7 @@
   4/26/13, 9:10p
 """
 from neuralNet import *
-
+from main import *
 
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
@@ -16,13 +16,16 @@ neural network.
 
 def backProp(inputNN, input, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
-	netError = float(error_threshhold + 1.0)
+	netError = float(error_threshhold + 0.1)
+	outputs = [[0]] * len(targets)
+	print(backPropTitle)
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
-		print('1backProp iteration = %d, netError = %f' % (n_iterations, netError))
+		print(propLoopTitle % n_iterations)
+		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0
-		for i in input:# 
-			outputCurrentPattern = inputNN.update(i) # present the pattern to the network
-			outputLayerError = []
+		for i in input: #for every pattern in the training set 
+			outputs[n_iterations % len(targets)] = outputCurrentPattern = inputNN.update(i) # present the pattern to the network
+			outputLayerError = [] # create empty array for the error of the nodes in output layer
 			for j in range(0, inputNN.layers[-1].n_neurons): # for every node in the output layer
 				outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], targets[countPatterns])) #calc the error in the output layer
 			newWeights = [] # to collect new weights for updating the neurons
@@ -32,19 +35,16 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 			layersFromOut.reverse() # reverses the list
 			error2DArray = [] # this collects error values for use in the change of the weights
 			for j in layersFromOut: # for every layer, starting with the output
-				while (len(error2DArray) < (j + 1)):
+				while (len(error2DArray) < (j + 1)): # keep the array big enough to write like a backprop
 					error2DArray.append([])
-				print('layersFromOut[] len: %d, layersFromOut: %s' % (len(layersFromOut), layersFromOut))
-				print('error2DArray[] len: %d, error2DArray[0][] len: %d' % (len(error2DArray), len(error2DArray[0])))
-				if (j != layersFromOut[0]):
+				if (j != layersFromOut[0]): # if we're not dealing with the output layer
 					for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 						if counter != 0: # if the neuron isn't in the hidden layer above the output
 							error2DArray[j].append(errorGradientHiddenLayer(k, j, inputNN, error2DArray[j + 1]))  # compute the error gradient for the neuron
 						else:
 							error2DArray[j].append(errorGradientHiddenLayer(k, j, inputNN, outputLayerError)) # '' same but for the hidden layer above the output layer
 					counter += 1
-				else:
-					print('error2DArray -> %s, j -> %d' % (error2DArray, j))
+				else: # deal with the output layer
 					error2DArray[j] = outputLayerError
 			for j in range(0, inputNN.n_hiddenLayers + 2): # for every layer, + 2 in range for output and input layers.
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
@@ -60,14 +60,19 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.layers[j].neurons[k])))
-			n_iterations += 1
-			errorVal = 0# sum unit for the net error
-			for j in range(0, len(i)): # for every input in the pattern
-				for k in range(0, inputNN.layers[-1].n_neurons): # for every output to the net
-					errorVal += errorSignal(targets[k], outputCurrentPattern[k])
-			netError = .5  *  errorVal #calc the error fn for the net?
-			counter += 1
-			print('2backProp iteration = %d, netError = %f' % (n_iterations, netError))
+		n_iterations += 1
+		print('inputs: %s' % i)
+		print('outputs: %s' % outputCurrentPattern)
+		for j in range(0, len(inputNN.layers)):
+			print('error for layer %d: %s' % (j, error2DArray[j]))
+		errorVal = 0# sum unit for the net error
+		for j in range(0, len(input)): # for every pattern in the trainingset
+			for h in range(0, inputNN.layers[-1].n_neurons): # for every output to the net
+				errorVal += errorSignal(targets[j], outputs[j][h])
+		netError = .5  *  errorVal #calc the error fn for the net?
+		print(mapTitle)
+		inputNN.printNN()
+		print('2backProp iteration = %d, netError = %.20f' % (n_iterations - 1, netError))
 		#
 	#print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
 	return

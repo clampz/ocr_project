@@ -783,4 +783,303 @@ ok .. liek  ... do you want to run some more input on the neural net? (enter Tru
 
 
 
+[00:27][Inspector_Detector@detection-squad:~/Desktop/cpat_project]$ python3 main.py
+enter a filename: params.dat
+=================================
+Back Propagation
+=================================
+---------------------------------
+Back Propagation (Loop: 0)
+---------------------------------
+1backProp iteration = 0, netError = 0.34999999999999997780
+inputs: [0, 0]
+outputs: [-0.6933288510609797]
+error for layer 0: [0.7450335253320489, 0.12158285714538873]
+error for layer 1: [-0.8139914687579937]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9344590677204142, 0.9989107563755912], threshhold: 0.6997738928811147
+  neuron 1 : [-0.31041308869716844, 0.23892583095367084], threshhold: -0.8935088185633874
+layer 1
+  neuron 0 : [-0.9126483269694722, -0.15247717930072244], threshhold: 0.43738225781188333
+2backProp iteration = 0, netError = 0.74035244785676912471
+---------------------------------
+Back Propagation (Loop: 1)
+---------------------------------
+1backProp iteration = 1, netError = 0.74035244785676912471
+inputs: [0, 0]
+outputs: [-0.5779377932875882]
+error for layer 0: [0.5066140822722207, 0.10560775246282743]
+error for layer 1: [-0.5270503048179748]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9381539886996729, 1.0029269929151916], threshhold: 0.5542590320733043
+  neuron 1 : [-0.30952197929456543, 0.239927988887103], threshhold: -0.9225399857485511
+layer 1
+  neuron 0 : [-0.9599475816128762, -0.20221945777570668], threshhold: 0.5908340212377714
+2backProp iteration = 1, netError = 0.90735849431183268621
+---------------------------------
+Back Propagation (Loop: 2)
+---------------------------------
+1backProp iteration = 2, netError = 0.90735849431183268621
+inputs: [0, 0]
+outputs: [-0.46036118652856167]
+error for layer 0: [0.32132252173839104, 0.08948553738451091]
+error for layer 1: [-0.30949788334631256]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9423549665357154, 1.0076043432928008], threshhold: 0.4311082607978587
+  neuron 1 : [-0.30803461176425795, 0.24147626188206883], threshhold: -0.9542840048816753
+layer 1
+  neuron 0 : [-1.0314457894272846, -0.30147374974998525], threshhold: 0.7130179620012971
+2backProp iteration = 2, netError = 1.47368589187138709917
+---------------------------------
+Back Propagation (Loop: 3)
+---------------------------------
+1backProp iteration = 3, netError = 1.47368589187138709917
+inputs: [0, 0]
+outputs: [-0.34549539205711466]
+error for layer 0: [0.1856688061596789, 0.07069607921996021]
+error for layer 1: [-0.16060783717582477]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9478858138396606, 1.0134522862667543], threshhold: 0.3218007948210262
+  neuron 1 : [-0.30552157822177445, 0.24387002847156616], threshhold: -0.991963482697805
+layer 1
+  neuron 0 : [-1.1478833631243144, -0.4600508295545643], threshhold: 0.813006815397798
+2backProp iteration = 3, netError = 1.53336942483773674972
+---------------------------------
+Back Propagation (Loop: 4)
+---------------------------------
+1backProp iteration = 4, netError = 1.53336942483773674972
+inputs: [0, 0]
+outputs: [-0.23313150574466]
+error for layer 0: [0.08925073526815507, 0.044131936158994835]
+error for layer 1: [-0.06702106600750105]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9550609736301496, 1.020594545901061], threshhold: 0.21898254192359268
+  neuron 1 : [-0.301546553792872, 0.2473755684798563], threshhold: -1.037963152384772
+layer 1
+  neuron 0 : [-1.32687030792109, -0.6758247890878976], threshhold: 0.8973521009503728
+2backProp iteration = 4, netError = 1.32019212646635386577
+---------------------------------
+Back Propagation (Loop: 5)
+---------------------------------
+1backProp iteration = 5, netError = 1.32019212646635386577
+inputs: [0, 0]
+outputs: [-0.12017934854006726]
+error for layer 0: [0.025527398889307856, 0.015186896374780367]
+error for layer 1: [-0.016178835257938354]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9639386703119229, 1.0290302943805778], threshhold: 0.11546711260447012
+  neuron 1 : [-0.29581616025935514, 0.2520747015151023], threshhold: -1.0944651615548455
+layer 1
+  neuron 0 : [-1.5767943142747427, -0.9458604490053941], threshhold: 0.971095906967648
+2backProp iteration = 5, netError = 1.16040761791904767364
+---------------------------------
+Back Propagation (Loop: 6)
+---------------------------------
+1backProp iteration = 6, netError = 1.16040761791904767364
+inputs: [0, 0]
+outputs: [-0.003455567925626103]
+error for layer 0: [2.2733017793700294e-05, 1.5262768800758658e-05]
+error for layer 1: [-1.1982212451361386e-05]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9742967402328236, 1.0386036946789954], threshhold: 0.0034508655108176625
+  neuron 1 : [-0.2883064757877652, 0.25780810181960073], threshhold: -1.1648465152373417
+layer 1
+  neuron 0 : [-1.8972303719349934, -1.2737936438361142], threshhold: 1.0383863919459124
+2backProp iteration = 6, netError = 0.59754175875996373701
+---------------------------------
+Back Propagation (Loop: 7)
+---------------------------------
+1backProp iteration = 7, netError = 0.59754175875996373701
+inputs: [0, 0]
+outputs: [0.11922584887923532]
+error for layer 0: [0.028565724661481336, 0.020792576942421655]
+error for layer 1: [-0.012520031081762967]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.9854818673460677, 1.048836881665054], threshhold: -0.12572185720486065
+  neuron 1 : [-0.2793497494502555, 0.26418665279073816], threshhold: -1.2546542968587955
+layer 1
+  neuron 0 : [-2.283398206724776, -1.672948632937251], threshhold: 1.102538446431968
+2backProp iteration = 7, netError = 0.54496562731410125302
+---------------------------------
+Back Propagation (Loop: 8)
+---------------------------------
+1backProp iteration = 8, netError = 0.54496562731410125302
+inputs: [0, 0]
+outputs: [0.24875301706627898]
+error for layer 0: [0.1261916642147711, 0.09773629510872876]
+error for layer 1: [-0.046485708513838035]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.996387097111346, 1.0588297826795499], threshhold: -0.28026273471711716
+  neuron 1 : [-0.2696775589151074, 0.2706249285185622], threshhold: -1.3710589764652916
+layer 1
+  neuron 0 : [-2.7343332116962777, -2.1658913301595257], threshhold: 1.1656513593738482
+2backProp iteration = 8, netError = 0.54872950957850330500
+---------------------------------
+Back Propagation (Loop: 9)
+---------------------------------
+1backProp iteration = 9, netError = 0.54872950957850330500
+inputs: [0, 0]
+outputs: [0.38395301389911296]
+error for layer 0: [0.2889980175108148, 0.23698307264283502]
+error for layer 1: [-0.09081759548653025]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [1.0057564185323329, 1.0674503031952827], threshhold: -0.4646432146757794
+  neuron 1 : [-0.2603490837372976, 0.2764297364884394], threshhold: -1.5201034215660278
+layer 1
+  neuron 0 : [-3.263276147587169, -2.7792929183622976], threshhold: 1.2280604689907784
+2backProp iteration = 9, netError = 0.61521793011185199607
+---------------------------------
+Back Propagation (Loop: 10)
+---------------------------------
+1backProp iteration = 10, netError = 0.61521793011185199607
+inputs: [0, 0]
+outputs: [0.5198259345193609]
+error for layer 0: [0.478826739346423, 0.41539540566247796]
+error for layer 1: [-0.1297521568559805]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [1.0127562954640807, 1.0738771624987486], threshhold: -0.6754381249648752
+  neuron 1 : [-0.2524456714403769, 0.28101836768502], threshhold: -1.7018728868413664
+layer 1
+  neuron 0 : [-3.894001347417561, -3.525258948949861], threshhold: 1.2879613400566203
+2backProp iteration = 10, netError = 0.22703995829148412855
+
+ok, so my neural net has 0.20745900100000000399 rate of learning and 0.25000000000000000000 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[0.9412975596779457]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[0.9339168472607665]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[0.9920531315579656]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[0.5885456948353057]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[0.9412975596779457]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[0.9412975596779457]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[0.9339168472607665]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[0.9920531315579656]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[0.5885456948353057]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[00:29][Inspector_Detector@detection-squad:~/Desktop/cpat_project]$
+
+
 

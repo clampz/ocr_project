@@ -9,7 +9,7 @@ import sys
 import random
 import math
 import propagate
-
+from main import *
 
 class neuron():
 	n_inputs = 0
@@ -19,9 +19,9 @@ class neuron():
 		self.l_weights = []
 		self.n_inputs = numberOfInputs
 		for i in range(0,(numberOfInputs + 1)): #for each input + threshhold
-			self.l_weights.append(random.randint(-1,1))
+			self.l_weights.append(random.uniform(-1,1))
 
-	def getStringRep(self):
+	def toString(self):
 		return str(self.l_weights[0:-1]) + ', threshhold: ' + str(self.l_weights[-1])
 
 	#
@@ -40,6 +40,10 @@ class neuralNetLayer():
 			#print('neuralNetLayer -> length of self.neurons: %d' % len(self.neurons))
 			#print("neural net layer makes a neuron -> %d" % i)
 			self.neurons.append(neuron(numInputsPerNeuron))
+
+	def printLayer(self, indentor):
+		for i in range(0, len(self.neurons)):
+			print(indentor.currentString() + ('neuron %d : ' % i) + self.neurons[i].toString())
 
 	def getWeights(self):
 		weights = []
@@ -74,6 +78,15 @@ class neuralNet():
 		else:
 			#print('making output layer with %d neurons and %d inputs to the neurons' % (numOutputs, numInputs))
 			self.layers.append(neuralNetLayer(numOutputs, numInputs))# make output layer connect to input layer
+
+	def printNN(self):
+		indentor = indent('  ')
+		print(indentor.currentString() + 'neural net printout:')
+		for i in range(0, len(self.layers)):
+			print('layer %d' % i)
+			indentor.increment()
+			self.layers[i].printLayer(indentor)
+			indentor.decrement()
 
 	#returns a list of the weights in the net
 	def getWeights(self):

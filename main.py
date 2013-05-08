@@ -17,7 +17,7 @@ from fileReader import *
 
 mapTitle = "=================================\nNeural Net Map\n================================="
 backPropTitle = "=================================\nBack Propagation\n================================="
-propLoopTitle = "---------------------------------\nBack Propagation (Loop:)\n---------------------------------"
+propLoopTitle = "---------------------------------\nBack Propagation (Loop: %d)\n---------------------------------"
 
 
 
@@ -75,7 +75,7 @@ def main():
 	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])
 	backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
 	print()
-	print('ok, so my neural net has %f rate of learning and %f error threshhold' % (dStruct['rateOfLearning'], dStruct['error_threshhold']))
+	print('ok, so my neural net has %.20f rate of learning and %.20f error threshhold' % (dStruct['rateOfLearning'], dStruct['error_threshhold']))
 	answer = eval(input('do you want to run some input on the neural net? (enter True or False): '))
 	while (answer):
 		#print("output:\n" + inputNeuralNet.update(eval(input('ok .. so liek what\'s the input? (enter in the right form):'))))
