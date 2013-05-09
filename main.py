@@ -73,6 +73,8 @@ def main():
 		if hasKey(i[0], dStruct):
 			dStruct[i[0]] = eval(i[1])
 	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])
+	for i in inputNeuralNet.layers[0].neurons:
+		i.putWeights([.5, .5])
 	backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
 	print()
 	print('ok, so my neural net has %.20f rate of learning and %.20f error threshhold' % (dStruct['rateOfLearning'], dStruct['error_threshhold']))

@@ -55,16 +55,17 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 					inputNN.layers[j].neurons[k].putWeights(newWeights) #update the weights
 # how is error2DArray arranged? 
 #def deltaThreshhold(neuron, error, learningRate):
-					inputNN.layers[j].neurons[k].l_weights[-1] = deltaThreshold(inputNN.layers[j].neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
+#COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
+					#inputNN.layers[j].neurons[k].l_weights[-1] = deltaThreshold(inputNN.layers[j].neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
 					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.layers[j].neurons[k])))
+			print('inputs: %s' % i)
+			print('outputs: %s' % outputCurrentPattern)
+			for j in range(0, len(inputNN.layers)):
+				print('error for layer %d: %s' % (j, error2DArray[j]))
 		n_iterations += 1
-		print('inputs: %s' % i)
-		print('outputs: %s' % outputCurrentPattern)
-		for j in range(0, len(inputNN.layers)):
-			print('error for layer %d: %s' % (j, error2DArray[j]))
 		errorVal = 0# sum unit for the net error
 		for j in range(0, len(input)): # for every pattern in the trainingset
 			for h in range(0, inputNN.layers[-1].n_neurons): # for every output to the net

@@ -18,8 +18,9 @@ class neuron():
 	def __init__(self, numberOfInputs):
 		self.l_weights = []
 		self.n_inputs = numberOfInputs
-		for i in range(0,(numberOfInputs + 1)): #for each input + threshhold
+		for i in range(0,(numberOfInputs)): #for each input + threshhold
 			self.l_weights.append(random.uniform(-1,1))
+		self.l_weights.append(0) # set threshold to zero.
 
 	def toString(self):
 		return str(self.l_weights[0:-1]) + ', threshhold: ' + str(self.l_weights[-1])

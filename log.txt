@@ -1083,3 +1083,118 @@ ok .. liek  ... do you want to run some more input on the neural net? (enter Tru
 
 
 
+
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.5770101641394586, 0.5768136743663003], threshhold: 0
+  neuron 1 : [0.044783656339710085, 0.04475289538991624], threshhold: 0
+layer 1
+  neuron 0 : [-0.05923256211011116, 0.5829749557138252], threshhold: 0
+2backProp iteration = 197, netError = 0.50000000000000000000
+---------------------------------
+Back Propagation (Loop: 198)
+---------------------------------
+1backProp iteration = 198, netError = 0.50000000000000000000
+inputs: [0, 1]
+outputs: [0.5203456863759603]
+error for layer 0: [0.00769259361870777, -0.07571155567868108]
+error for layer 1: [-0.12987102608203105]
+inputs: [1, 0]
+outputs: [0.5204889599996726]
+error for layer 0: [0.007694602791100371, -0.07573062097000104]
+error for layer 1: [-0.1299037400451701]
+inputs: [1, 1]
+outputs: [0.8192734593096611]
+error for layer 0: [0.007185355788499658, -0.0707179293019268]
+error for layer 1: [-0.1213052808543015]
+inputs: [0, 0]
+outputs: [0.0]
+error for layer 0: [0.0, 0.0]
+error for layer 1: [0.0]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.5778326075141023, 0.5776358922399204], threshhold: 0
+  neuron 1 : [0.04455175564431008, 0.04452107592860081], threshhold: 0
+layer 1
+  neuron 0 : [-0.05923402749876155, 0.5829748216599958], threshhold: 0
+2backProp iteration = 198, netError = 0.50000000000000000000
+---------------------------------
+Back Propagation (Loop: 199)
+---------------------------------
+1backProp iteration = 199, netError = 0.50000000000000000000
+inputs: [0, 1]
+outputs: [0.5209450242852953]
+error for layer 0: [0.007700880896645105, -0.07579122772700898]
+error for layer 1: [-0.130007720592798]
+inputs: [1, 0]
+outputs: [0.5210883395484301]
+error for layer 0: [0.007702890405293892, -0.07581024183056063]
+error for layer 1: [-0.13004034748909646]
+inputs: [1, 1]
+outputs: [0.819814095860533]
+error for layer 0: [0.007173506478508526, -0.07059944697727691]
+error for layer 1: [-0.12110207258972222]
+inputs: [0, 0]
+outputs: [0.0]
+error for layer 0: [0.0, 0.0]
+error for layer 1: [0.0]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.5786548822958627, 0.5784579413808187], threshhold: 0
+  neuron 1 : [0.04432238834452056, 0.044291789262952394], threshhold: 0
+layer 1
+  neuron 0 : [-0.059235510760952306, 0.5829746883615823], threshhold: 0
+2backProp iteration = 199, netError = 0.50000000000000000000
+
+ok, so my neural net has 0.35200100000000000833 rate of learning and 0.17999999999999999334 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[0.5215437261492991]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[0.521687082861339]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[0.8200967362049085]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[0.0]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+
