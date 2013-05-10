@@ -11,8 +11,12 @@ in order to run, clone the repo and navigate to the clone folder in the command 
 
 dependancies: python3
 
-there you can change the inputs to the neural network in the params/params.dat subfolder.
-then you can run main with 'python main.py'.
+there you can change the inputs to the neural network in the params subfolder. I named
+my params file params.dat, so I run my neural net by typing the following in the command line
+
+```
+python3 main.py params.dat
+```
 
 components:
 ============
@@ -21,13 +25,13 @@ components:
   * hasKey
   * indent
   * todo:
-     * need to make prompt and interactivity
+     * need to make prompt and interactivity + visualization
 * neuralNet
   * neuron
   * neuralNetLayer
   * neuralNet
   * todo:
-     * might need some more tools (+ needs real RNG), seems functional otherwise
+     * might need some more tools, seems functional otherwise
 * propagate
   * backprop
   * sigmoid
@@ -41,11 +45,14 @@ components:
   * deltaWeight
   * sum
   * todo:
-     * need to debug, no learning yet
+     * seems in working condition
 * fileLib
   * getDataFromFile
   * todo:
      * seems finished
+* imagePreProcessing
+  * todo:
+     * need to start
 
 the following sources are the inspiration for the code
 i've written and the resources that i've found useful.

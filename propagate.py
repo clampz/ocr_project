@@ -216,13 +216,4 @@ while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
 """
 
-""" OLD CODE FOLLOWS..
-
-                        #for j in range(0, (inputNN.n_hiddenLayers + 1)): # for every layer in the network; range 2nd param -> hidden layers + 1 for input layer
-                        #       for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
-                        #               weightSumK = sum(inputNN.layers[j].neurons[k].l_weights) #calc the weight sum of the inputs to the node
-                        #               activationK = activation(inputToNeuron, inputNN.layers[j].neurons[k]) #calc the activation for the node
-
-
-"""
 
