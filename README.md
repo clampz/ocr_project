@@ -6,7 +6,7 @@ this project is for computing practice & theory at the evergreen state college.
 the end goal of this project is to implement optical character recognition for
 handwritten characters and to give the unicode equivalents using neural networks.
 
-dependancies: python3
+**dependancies**: python3
 
 in order to run, clone the repo and navigate to the clone folder in the command line.
 
