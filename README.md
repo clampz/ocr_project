@@ -3,15 +3,14 @@ cpat_project
 
 this project is for computing practice & theory at the evergreen state college.
 
-this project is in neural networks.
-
-the end goal is to implement optical character recognition.
-
-in order to run, clone the repo and navigate to the clone folder in the command line.
+the end goal of this project is to implement optical character recognition for
+handwritten characters and to give the unicode equivalents using neural networks.
 
 dependancies: python3
 
-there you can change the inputs to the neural network in the params subfolder. I named
+in order to run, clone the repo and navigate to the clone folder in the command line.
+
+there you can change the inputs to the neural network in the *params* subfolder. I named
 my params file params.dat, so I run my neural net by typing the following in the command line
 
 ```
@@ -45,7 +44,7 @@ components:
   * deltaWeight
   * sum
   * todo:
-     * seems in working condition
+     * test neural nets with hidden layers
 * fileLib
   * getDataFromFile
   * todo:
