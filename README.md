@@ -1,5 +1,5 @@
-cpat_project
-============
+OCR with Neural Nets
+====================
 
 this project is for computing practice & theory at the evergreen state college.
 
@@ -17,7 +17,7 @@ my params file params.dat, so I run my neural net by typing the following in the
 python3 main.py params.dat
 ```
 
-components:
+Components:
 ============
 * main
   * main
