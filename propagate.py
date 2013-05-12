@@ -3,6 +3,7 @@
   by David Weinman
   4/26/13, 9:10p
 """
+
 from neuralNet import *
 from main import *
 
@@ -13,7 +14,6 @@ calculated error values, this last value is used as a way to tell when the netwo
 has been sufficiently trained. back propagation is an algorithm for training a
 neural network.
 """
-
 def backProp(inputNN, input, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
 	netError = float(error_threshhold + 0.1)
@@ -79,7 +79,8 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 	return
 
 """
-errorSignal takes ...
+errorSignal takes a target value for some given neuron (target)
+and the output value for that given neuron (activation) and
 returns the error for some given neuron and input
 """
 def errorSignal(target, activation):
