@@ -26,11 +26,12 @@ Components:
   * todo:
      * need to make prompt and interactivity + visualization
 * neuralNet
+  * receptor
   * neuron
   * neuralNetLayer
   * neuralNet
   * todo:
-     * might need some more tools, seems functional otherwise
+     * might need some more tools, need to learn about receptors
 * propagate
   * backprop
   * sigmoid
