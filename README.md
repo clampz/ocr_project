@@ -8,7 +8,7 @@ handwritten characters and to give the unicode equivalents using neural networks
 
 **dependancies**: python3
 
-in order to run, clone the repo and navigate to the clone folder in the command line.
+in order to run, download the repo and navigate to the downloaded folder in the command line.
 
 there you can change the inputs to the neural network in the *params* subfolder. I named
 my params file params.dat, so I run my neural net by typing the following in the command line
