@@ -76,11 +76,22 @@ def main():
 
 	backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
 	print('ok, so my neural net has %.20f rate of learning and %.20f error threshhold' % (dStruct['rateOfLearning'], dStruct['error_threshhold']))
-	answer = eval(input('do you want to run some input on the neural net? (enter True or False): '))
+
+#py ver3 code
+	#answer = eval(input('do you want to run some input on the neural net? (enter True or False): '))
+
+#py ver 2.7 code
+	answer = eval(raw_input('do you want to run some input on the neural net? (enter True or False): '))
 	while (answer):
-		print("output:\n%s" % inputNeuralNet.update(dStruct['input'][eval(input('which input do you want to use from the input patterns?(enter an int): '))]))
+#py ver 2.7 code
+		print("output:\n%s" % inputNeuralNet.update(dStruct['input'][eval(raw_input('which input do you want to use from the input patterns?(enter an int): '))]))
+#py ver3 code
+		#print("output:\n%s" % inputNeuralNet.update(dStruct['input'][eval(input('which input do you want to use from the input patterns?(enter an int): '))]))
 		print("\n\n\done ..\n\n")
-		answer = eval(input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
+#py ver 2.7 code
+		answer = eval(raw_input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
+#py ver3 code
+		#answer = eval(input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
 	return
 
 if __name__ == "__main__": main()
