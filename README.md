@@ -6,7 +6,7 @@ this project is for computing practice & theory at the evergreen state college.
 the end goal of this project is to implement optical character recognition for
 handwritten characters and to give the unicode equivalents using neural networks.
 
-**dependancies**: python3
+**dependancies**: python3, or python2.7
 
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 
@@ -14,7 +14,7 @@ there you can change the inputs to the neural network in the *params* subfolder.
 my params file params.dat, so I run my neural net by typing the following in the command line
 
 ```
-python3 main.py params.dat
+python main.py params.dat
 ```
 
 Components:
@@ -24,14 +24,14 @@ Components:
   * hasKey
   * indent
   * todo:
-     * need to make prompt and interactivity + visualization
+     * need to make prompt and interactivity + visualization (ui ?)
 * neuralNet
   * receptor
   * neuron
   * neuralNetLayer
   * neuralNet
   * todo:
-     * might need some more tools, need to learn about receptors
+     * might need some more tools, implement receptors
 * propagate
   * backprop
   * sigmoid
@@ -49,10 +49,11 @@ Components:
 * fileLib
   * getDataFromFile
   * todo:
-     * seems finished
+     * nothing
 * imagePreProcessing
+  * PIL
   * todo:
-     * need to start
+     * need to implement
 
 the following sources are the inspiration for the code
 i've written and the resources that i've found useful.
