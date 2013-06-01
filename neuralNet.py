@@ -55,19 +55,21 @@ class neuralNetLayer():
 			weights.append(i_weights)
 		return weights
 
+######### layers, neurons vs l_weights
+######### numberOfNeuronsArray
 class neuralNet():
 	n_inputs = 0
 	n_outputs = 0
 	n_hiddenLayers = 0
-	n_neuronsPerHiddenLyr = 0
+	neurons
 	layers = []
 
-	def __init__(self, numInputs, numOutputs, numHidden, numNeuronsPerHidden):
+	def __init__(self, numInputs, numOutputs, numHidden, neuronsInHiddenArray):
 		self.layers = []
 		self.n_inputs = numInputs
 		self.n_outputs = numOutputs
 		self.n_hiddenLayers = numHidden
-		self.n_neuronsPerHiddenLyr = numNeuronsPerHidden
+		self.n_neuronsPerHiddenLyr = 
 		#print('making input layer with %d neurons and %d inputs to the neurons' % (numInputs, numInputs))
 		self.layers.append(neuralNetLayer(numInputs, numInputs))# make input layer
 		for i in range(0, self.n_hiddenLayers):

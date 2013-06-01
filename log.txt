@@ -1078,3 +1078,128 @@ output:
 
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
 
+
+
+--------------------------
+[12:44][Inspector_Detector@detection-squad:~/Desktop/cpat_project]$ python main.py params.dat
+{'n_outputs': 1, 'rateOfLearning': 0.320199, 'n_neuronsPerHidden': 2, 'n_inputs': 2, 'target': [1, 1, 0, 0], 'error_threshhold': 0.25, 'input': [[0, 1], [1, 0], [1, 1], [0, 0]], 'n_hiddenLayers': 1, 'max_iterations': 10000}
+=================================
+Back Propagation
+=================================
+---------------------------------
+Back Propagation (Loop: 0)
+---------------------------------
+1backProp iteration = 0, netError = 0.34999999999999997780
+inputs: [0, 1]
+outputs: [Decimal('-0.764816079547999')]
+error for layer 0: [-1.2008994917813436, 2.3478265411357078]
+error for layer 1: [2.232829376847424, 0.2947428310921991]
+error for layer 2: [Decimal('-2.38207764870491')]
+inputs: [1, 0]
+outputs: [Decimal('0.853105674479208')]
+error for layer 0: [0.006971723290241897, -0.036111884241307075]
+error for layer 1: [-0.027293276010181625, -0.011066623553312921]
+error for layer 2: [Decimal('0.0184082655061630')]
+inputs: [1, 1]
+outputs: [Decimal('0.722162229742416')]
+error for layer 0: [0.021567532653276746, -0.10673863854475546]
+error for layer 1: [-0.081277888688646, -0.032183533121468724]
+error for layer 2: [Decimal('0.0557464659265942')]
+inputs: [0, 0]
+outputs: [Decimal('0.904590582759752')]
+error for layer 0: [0.0035158116890200448, -0.014758530180190611]
+error for layer 1: [-0.011551676309417176, -0.004163796136239211]
+error for layer 2: [Decimal('0.00823444908531065')]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.747709871186683, 0.6626827759181397], threshhold: 0.374262815768
+  neuron 1 : [0.3748361790590203, -0.17079519411952018], threshhold: -0.701305449494
+layer 1
+  neuron 0 : [-0.6583757110002809, 0.9542247974985365], threshhold: -0.676486520069
+  neuron 1 : [0.9826653600077799, 0.8963223741243734], threshhold: -0.0791944594968
+layer 2
+  neuron 0 : [-1.3930712585065033, -0.5028010032440662], threshhold: 0.736357947825
+2backProp iteration = 0, netError = 0.50455147844906189647
+---------------------------------
+Back Propagation (Loop: 1)
+---------------------------------
+1backProp iteration = 1, netError = 0.50455147844906189647
+inputs: [0, 1]
+outputs: [Decimal('0.742140944291188')]
+error for layer 0: [0.020877226019271326, -0.08783448384365758]
+error for layer 1: [-0.06874236990079774, -0.024811173398661034]
+error for layer 2: [Decimal('0.0493459106854991')]
+inputs: [1, 0]
+outputs: [Decimal('0.820718137455120')]
+error for layer 0: [0.01146970631731582, -0.044812833891216625]
+error for layer 1: [-0.03557268310005522, -0.012208182357099438]
+error for layer 2: [Decimal('0.0263795110789994')]
+inputs: [1, 1]
+outputs: [Decimal('0.657261888125586')]
+error for layer 0: [0.034357841872305096, -0.12686248030421743]
+error for layer 1: [-0.10187483379202117, -0.03350743934309496]
+error for layer 2: [Decimal('0.0772081684030947')]
+inputs: [0, 0]
+outputs: [Decimal('0.875590284300897')]
+error for layer 0: [0.006673983227824763, -0.020542073506259]
+error for layer 1: [-0.017144471495783842, -0.004814519315178468]
+error for layer 2: [Decimal('0.0135521914792787')]
+=================================
+Neural Net Map
+=================================
+neural net printout:
+layer 0
+  neuron 0 : [0.7500049331707139, 0.6650443623764536], threshhold: 0.350767011016
+  neuron 1 : [0.3648817545493475, -0.18190488463361168], threshhold: -0.611633120277
+layer 1
+  neuron 0 : [-0.6644482171718146, 0.94662895458436], threshhold: -0.604975081879
+  neuron 1 : [0.9808725190355471, 0.8941403730435648], threshhold: -0.0550702459627
+layer 2
+  neuron 0 : [-1.2519112802135866, -0.35210856653744504], threshhold: 0.683049367027
+2backProp iteration = 1, netError = 0.01229036712922766499
+ok, so my neural net has 0.32019900000000001139 rate of learning and 0.25000000000000000000 error threshhold
+do you want to run some input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 0
+output:
+[Decimal('0.656274778827450')]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 1
+output:
+[Decimal('0.787339839632681')]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 2
+output:
+[Decimal('0.609163678681499')]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 1
+which input do you want to use from the input patterns?(enter an int): 3
+output:
+[Decimal('0.872892916461664')]
+
+
+\done ..
+
+
+
+ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
+[12:44][Inspector_Detector@detection-squad:~/Desktop/cpat_project]$

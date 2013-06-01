@@ -6,6 +6,9 @@
 
 from neuralNet import *
 from main import *
+from decimal import *
+
+getcontext().prec = 15
 
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
@@ -23,6 +26,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 		print(propLoopTitle % n_iterations)
 		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0
+####### need to random choose from input instead of iterating.
 		for i in input: #for every pattern in the training set 
 			outputs[n_iterations % len(targets)] = outputCurrentPattern = inputNN.update(i) # present the pattern to the network
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
@@ -56,7 +60,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 # how is error2DArray arranged? 
 #def deltaThreshhold(neuron, error, learningRate):
 #COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
-					#inputNN.layers[j].neurons[k].l_weights[-1] = deltaThreshold(inputNN.layers[j].neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
+					inputNN.layers[j].neurons[k].l_weights[-1] = deltaThreshold(inputNN.layers[j].neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
@@ -66,10 +70,10 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 			for j in range(0, len(inputNN.layers)):
 				print('error for layer %d: %s' % (j, error2DArray[j]))
 		n_iterations += 1
-		errorVal = 0# sum unit for the net error
+		errorVal = float(0) # sum unit for the net error
 		for j in range(0, len(input)): # for every pattern in the trainingset
 			for h in range(0, inputNN.layers[-1].n_neurons): # for every output to the net
-				errorVal += errorSignal(targets[j], outputs[j][h])
+				errorVal += float(errorSignal(targets[j], outputs[j][h]))
 		netError = .5  *  errorVal #calc the error fn for the net?
 		print(mapTitle)
 		inputNN.printNN()
@@ -102,7 +106,7 @@ sigmoid takes an activation value (activation) and calculates the sigmoid
 function on the activation value. [here I use the tanh function]
 """
 def sigmoid(activation):
-	return float(math.e**activation - math.e**((-1) * activation))/float(math.e**activation + math.e**((-1) * activation))
+	return float(Decimal(math.e**activation - math.e**((-1) * activation))/Decimal(math.e**activation + math.e**((-1) * activation)))
 
         #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
