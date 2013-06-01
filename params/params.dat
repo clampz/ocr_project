@@ -1,7 +1,7 @@
 n_inputs = 2
 n_outputs = 1
-n_hiddenLayers = 1
-n_neuronsPerHidden = 2
+n_hiddenLayers = 3
+neuronsInHidden = [2, 3, 2]
 target = [1, 1, 0, 0]
 rateOfLearning = .08201
 max_iterations = 15000

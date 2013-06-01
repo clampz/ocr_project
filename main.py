@@ -32,7 +32,7 @@ dStruct = {
 	'n_inputs' : 0,
 	'n_outputs' : 0,
 	'n_hiddenLayers' : 0,
-	'n_neuronsPerHidden' : 0,
+	'neuronsInHidden' : [],
 	'rateOfLearning' : 0,
 	'target' : 0
 }
@@ -69,7 +69,7 @@ def main():
 		if hasKey(i[0], dStruct):
 			dStruct[i[0]] = eval(i[1])
 	print dStruct
-	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['n_neuronsPerHidden'])
+	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
 
 # I'm testing the neural nets with fixed weights to start off with right now, so the loop below fixes the weights.
 	#for i in inputNeuralNet.layers[0].neurons:

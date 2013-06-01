@@ -30,7 +30,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 		for i in input: #for every pattern in the training set 
 			outputs[n_iterations % len(targets)] = outputCurrentPattern = inputNN.update(i) # present the pattern to the network
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
-			for j in range(0, inputNN.layers[-1].n_neurons): # for every node in the output layer
+			for j in range(0, inputNN.l_layers[-1].n_neurons): # for every node in the output layer
 				outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], targets[countPatterns])) #calc the error in the output layer
 			newWeights = [] # to collect new weights for updating the neurons
 			inputsForWeightChangeLoop = i # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
@@ -42,7 +42,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 				while (len(error2DArray) < (j + 1)): # keep the array big enough to write like a backprop
 					error2DArray.append([])
 				if (j != layersFromOut[0]): # if we're not dealing with the output layer
-					for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
+					for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 						if counter != 0: # if the neuron isn't in the hidden layer above the output
 							error2DArray[j].append(errorGradientHiddenLayer(k, j, inputNN, error2DArray[j + 1]))  # compute the error gradient for the neuron
 						else:
@@ -51,28 +51,28 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 				else: # deal with the output layer
 					error2DArray[j] = outputLayerError
 			for j in range(0, inputNN.n_hiddenLayers + 2): # for every layer, + 2 in range for output and input layers.
-				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
+				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					newWeights = []
-					for h in range(0, inputNN.layers[j].neurons[k].n_inputs): #for every weight in the neuron
+					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
 #deltaWeight(float oldWeight, float learningRate, list[float] inputsToNeuron, list[float] errorValues, float derivitiveOfActivationFn) INDEX ERROR ON LINE 46.
-						newWeights.append(deltaWeight(inputNN.layers[j].neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.layers[j].neurons[k]))) # get the change in weight
-					inputNN.layers[j].neurons[k].putWeights(newWeights) #update the weights
+						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k]))) # get the change in weight
+					inputNN.l_layers[j].l_neurons[k].putWeights(newWeights) #update the weights
 # how is error2DArray arranged? 
 #def deltaThreshhold(neuron, error, learningRate):
 #COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
-					inputNN.layers[j].neurons[k].l_weights[-1] = deltaThreshold(inputNN.layers[j].neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
+					inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
-				for k in range(0, inputNN.layers[j].n_neurons): # for every neuron in the layer
-					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.layers[j].neurons[k])))
+				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
+					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k])))
 			print('inputs: %s' % i)
 			print('outputs: %s' % outputCurrentPattern)
-			for j in range(0, len(inputNN.layers)):
+			for j in range(0, len(inputNN.l_layers)):
 				print('error for layer %d: %s' % (j, error2DArray[j]))
 		n_iterations += 1
 		errorVal = float(0) # sum unit for the net error
 		for j in range(0, len(input)): # for every pattern in the trainingset
-			for h in range(0, inputNN.layers[-1].n_neurons): # for every output to the net
+			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
 				errorVal += float(errorSignal(targets[j], outputs[j][h]))
 		netError = .5  *  errorVal #calc the error fn for the net?
 		print(mapTitle)
@@ -131,7 +131,7 @@ a layer index for this neuron(layerIndex), an error value for the prior layer
 the basic error gradient f'n for some hidden neuron.
 """
 def errorGradientHiddenLayer(neuronIndex, layerIndex, neuralNet, errorValue):
-	weights = neuralNet.layers[layerIndex + 1].getWeights()
+	weights = neuralNet.l_layers[layerIndex + 1].getWeights()
 	sumOut = 0
 	for i in range(0, len(weights)): # for every neuron in the layer below
 		sumOut += errorValue[i] * weights[i][neuronIndex]
