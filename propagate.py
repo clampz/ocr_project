@@ -7,6 +7,8 @@
 from neuralNet import *
 from main import *
 from decimal import *
+from copy import deepcopy as deepcopy
+from random import randint as randint
 
 getcontext().prec = 15
 
@@ -17,7 +19,7 @@ calculated error values, this last value is used as a way to tell when the netwo
 has been sufficiently trained. back propagation is an algorithm for training a
 neural network.
 """
-def backProp(inputNN, input, targets, max_iterations, error_threshhold, learningRate):
+def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
 	netError = float(error_threshhold + 0.1)
 	outputs = [[0]] * len(targets)
@@ -27,6 +29,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0
 ####### need to random choose from input instead of iterating.
+		input = randLst(trainingSet)
 		for i in input: #for every pattern in the training set 
 			outputs[n_iterations % len(targets)] = outputCurrentPattern = inputNN.update(i) # present the pattern to the network
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
@@ -60,7 +63,7 @@ def backProp(inputNN, input, targets, max_iterations, error_threshhold, learning
 # how is error2DArray arranged? 
 #def deltaThreshhold(neuron, error, learningRate):
 #COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
-					inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
+					#inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
@@ -170,6 +173,17 @@ def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
 	return oldWeight + (learningRate * errorValue * derivAct * x)
 #def deltaWeight(targetP, outputP, inputPI):
 #	return (targetP - outputP) * inputPI
+
+"""
+"""
+def randLst(lst):
+	output = []
+	inputLst = deepcopy(lst)
+	initialSize = len(lst)
+	for i in range(0, initialSize):
+		output.append(inputLst[random.randint(0, len(inputLst) - 1)])
+		inputLst.remove(output[-1])
+	return output
 
 """
 sum takes a list of numbers and returns the sum of a list of numbers.

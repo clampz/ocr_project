@@ -72,7 +72,7 @@ class neuralNet():
 		self.l_layers.append(neuralNetLayer(numInputs, numInputs))# make input layer
 		for i in range(0, self.n_hiddenLayers):
 			#print('making hidden layer with %d neurons and %d inputs to the neurons' % (numNeuronsPerHidden, numNeuronsPerHidden))
-			self.l_layers.append(neuralNetLayer(neuronsInHiddenArray[i], neuronsInHiddenArray[i]))# make hidden layers
+			self.l_layers.append(neuralNetLayer(neuronsInHiddenArray[i], neuronsInHiddenArray[i - 1]))# make hidden layers
 		if numHidden > 0: # if you have hidden neurons, output will connect to them
 			#print('making output layer with %d neurons and %d inputs to the neurons' % (numOutputs, numNeuronsPerHidden))
 			self.l_layers.append(neuralNetLayer(numOutputs, neuronsInHiddenArray[-1]))
