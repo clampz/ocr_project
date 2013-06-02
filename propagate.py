@@ -14,10 +14,11 @@ getcontext().prec = 15
 
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
-a number of maximum allowed iterations (max_iterations), and a threshold for the
-calculated error values, this last value is used as a way to tell when the network
-has been sufficiently trained. back propagation is an algorithm for training a
-neural network.
+a number of maximum allowed iterations (max_iterations), a threshold for the
+calculated error values (error_threshhold) in order to tell when the network has
+been sufficiently trained, and a constant learning rate for weight and threshold updates
+(learningRate). backProp returns nothing, back propagation is a supervised training algorithm
+for training a neural network.
 """
 def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
@@ -28,7 +29,6 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		print(propLoopTitle % n_iterations)
 		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0
-####### need to random choose from input instead of iterating.
 		input = randLst(zip(trainingSet, targets))
 		for i in input: #for every pattern in the training set 
 			outputs[n_iterations % len(input)] = outputCurrentPattern = inputNN.update(i[0]) # present the pattern to the network
@@ -57,11 +57,8 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					newWeights = []
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
-#deltaWeight(float oldWeight, float learningRate, list[float] inputsToNeuron, list[float] errorValues, float derivitiveOfActivationFn) INDEX ERROR ON LINE 46.
 						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k]))) # get the change in weight
 					inputNN.l_layers[j].l_neurons[k].putWeights(newWeights) #update the weights
-# how is error2DArray arranged? 
-#def deltaThreshhold(neuron, error, learningRate):
 #COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
 					#inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
@@ -74,7 +71,6 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 				print('error for layer %d: %s' % (j, error2DArray[j]))
 		n_iterations += 1
 		errorVal = float(0) # sum unit for the net error
-################## change reference to input in line 78
 		for j in range(0, len(input)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
 				errorVal += float(errorSignal(targets[j], outputs[j][h]))
@@ -82,7 +78,6 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		print(mapTitle)
 		inputNN.printNN()
 		print('2backProp iteration = %d, netError = %.20f' % (n_iterations - 1, netError))
-		#
 	#print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
 	return
 
@@ -112,10 +107,11 @@ function on the activation value. [here I use the tanh function]
 def sigmoid(activation):
 	return float(Decimal(math.e**activation - math.e**((-1) * activation))/Decimal(math.e**activation + math.e**((-1) * activation)))
 
-        #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
+    #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
 """
-sigmoid f'ns derivative.
+sigmoid f'ns derivative. takes an activation value (activation) and returns the 
+derivative of the sigmoid function.
 """
 def derivSigmoid(activation):
 	return sigmoid(activation) * (1 - sigmoid(activation))
@@ -153,22 +149,25 @@ def activation(p, n):
 	return activationValue
 
 """
-activation f'ns derivative
+activation f'ns derivative. takes a neuron (n) and a set of patterns or inputs (p)
+and returns the derivative of the activation function.
 """
 def derivActivation(p, n):
 	return activation(p, n) * sigmoid(activation(p, n)) * (1 - sigmoid(activation(p, n)))
 
-""" UPDATE THE DESCRIPTION
-deltaThreshhold takes a target value for some pattern (targetP), an output value 
-for some pattern; for some node (outputP) and returns the change in threshhold value
-for that input on that node.
+"""
+deltaThreshhold takes a neuron (neuron), error value for that neuron (error),
+an alpha constant or learning rate (learningRate) and returns the change in threshold
+for that neuron
 """
 def deltaThreshold(neuron, error, learningRate):
 	return neuron.l_weights[-1] - (error * learningRate)
 
 """
-deltaWeight takes ...
-returns the change in weight for the given oldWeight
+deltaWeight takes the current weight value for the given input and neuron (oldWeight),
+a learning rate constant for the neural net (learningRate), the input to that branch for
+that neuron (x), the error value for the neuron (errorValue), and the derivative of the
+activation for that neuron (derivAct) and returns the change in weight for the given oldWeight
 """
 def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
 	return oldWeight + (learningRate * errorValue * derivAct * x)
