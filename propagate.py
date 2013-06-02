@@ -29,14 +29,14 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0
 ####### need to random choose from input instead of iterating.
-		input = randLst(trainingSet)
+		input = randLst(zip(trainingSet, targets))
 		for i in input: #for every pattern in the training set 
-			outputs[n_iterations % len(targets)] = outputCurrentPattern = inputNN.update(i) # present the pattern to the network
+			outputs[n_iterations % len(input)] = outputCurrentPattern = inputNN.update(i[0]) # present the pattern to the network
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
 			for j in range(0, inputNN.l_layers[-1].n_neurons): # for every node in the output layer
-				outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], targets[countPatterns])) #calc the error in the output layer
+				outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], input[countPatterns][1])) #calc the error in the output layer
 			newWeights = [] # to collect new weights for updating the neurons
-			inputsForWeightChangeLoop = i # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
+			inputsForWeightChangeLoop = i[0] # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
 			counter = 0 # used for a condition to compute the error value in the hidden layer above the output layer.
 			layersFromOut = list(range(0, inputNN.n_hiddenLayers + 2)) # this is in order to get the reverse of a list to do a backwards propagation,  + 2 for input & output layers
 			layersFromOut.reverse() # reverses the list
@@ -68,12 +68,13 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k])))
-			print('inputs: %s' % i)
+			print('inputs: %s' % i[0])
 			print('outputs: %s' % outputCurrentPattern)
 			for j in range(0, len(inputNN.l_layers)):
 				print('error for layer %d: %s' % (j, error2DArray[j]))
 		n_iterations += 1
 		errorVal = float(0) # sum unit for the net error
+################## change reference to input in line 78
 		for j in range(0, len(input)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
 				errorVal += float(errorSignal(targets[j], outputs[j][h]))
@@ -148,7 +149,7 @@ def activation(p, n):
 	activationValue = 0
 	for i in range(0, len(p)):
 		activationValue += p[i] * n.l_weights[i]
-	activationValue += (-1) * n.l_weights[-1] # threshhold?
+	activationValue += (-1) * n.l_weights[-1]
 	return activationValue
 
 """
@@ -179,8 +180,7 @@ def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
 def randLst(lst):
 	output = []
 	inputLst = deepcopy(lst)
-	initialSize = len(lst)
-	for i in range(0, initialSize):
+	for i in range(0, len(lst)):
 		output.append(inputLst[random.randint(0, len(inputLst) - 1)])
 		inputLst.remove(output[-1])
 	return output
