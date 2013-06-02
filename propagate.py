@@ -10,7 +10,8 @@ from decimal import *
 from copy import deepcopy as deepcopy
 from random import randint as randint
 
-getcontext().prec = 15
+# this sets the precision of the decimal object
+getcontext().prec = 8
 
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
@@ -59,8 +60,8 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
 						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k]))) # get the change in weight
 					inputNN.l_layers[j].l_neurons[k].putWeights(newWeights) #update the weights
-#COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
-					#inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
+			#COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
+					inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) #deltaThreshold() # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
@@ -88,7 +89,6 @@ returns the error for some given neuron and input
 """
 def errorSignal(target, activation):
 	return (target - activation)**2
-	
 
 """
 y takes a set of patterns or inputs (p), and a neuron (n) and returns the 
@@ -105,7 +105,7 @@ sigmoid takes an activation value (activation) and calculates the sigmoid
 function on the activation value. [here I use the tanh function]
 """
 def sigmoid(activation):
-	return float(Decimal(math.e**activation - math.e**((-1) * activation))/Decimal(math.e**activation + math.e**((-1) * activation)))
+	return float(Decimal(Decimal(math.e**activation - math.e**((-1) * activation))/Decimal(math.e**activation + math.e**((-1) * activation))))
 
     #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
@@ -194,7 +194,6 @@ def sum(lst):
 	for i in range(0, len(lst)):
 		output += lst[i]
 	return output
-
 
 """
 backprop algorithm:
