@@ -175,6 +175,8 @@ def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
 #	return (targetP - outputP) * inputPI
 
 """
+randLst takes a list (lst) and returns a new list with the same contents but randomly
+re-ordered.
 """
 def randLst(lst):
 	output = []
