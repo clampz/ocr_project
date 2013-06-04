@@ -36,13 +36,14 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 ## -------------- foward propagate input through net
 			outputs[n_iterations % len(input)] = outputCurrentPattern = inputNN.update(i[0])
 
-## -------------- error calculation
+## -------------- error calculation -> setup arrays to propagate error backwards
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
 			for j in range(0, inputNN.l_layers[-1].n_neurons): # for every node in the output layer
 				outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], input[countPatterns][1])) #calc the error in the output layer
 			newWeights = [] # to collect new weights for updating the neurons
 			inputsForWeightChangeLoop = i[0] # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
 
+## -------------- error calculation -> calculate and store for weight updates
 			counter = 0 # used for a condition to compute the error value in the hidden layer above the output layer.
 			layersFromOut = list(range(0, inputNN.n_hiddenLayers + 2)) # this is in order to get the reverse of a list to do a backwards propagation,  + 2 for input & output layers
 			layersFromOut.reverse() # reverses the list
@@ -67,7 +68,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
 						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k]))) # get the change in weight
 					inputNN.l_layers[j].l_neurons[k].putWeights(newWeights) #update the weights
-			#COMMENTED OUT LINE BELOW -- KEEPING THRESHOLD CONSTANT
+			#COMMENT OUT LINE BELOW -- IF KEEPING THRESHOLD CONSTANT
 					inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate

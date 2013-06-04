@@ -23,10 +23,10 @@ Components:
   * main
   * hasKey
   * indent
+  * dStruct
   * todo:
      * need to make prompt and interactivity + visualization (ui ?)
 * neuralNet
-  * receptor
   * neuron
   * neuralNetLayer
   * neuralNet
@@ -46,6 +46,10 @@ Components:
   * sum
   * todo:
      * test neural nets with hidden layers
+* preprocess
+  * receptor
+  * todo:
+     * finish implementing and start testing
 * fileLib
   * getDataFromFile
   * todo:
@@ -53,13 +57,14 @@ Components:
 * imagePreProcessing
   * PIL
   * todo:
-     * need to implement
+     * need to merge
 
 the following sources are the inspiration for the code
 i've written and the resources that i've found useful.
 
 Sources:
 --------
+   - http://www.codeproject.com/Articles/11285/Neural-Network-OCR
    - http://www.ibm.com/developerworks/library/l-neural/
    - http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html
    - http://www.ai-junkie.com/ann/evolved/nnt1.html
