@@ -11,20 +11,12 @@ from neuralNet import *
 from propagate import *
 from fileReader import *
 
-"""
-=================================
-=================================
----------------------------------
----------------------------------
-"""
-
+# these are string constants for neural net and training printouts
 mapTitle = "=================================\nNeural Net Map\n================================="
 backPropTitle = "=================================\nBack Propagation\n================================="
 propLoopTitle = "---------------------------------\nBack Propagation (Loop: %d)\n---------------------------------"
 
-
-
-
+# dictionary of params for the neural net training algorithm
 dStruct = {
 	'input' : [],
 	'max_iterations' : 0,
@@ -37,6 +29,9 @@ dStruct = {
 	'target' : 0
 }
 
+"""
+indentation object for net printout
+"""
 class indent():
 	indentorUnit = ''
 	outputString = ''
@@ -45,22 +40,33 @@ class indent():
 		self.indentorUnit = unit
 		self.outputString = ''
 
+	# makes it bigger
 	def increment(self):
 		self.outputString = self.outputString + self.indentorUnit
 		return self.outputString
 
+	# returns current string
 	def currentString(self):
 		return self.outputString
 
+	# makes it smaller
 	def decrement(self):
 		self.outputString = self.outputString[0:(len(self.outputString) - len(self.indentorUnit))]
 		return self.outputString
 
+"""
+basic hash function. takes a string to search with (string),
+and a dictionary object (dictionary) and returns a boolean
+represenation of whether the key is in the dictionary.
+"""
 def hasKey(string, dictionary):
 	if string in dictionary.keys():
 		return True
 	return False
 
+"""
+main trains the net and then runs it interactively
+"""
 def main():
 	if (not len(sys.argv) == 2):
 		raise ValueError('Main.py: wrong number of command line arguments. Asks for 1, %d given.' % (len(sys.argv) - 1))
@@ -97,3 +103,9 @@ def main():
 
 if __name__ == "__main__": main()
 
+""" JUNK
+=================================
+=================================
+---------------------------------
+---------------------------------
+"""

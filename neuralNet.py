@@ -11,6 +11,10 @@ import math
 import propagate
 from main import *
 
+"""
+neuron object takes a number which specifies the number
+of inputs to the neuron (numberOfInputs)
+"""
 class neuron():
 	n_inputs = 0
 	l_weights = []
@@ -22,14 +26,20 @@ class neuron():
 			self.l_weights.append(random.uniform(-1,1))
 		self.l_weights.append(0) # set threshold to zero.
 
+	# takes no params and returns a string representation of the neurons weights and threshold
 	def toString(self):
-		return str(self.l_weights[0:-1]) + ', threshhold: ' + str(self.l_weights[-1])
+		return str(self.l_weights[0:-1]) + ', threshold: ' + str(self.l_weights[-1])
 
-	#
+	# takes a list of floats representing the weights in the neuron (weights) puts it in l_weights
 	def putWeights(self, weights):
 		for i in range(0, len(weights)):
 			self.l_weights[i] = weights[i]
 
+"""
+net layer object takes a number which specifies the number of
+neurons in the layer (numNeurons), and a number which specifies
+the number of inputs per neuron (numInputsPerNeuron)
+"""
 class neuralNetLayer():
 	n_neurons = 0
 	l_neurons = []
@@ -42,10 +52,12 @@ class neuralNetLayer():
 			#print("neural net layer makes a neuron -> %d" % i)
 			self.l_neurons.append(neuron(numInputsPerNeuron))
 
+	# takes an indentor object and prints a string representation of the layer
 	def printLayer(self, indentor):
 		for i in range(0, len(self.l_neurons)):
 			print(indentor.currentString() + ('neuron %d : ' % i) + self.l_neurons[i].toString())
 
+	# takes no params and returns a list of the weights in the layer
 	def getWeights(self):
 		weights = []
 		for i in range(0, self.n_neurons):
@@ -55,8 +67,12 @@ class neuralNetLayer():
 			weights.append(i_weights)
 		return weights
 
-######### layers, neurons vs l_weights
-######### numberOfNeuronsArray
+"""
+net object takes a number of inputs to the net (numInputs),
+a number of outputs from the net (numOutputs), a number of
+hidden layers (numHidden), and a list of numbers representing
+the number of neurons in each hidden layer (neuronsInHiddenArray).
+"""
 class neuralNet():
 	n_inputs = 0
 	n_outputs = 0
@@ -80,6 +96,7 @@ class neuralNet():
 			#print('making output layer with %d neurons and %d inputs to the neurons' % (numOutputs, numInputs))
 			self.l_layers.append(neuralNetLayer(numOutputs, numInputs))# make output layer connect to input layer
 
+	# takes no params and prints a string represenation of the net
 	def printNN(self):
 		indentor = indent('  ')
 		print(indentor.currentString() + 'neural net printout:')
@@ -89,7 +106,7 @@ class neuralNet():
 			self.l_layers[i].printLayer(indentor)
 			indentor.decrement()
 
-	#returns a list of the weights in the net
+	#takes no params returns a list of the weights in the net
 	def getWeights(self):
 		weights = []
 		for i in range(0, self.n_hiddenLayers + 1): #+ 1 because output layer
@@ -98,14 +115,14 @@ class neuralNet():
 					weights.append(self.l_layers[i].l_neurons[j].l_weights[k])
 		return weights
 
-	#replaces the weights in the net with the given values
+	#takes a list of weights (weights) and replaces the weights in the net with the given values
 	def putWeights(self, weights):
 		counter = 0
 		for i in range(0, self.n_hiddenLayers + 1):
 			for j in range(0, self.l_layers[i].n_neurons + 1):
 				self.l_layers[i].l_neurons[j].putweights(weights[i][j])
 
-	#returns the number of weights in the net
+	#takes no params and returns the number of weights in the net
 	def getNumWeights(self):
 		num = 0
 		for i in range(0, self.n_hiddenLayers + 1):
@@ -114,7 +131,7 @@ class neuralNet():
 					num += 1
 		return num
 		
-	# given some inputs, returns the output of the net
+	# takes a list of numbers which represent the inputs to the net (inputs), and returns the output of the net
 	def update(self, inputs):
 		if (len(inputs) != self.n_inputs):
 			raise ValueError('wrong number of inputs: update() in neuralNet.')
