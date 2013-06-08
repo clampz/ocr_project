@@ -5,8 +5,10 @@ this project is for computing practice & theory at the evergreen state college.
 
 the end goal of this project is to implement optical character recognition for
 handwritten characters and to give the unicode equivalents using neural networks.
+the current goal of this project is to implement optical character recognition
+for computer generated images of text with some fonts.
 
-**dependancies**: python3, or python2.7
+**dependancies**: python2.7 or python3 with some small modification
 
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 
@@ -24,14 +26,10 @@ Components:
   * hasKey
   * indent
   * dStruct
-  * todo:
-     * need to make prompt and interactivity + visualization (ui ?)
 * neuralNet
   * neuron
   * neuralNetLayer
   * neuralNet
-  * todo:
-     * might need some more tools, implement receptors
 * propagate
   * backprop
   * sigmoid
@@ -44,23 +42,19 @@ Components:
   * deltaThreshhold
   * deltaWeight
   * sum
-  * todo:
-     * test neural nets with hidden layers
+  * randLst
 * preprocess
   * receptor
-  * todo:
-     * finish implementing and start testing
 * fileLib
   * getDataFromFile
-  * todo:
-     * nothing
 * imagePreProcessing
   * PIL
   * todo:
      * need to merge
 
 the following sources are the inspiration for the code
-i've written and the resources that i've found useful.
+i've written and the resources that i used to understand
+the fundamentals of my implementation.
 
 Sources:
 --------
