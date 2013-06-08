@@ -27,12 +27,13 @@ Components:
   * deltaThreshhold
   * deltaWeight
   * sum
+  * randLst
   * todo:
      * test neural nets with hidden layers
 * preprocess
   * receptor
   * todo:
-     * finish implementing and start testing
+     * finish implementing and start testing, merge with current code
 * fileLib
   * getDataFromFile
   * todo:
@@ -40,6 +41,6 @@ Components:
 * imagePreProcessing
   * PIL
   * todo:
-     * need to merge
+     * need to merge, capture.py
 
 
