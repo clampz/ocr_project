@@ -49,8 +49,6 @@ Components:
   * getDataFromFile
 * imagePreProcessing
   * PIL
-  * todo:
-     * need to merge
 
 the following sources are the inspiration for the code
 i've written and the resources that i used to understand
