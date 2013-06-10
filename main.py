@@ -9,7 +9,7 @@
 import sys
 from neuralNet import *
 from propagate import *
-from fileReader import *
+from file import *
 
 # these are string constants for neural net and training printouts
 mapTitle = "=================================\nNeural Net Map\n================================="

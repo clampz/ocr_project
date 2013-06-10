@@ -8,6 +8,12 @@
 """
 
 import os
+from neuralNet import *
+
+"""
+"""
+def saveNeuralNet(inputNN, filename):
+	
 
 """
 getDataFromFile takes a file name (fileName) and returns a list

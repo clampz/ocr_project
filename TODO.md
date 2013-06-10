@@ -34,10 +34,11 @@ Components:
   * receptor
   * todo:
      * finish implementing and start testing, merge with current code
-* fileLib
+* file
   * getDataFromFile
+  * saveNeuralNet
   * todo:
-     * nothing
+     * write saveNeuralNet
 * imagePreProcessing
   * PIL
   * todo:

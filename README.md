@@ -57,7 +57,8 @@ Components:
   * randLst
 * preprocess
   * receptor
-* fileLib
+* file
+  * saveNeuralNet
   * getDataFromFile
 * capture
   * decomposeParagraph
