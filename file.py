@@ -11,9 +11,13 @@ import os
 from neuralNet import *
 
 """
+takes a neural net object (inputNN) and a file name (filename)
+and writes a 2D list containing the weights and thresholds in
+the neural net to a new line at the end of the file.
 """
 def saveNeuralNet(inputNN, filename):
-	
+	file = open(os.getcwd() + '/' + filename, "a")
+	file.write(str(inputNN.getWeights()))
 
 """
 getDataFromFile takes a file name (fileName) and returns a list

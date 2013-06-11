@@ -106,13 +106,14 @@ class neuralNet():
 			self.l_layers[i].printLayer(indentor)
 			indentor.decrement()
 
-	#takes no params returns a list of the weights in the net
+	#takes no params returns a 2D list of the weights and thresholds in the net
 	def getWeights(self):
 		weights = []
-		for i in range(0, self.n_hiddenLayers + 1): #+ 1 because output layer
-			for j in range(0, self.l_layers[i].n_neurons + 1):
-				for k in range(0, self.l_layers[i].l_neurons[j].n_inputs + 1):
-					weights.append(self.l_layers[i].l_neurons[j].l_weights[k])
+		for i in range(0, len(self.l_layers)): #+ 1 because output layer
+			weights.append([])
+			for j in range(0, self.l_layers[i].n_neurons):
+				weights[i].append([])
+				weights[i][j].append(self.l_layers[i].l_neurons[j].l_weights)
 		return weights
 
 	#takes a list of weights (weights) and replaces the weights in the net with the given values
@@ -120,7 +121,7 @@ class neuralNet():
 		counter = 0
 		for i in range(0, self.n_hiddenLayers + 1):
 			for j in range(0, self.l_layers[i].n_neurons + 1):
-				self.l_layers[i].l_neurons[j].putweights(weights[i][j])
+				self.l_layers[i].l_neurons[j].putWeights(weights[i][j])
 		
 	# takes a list of numbers which represent the inputs to the net (inputs), and returns the output of the net
 	def update(self, inputs):

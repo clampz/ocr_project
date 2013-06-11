@@ -38,7 +38,7 @@ Components:
   * getDataFromFile
   * saveNeuralNet
   * todo:
-     * write saveNeuralNet
+     * write loadNeuralNet
 * imagePreProcessing
   * PIL
   * todo:
