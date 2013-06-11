@@ -112,15 +112,14 @@ class neuralNet():
 		for i in range(0, len(self.l_layers)): #+ 1 because output layer
 			weights.append([])
 			for j in range(0, self.l_layers[i].n_neurons):
-				weights[i].append([])
-				weights[i][j].append(self.l_layers[i].l_neurons[j].l_weights)
+				weights[i].append(self.l_layers[i].l_neurons[j].l_weights)
 		return weights
 
 	#takes a list of weights (weights) and replaces the weights in the net with the given values
 	def putWeights(self, weights):
 		counter = 0
-		for i in range(0, self.n_hiddenLayers + 1):
-			for j in range(0, self.l_layers[i].n_neurons + 1):
+		for i in range(0, self.n_hiddenLayers + 2):
+			for j in range(0, self.l_layers[i].n_neurons):
 				self.l_layers[i].l_neurons[j].putWeights(weights[i][j])
 		
 	# takes a list of numbers which represent the inputs to the net (inputs), and returns the output of the net

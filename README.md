@@ -59,6 +59,7 @@ Components:
   * receptor
 * file
   * saveNeuralNet
+  * loadNeuralNet
   * getDataFromFile
 * capture
   * decomposeParagraph
