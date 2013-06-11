@@ -4,11 +4,13 @@ Components:
 ============
 * main
   * main
+  * trainNeuralNet
+  * runNeuralNet
   * hasKey
   * indent
   * dStruct
   * todo:
-     * want to make prompt and interactivity + visualization (ui ?)
+     * want to make visualization (ui ?), need to refine cl options
 * neuralNet
   * neuron
   * neuralNetLayer

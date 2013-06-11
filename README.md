@@ -15,10 +15,9 @@ in order to run, download the repo and navigate to the downloaded folder in the 
 there you can change the inputs to the neural network in the *params* subfolder. I named
 my params file params.dat, so I run my neural net back propagation by typing the following in the command line
 ```
-python main.py params.dat
+python main.py -t params.dat
 ```
-i plan to implement a way to just run a saved neural net soon.
-
+Implementing a way to run the neural net now
 
 the following sources are the inspiration for the code
 i've written and the resources that i used to understand
@@ -35,6 +34,8 @@ Components:
 -----------
 * main
   * main
+  * runNeuralNet
+  * trainNeuralNet
   * hasKey
   * indent
   * dStruct
