@@ -29,7 +29,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
 		print(propLoopTitle % n_iterations)
 		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
-		countPatterns = 0
+		countPatterns = 0 # counter for the number of patterns into input the loop is
 		input = randLst(zip(trainingSet, targets))
 		for i in input: #for every pattern in the training set 
 
@@ -39,7 +39,8 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 ## -------------- error calculation -> setup arrays to propagate error backwards
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
 			for j in range(0, inputNN.l_layers[-1].n_neurons): # for every node in the output layer
-				outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], input[countPatterns][1])) #calc the error in the output layer
+				#outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], input[countPatterns][1])) #calc the error in the output layer
+				outputLayerError.append(errorGradientOutputLayer(outputCurrentPattern[j], input[countPatterns][1][j])) #calc the error in the output layer
 			newWeights = [] # to collect new weights for updating the neurons
 			inputsForWeightChangeLoop = i[0] # this is actually to collect outputs for computing the weight change in hidden layers, which are then used as inputs
 
@@ -66,6 +67,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					newWeights = []
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
+#def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
 						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k]))) # get the change in weight
 					inputNN.l_layers[j].l_neurons[k].putWeights(newWeights) #update the weights
 			#COMMENT OUT LINE BELOW -- IF KEEPING THRESHOLD CONSTANT
@@ -117,7 +119,7 @@ sigmoid takes an activation value (activation) and calculates the sigmoid
 function on the activation value. [here I use the tanh function]
 """
 def sigmoid(activation):
-	return float(Decimal(Decimal(math.e**activation - math.e**((-1) * activation))/Decimal(math.e**activation + math.e**((-1) * activation))))
+	return float(Decimal(Decimal(str(math.e**activation - math.e**((-1) * activation)))/Decimal(str(math.e**activation + math.e**((-1) * activation)))))
 
     #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
@@ -134,6 +136,7 @@ value for the same neuron, n (targetN) and produces the basic error gradient
 f'n for some output neuron. [this f'n is specific to the output layer of neurons]
 """
 def errorGradientOutputLayer(outputN, targetN):
+	print('errorGradientOutputLayer(outputN value: %s, targetN value: %s)' % (str(outputN), str(targetN)))
 	return outputN * (1 - outputN) * (targetN - outputN)
 
 """
@@ -182,6 +185,7 @@ that neuron (x), the error value for the neuron (errorValue), and the derivative
 activation for that neuron (derivAct) and returns the change in weight for the given oldWeight
 """
 def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
+	print('deltaWeight(oldWeight: %s, learningRate: %s,  x: %s, errorValue: %s, derivAct: %s)' % (oldWeight, learningRate,  x, errorValue, derivAct))
 	return oldWeight + (learningRate * errorValue * derivAct * x)
 #def deltaWeight(targetP, outputP, inputPI):
 #	return (targetP - outputP) * inputPI

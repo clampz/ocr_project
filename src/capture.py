@@ -24,10 +24,14 @@ value of each pixel in an array
 """
 def getImageValues(filename):
 	im = Image.open(filename)
+# got IOError once IOError("cannot identify image file") when images got overwritten?
 	output = []
 	for i in range(0, im.size[1]):
 		for j in range(0, im.size[0]):
-			output.append(im.getpixel(i, j))
+			try:
+				output.append(im.getpixel((i, j)))
+			except IndexError:
+				pass
 	return output
 
 """
@@ -39,7 +43,9 @@ def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 		decomposeLine(filename[0:-4] + 'C.png', imageStorage, emptyval)
 		filename = filename[0:-4] + 'N.png'
 	for i in imageStorage:
-		resize(i, (sizex, sizey))
+		im = Image.open(i)
+		newImage = im.resize((sizex, sizey))
+		newImage.save(i)
 
 """
 while line is not empty
@@ -47,7 +53,7 @@ while line is not empty
 def decomposeLine(filename, imageStorage, emptyval = 0):
 	while (not isEmptyImage(Image.open(filename), emptyval)):
 		cropLargestLeftMost(filename, emptyval)
-		imageStorage.append(filename[0:-4] + 'LN.png')
+		imageStorage.append(filename[0:-4] + 'L.png')
 		filename = filename[0:-4] + 'LN.png'
 
 """
@@ -85,7 +91,10 @@ def cropLargestLeftMost(filename, emptyval = 0):
 			top = i - 1
 			break
 	output = output.crop((left, top, right, lower))
-	output.save(filename[0:-4] + 'L.png')
+	try:
+		output.save(filename[0:-4] + 'L.png')
+	except SystemError:
+		pass
 	return output
 
 """
@@ -146,27 +155,6 @@ def isEmptyImage(img, emptyval = 0):
 def isEmptyPixel((x,y), img, emptyval = 0):
    return img.getpixel((x,y)) == emptyval
 
-"""
-takes an image file name (fileName) and a specified
-width and height (nx, ny) and resizes the image to the
-given dimensions
-"""
-def resize(fileName, (nx,ny)):
-   img = Image.open(fileName)
-   (ix,iy) = img.size
-   while (ix*2 <= nx and iy*2 <= ny):
-      img = img.resize((ix*2,iy*2), Image.ANTIALIAS)
-      #(ix,iy) = img.size
-      ix = ix*2
-      iy = iy*2
-      print str((ix,iy))
-   while (ix/2 >= nx and iy/2 >= ny):
-      img = img.resize((ix/2,iy/2), Image.ANTIALIAS)
-      (ix,iy) = img.size
-   img.save(fileName)
-   
-   #img.thumbnail(newSize, Image.ANTIALIAS)
-   #img.save(fileName)
 
 """ JUNK
 

@@ -79,9 +79,87 @@ def imax(lst):
 
 """
 """
-def get_class_match(lst):
-   classes     = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "!", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", ".", "q", "?", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+def getClassMatch(lst):
+   classes     = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "?"]
    return classes[imax(lst)[0]]
+
+"""
+import os
+import sys
+import datetime
+from copy import deepcopy
+from neuralNet import *
+from propagate import *
+from capture import *
+from file import *
+
+def runNeuralNetImageToText(neuralNetFile, neuralNetLineNum):
+	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
+	loadNeuralNet(inputNeuralNet, neuralNetFile, neuralNetLineNum)
+	outputString = ''
+	for i in dStruct['input']:
+		outputString = outputString + getClassMatch(inputNeuralNet.update(i))
+	return outputString
+
+def hasKey(string, dictionary):
+        if string in dictionary.keys():
+                return True
+        return False
+
+def imax(lst):
+   m = max(lst)
+   return [i for i, j in enumerate(lst) if j == m]
+
+def getClassMatch(lst):
+   classes     = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "?"]
+   return classes[imax(lst)[0]]
+
+datas = getDataFromFile('params.dat')
+for i in datas:
+	if hasKey(i[0], dStruct):
+		dStruct[i[0]] = eval(i[1])
+
+decomposeParagraph(dStruct['input'][0], (dStruct['imageSize'][0], dStruct['imageSize'][1]), dStruct['input'], dStruct['backgroundValue'])
+oldInput = deepcopy(dStruct['input'])
+oldInput.pop(0)
+dStruct['input'] = []
+for i in oldInput:
+	dStruct['input'].append(getImageValues(i))
+
+inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
+
+dStruct['target'] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "?"]
+
+print 'output: ' + runNeuralNetImageToText('neuralNet.dat', dStruct['lineNumForNet'])
+
+"""
+
+"""
+	elif (sys.argv[1] == "-i" and sys.argv[2] == "-t"):
+		if (not len(sys.argv) == 4):
+			raise ValueError('main.py: wrong number of command line arguments. Asks for 3, %d given.' % (len(sys.argv) - 1))
+		datas = getDataFromFile(sys.argv[3])
+		for i in datas:
+			if hasKey(i[0], dStruct):
+				dStruct[i[0]] = eval(i[1])
+		decomposeParagraph(dStruct['input'][0], (dStruct['imageSize'][0], dStruct['imageSize'][1]), dStruct['input'], dStruct['backgroundValue'])
+		oldInput = deepcopy(dStruct['input'])
+		dStruct['input'] = []
+		for i in oldInput:
+			dStruct['input'].append(getImageValues(i))
+		dStruct['input'].pop(0) #removes initial paragraph image file from input list
+		inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
+		dStruct['target'] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "?"]
+		backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
+                #filename = raw_input('\nok .. liek ... what is your filename?: ')
+                lineNo = saveNeuralNet(inputNeuralNet, sys.argv[4])
+                now = datetime.datetime.now()
+                saveDataToFile(['lineNumForNet', lineNo], 'params/' + sys.argv[3])
+                file = open(os.getcwd() + '/params/' + sys.argv[3], "a")
+                file.write('\n\n' + str(now) + ' : ' + str(lineNo))
+                file.close()
+
+"""
 
 """
 takes a filename to get the neural net weights from (neuralNetFile)
@@ -170,27 +248,36 @@ def main():
 				dStruct[i[0]] = eval(i[1])
 		decomposeParagraph(dStruct['input'][0], (dStruct['imageSize'][0], dStruct['imageSize'][1]), dStruct['input'], dStruct['backgroundValue'])
 		oldInput = deepcopy(dStruct['input'])
+		oldInput.pop(0)
 		dStruct['input'] = []
 		for i in oldInput:
 			dStruct['input'].append(getImageValues(i))
+		#dStruct['target'] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "?"]
 		print 'output: ' + runNeuralNetImageToText(sys.argv[4], dStruct['lineNumForNet'])
 	elif (sys.argv[1] == "-i" and sys.argv[2] == "-t"):
-		if (not len(sys.argv) == 5):
-			raise ValueError('main.py: wrong number of command line arguments. Asks for 4, %d given.' % (len(sys.argv) - 1))
+		if (not len(sys.argv) == 4):
+			raise ValueError('main.py: wrong number of command line arguments. Asks for 3, %d given.' % (len(sys.argv) - 1))
 		datas = getDataFromFile(sys.argv[3])
 		for i in datas:
 			if hasKey(i[0], dStruct):
 				dStruct[i[0]] = eval(i[1])
 		decomposeParagraph(dStruct['input'][0], (dStruct['imageSize'][0], dStruct['imageSize'][1]), dStruct['input'], dStruct['backgroundValue'])
 		oldInput = deepcopy(dStruct['input'])
+		oldInput.pop(0)
 		dStruct['input'] = []
 		for i in oldInput:
 			dStruct['input'].append(getImageValues(i))
 		inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
 		backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
-		dStruct['target'] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "!", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", ".", "q", "?", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+                #filename = raw_input('\nok .. liek ... what is your filename?: ')
+                lineNo = saveNeuralNet(inputNeuralNet, sys.argv[4])
+                now = datetime.datetime.now()
+                saveDataToFile(['lineNumForNet', lineNo], 'params/' + sys.argv[3])
+                file = open(os.getcwd() + '/params/' + sys.argv[3], "a")
+                file.write('\n\n' + str(now) + ' : ' + str(lineNo))
+                file.close()
 	elif (sys.argv[1] == "--help"):
-		print("\nexamples:\npython main.py -r params.dat neuralNets.dat 2\npython main.py -t params.dat\npython main.py -i -r params.dat neuralNets.dat\npython main.py -i -t params.dat")
+		print("\nexamples:\npython main.py -r params.dat neuralNets.dat\npython main.py -t params.dat\npython main.py -i -r params.dat neuralNets.dat\npython main.py -i -t params.dat\n")
 	else:
 		raise ValueError('main.py: invalid option specified: %s' % sys.argv[1])
 	return
@@ -202,6 +289,23 @@ if __name__ == "__main__": main()
 =================================
 ---------------------------------
 ---------------------------------
+
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+
 
 # I'm testing the neural nets with fixed weights to start off with right now, so the loop below fixes the weights.
 	#for i in inputNeuralNet.layers[0].neurons:

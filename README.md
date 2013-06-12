@@ -83,4 +83,3 @@ Components:
   * isEmptyVertical
   * isEmptyImage
   * isEmptyPixel
-  * resize

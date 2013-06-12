@@ -58,7 +58,6 @@ Components:
   * isEmptyVertical
   * isEmptyImage
   * isEmptyPixel
-  * resize
   * todo:
      * need to merge code into a cl option
 
