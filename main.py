@@ -68,36 +68,6 @@ def hasKey(string, dictionary):
 	return False
 
 """
-sorts the options and calls appropriate functions respectively
-
-python main.py -r params.dat neuralNets.dat
-python main.py -t params.dat
-python main.py --help
-"""
-def main():
-	if (sys.argv[1] == "-r"):
-		if (not len(sys.argv) == 5):
-			raise ValueError('main.py: wrong number of command line arguments. Asks for 4, %d given.' % (len(sys.argv) - 1))
-		datas = getDataFromFile(sys.argv[2])
-		for i in datas:
-			if hasKey(i[0], dStruct):
-				dStruct[i[0]] = eval(i[1])
-		runNeuralNet(sys.argv[3], dStruct['lineNumForNet'])
-	elif (sys.argv[1] == "-t"):
-		if (not len(sys.argv) == 3):
-			raise ValueError('main.py: wrong number of command line arguments. Asks for 2, %d given.' % (len(sys.argv) - 1))
-		datas = getDataFromFile(sys.argv[2])
-		for i in datas:
-			if hasKey(i[0], dStruct):
-				dStruct[i[0]] = eval(i[1])
-		trainNeuralNet()
-	elif (sys.argv[1] == "--help"):
-		print("\nexamples:\npython main.py -r params.dat neuralNets.dat 2\npython main.py -t params.dat\n")
-	else:
-		raise ValueError('main.py: invalid option specified: %s' % sys.argv[1])
-	return
-
-"""
 takes a filename to get the neural net weights from (neuralNetFile)
 and a line number to look for the weights at (neuralNetLineNum)
 """
@@ -134,6 +104,36 @@ def trainNeuralNet():
 			file.close()
 			print("\nthe line number it got saved at is: %d" % lineNo)
 		answer = eval(raw_input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
+	return
+
+"""
+sorts the options and calls appropriate functions respectively
+
+python main.py -r params.dat neuralNets.dat
+python main.py -t params.dat
+python main.py --help
+"""
+def main():
+	if (sys.argv[1] == "-r"):
+		if (not len(sys.argv) == 5):
+			raise ValueError('main.py: wrong number of command line arguments. Asks for 4, %d given.' % (len(sys.argv) - 1))
+		datas = getDataFromFile(sys.argv[2])
+		for i in datas:
+			if hasKey(i[0], dStruct):
+				dStruct[i[0]] = eval(i[1])
+		runNeuralNet(sys.argv[3], dStruct['lineNumForNet'])
+	elif (sys.argv[1] == "-t"):
+		if (not len(sys.argv) == 3):
+			raise ValueError('main.py: wrong number of command line arguments. Asks for 2, %d given.' % (len(sys.argv) - 1))
+		datas = getDataFromFile(sys.argv[2])
+		for i in datas:
+			if hasKey(i[0], dStruct):
+				dStruct[i[0]] = eval(i[1])
+		trainNeuralNet()
+	elif (sys.argv[1] == "--help"):
+		print("\nexamples:\npython main.py -r params.dat neuralNets.dat 2\npython main.py -t params.dat\n")
+	else:
+		raise ValueError('main.py: invalid option specified: %s' % sys.argv[1])
 	return
 
 if __name__ == "__main__": main()
