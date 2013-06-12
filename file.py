@@ -62,8 +62,6 @@ file then it will replace it, if not it appends it to the file
 def saveDataToFile(data, fileName):
 	file = open(os.getcwd() + '/' + fileName)
 	count = 0
-	linesWithEquals = []
-	linesOutputData = []
 	if hasSubString(data[0], fileName):
 		for i in file:
 			if i.count(data[0]) > 0:
