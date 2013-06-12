@@ -2,15 +2,17 @@
 
 """
   main.py
-  by David Weinman
+  by David Weinman & Jesse Frankley
   4/23/13, 3:25a
 """
 
 import os
 import sys
 import datetime
+from copy import deepcopy
 from neuralNet import *
 from propagate import *
+from capture import *
 from file import *
 
 # these are string constants for neural net and training printouts
@@ -29,7 +31,9 @@ dStruct = {
 	'neuronsInHidden' : [],
 	'rateOfLearning' : 0,
 	'target' : 0,
-	'lineNumForNet' : 0
+	'lineNumForNet' : 0,
+	'imageSize' : (0, 0),
+	'backgroundValue' : 0
 }
 
 """
@@ -66,6 +70,18 @@ def hasKey(string, dictionary):
 	if string in dictionary.keys():
 		return True
 	return False
+
+"""
+"""
+def imax(lst):
+   m = max(lst)
+   return [i for i, j in enumerate(lst) if j == m]
+
+"""
+"""
+def get_class_match(lst):
+   classes     = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "!", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", ".", "q", "?", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+   return classes[imax(lst)[0]]
 
 """
 takes a filename to get the neural net weights from (neuralNetFile)
@@ -107,16 +123,31 @@ def trainNeuralNet():
 	return
 
 """
+takes a filename to get the neural net weights from (neuralNetFile)
+and a line number to look for the weights at (neuralNetLineNum) and
+writes out the recognized text from an image
+"""
+def runNeuralNetImageToText(neuralNetFile, neuralNetLineNum):
+	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
+	loadNeuralNet(inputNeuralNet, neuralNetFile, neuralNetLineNum)
+	outputString = ''
+	for i in dStruct['input']:
+		outputString = outputString + getClassMatch(inputNeuralNet.update(i))
+	return outputString
+
+"""
 sorts the options and calls appropriate functions respectively
 
 python main.py -r params.dat neuralNets.dat
 python main.py -t params.dat
+python main.py -i -r params.dat neuralNets.dat
+python main.py -i -t params.dat
 python main.py --help
 """
 def main():
 	if (sys.argv[1] == "-r"):
-		if (not len(sys.argv) == 5):
-			raise ValueError('main.py: wrong number of command line arguments. Asks for 4, %d given.' % (len(sys.argv) - 1))
+		if (not len(sys.argv) == 4):
+			raise ValueError('main.py: wrong number of command line arguments. Asks for 3, %d given.' % (len(sys.argv) - 1))
 		datas = getDataFromFile(sys.argv[2])
 		for i in datas:
 			if hasKey(i[0], dStruct):
@@ -130,8 +161,36 @@ def main():
 			if hasKey(i[0], dStruct):
 				dStruct[i[0]] = eval(i[1])
 		trainNeuralNet()
+	elif (sys.argv[1] == "-i" and sys.argv[2] == "-r"):
+		if (not len(sys.argv) == 5):
+			raise ValueError('main.py: wrong number of command line arguments. Asks for 4, %d given.' % (len(sys.argv) - 1))
+		datas = getDataFromFile(sys.argv[3])
+		for i in datas:
+			if hasKey(i[0], dStruct):
+				dStruct[i[0]] = eval(i[1])
+		decomposeParagraph(dStruct['input'][0], (dStruct['imageSize'][0], dStruct['imageSize'][1]), dStruct['input'], dStruct['backgroundValue'])
+		oldInput = deepcopy(dStruct['input'])
+		dStruct['input'] = []
+		for i in oldInput:
+			dStruct['input'].append(getImageValues(i))
+		print 'output: ' + runNeuralNetImageToText(sys.argv[4], dStruct['lineNumForNet'])
+	elif (sys.argv[1] == "-i" and sys.argv[2] == "-t"):
+		if (not len(sys.argv) == 5):
+			raise ValueError('main.py: wrong number of command line arguments. Asks for 4, %d given.' % (len(sys.argv) - 1))
+		datas = getDataFromFile(sys.argv[3])
+		for i in datas:
+			if hasKey(i[0], dStruct):
+				dStruct[i[0]] = eval(i[1])
+		decomposeParagraph(dStruct['input'][0], (dStruct['imageSize'][0], dStruct['imageSize'][1]), dStruct['input'], dStruct['backgroundValue'])
+		oldInput = deepcopy(dStruct['input'])
+		dStruct['input'] = []
+		for i in oldInput:
+			dStruct['input'].append(getImageValues(i))
+		inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
+		backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
+		dStruct['target'] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "!", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", ".", "q", "?", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 	elif (sys.argv[1] == "--help"):
-		print("\nexamples:\npython main.py -r params.dat neuralNets.dat 2\npython main.py -t params.dat\n")
+		print("\nexamples:\npython main.py -r params.dat neuralNets.dat 2\npython main.py -t params.dat\npython main.py -i -r params.dat neuralNets.dat\npython main.py -i -t params.dat")
 	else:
 		raise ValueError('main.py: invalid option specified: %s' % sys.argv[1])
 	return

@@ -41,6 +41,9 @@ Components:
   * main
   * runNeuralNet
   * trainNeuralNet
+  * imax
+  * get_class_match
+  * runNeuralNetImageToText
   * hasKey
   * indent
   * dStruct
@@ -71,3 +74,13 @@ Components:
   * hasSubString
 * capture
   * decomposeParagraph
+  * decomposeLine
+  * inverse
+  * getImageValues
+  * cropLargestLeftMost
+  * cropLargestTopmost
+  * isEmptyHorizontal
+  * isEmptyVertical
+  * isEmptyImage
+  * isEmptyPixel
+  * resize

@@ -6,6 +6,9 @@ Components:
   * main
   * trainNeuralNet
   * runNeuralNet
+  * imax
+  * get_class_match
+  * runNeuralNetImageToText
   * hasKey
   * indent
   * dStruct
@@ -44,9 +47,19 @@ Components:
   * hasSubString
   * todo:
      * looks done for now
-* imagePreProcessing
-  * PIL
+* capture
+  * decomposeParagraph
+  * decomposeLine
+  * inverse
+  * getImageValues
+  * cropLargestLeftMost
+  * cropLargestTopmost
+  * isEmptyHorizontal
+  * isEmptyVertical
+  * isEmptyImage
+  * isEmptyPixel
+  * resize
   * todo:
-     * need to merge, capture.py
+     * need to merge code into a cl option
 
 
