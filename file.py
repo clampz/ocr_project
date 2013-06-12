@@ -54,4 +54,47 @@ def getDataFromFile(fileName):
 	file.close()
 	return linesOutputData
 
+"""
+takes a list containing a key and a value to save to a given filename
+(data), and a filename (fileName). if the data already exists in the
+file then it will replace it, if not it appends it to the file
+"""
+def saveDataToFile(data, fileName):
+	file = open(os.getcwd() + '/' + fileName)
+	count = 0
+	linesWithEquals = []
+	linesOutputData = []
+	if hasSubString(data[0], fileName):
+		for i in file:
+			if i.count(data[0]) > 0:
+				file.close()
+				file = open(os.getcwd() + '/' + fileName)
+				lines = list(file)
+				lines[count] = lines[count][0:(-1 * len(lines[count].split(' = ')[1]))] + ('%d\n' % data[1])
+				file.close()
+				os.remove(os.getcwd() + '/' + fileName)
+				file = open(os.getcwd() + '/' + fileName, "w")
+				for j in lines:
+					file.write(j)
+				file.close()
+				break
+			count += 1
+	else:
+		file.close()
+		file = open(os.getcwd() + '/' + fileName, "a")
+		file.write(('%s = ' + str(data[1]) + '\n') % data[0])
+		file.close()
+	return
+
+"""
+takes a string to search for and a file to search in. returns true
+if the file has the substring and false if not
+"""
+def hasSubString(string, fileName):
+	file = open(os.getcwd() + '/' + fileName)
+	for i in file:
+		if i.count(string) > 0:
+			return True
+	return False
+
 

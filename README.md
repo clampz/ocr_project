@@ -17,16 +17,15 @@ my params file params.dat, so I run my neural net back propagation by typing the
 ```
 python main.py -t params.dat
 ```
-in the training prompt, you can save your neural net, too. Be sure to note the correct line number where
-the weights are saved in the prompt too.
+In the training prompt you have the option to save your weights. The line number at which the weights were saved will be written in the params file with the time and date when you saved the weights.
 
-You can run a saved neural net by running a command of the following form.
+You can run a saved neural net by running a command of the following form. This option will take the most recently written line number for weights data.
 ```
-python main.py -r params.dat neuralNet.dat lineNumber
+python main.py -r params.dat neuralNet.dat
 ```
 
 the following sources are the inspiration for the code
-i've written and the resources that i used to understand
+i've written and the resources that i have used to understand
 the fundamentals of my implementation.
 
 Sources:
@@ -67,6 +66,8 @@ Components:
 * file
   * saveNeuralNet
   * loadNeuralNet
+  * saveDataToFile
   * getDataFromFile
+  * hasSubString
 * capture
   * decomposeParagraph

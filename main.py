@@ -6,7 +6,9 @@
   4/23/13, 3:25a
 """
 
+import os
 import sys
+import datetime
 from neuralNet import *
 from propagate import *
 from file import *
@@ -26,7 +28,8 @@ dStruct = {
 	'n_hiddenLayers' : 0,
 	'neuronsInHidden' : [],
 	'rateOfLearning' : 0,
-	'target' : 0
+	'target' : 0,
+	'lineNumForNet' : 0
 }
 
 """
@@ -67,7 +70,7 @@ def hasKey(string, dictionary):
 """
 sorts the options and calls appropriate functions respectively
 
-python main.py -r params.dat neuralNets.dat 2
+python main.py -r params.dat neuralNets.dat
 python main.py -t params.dat
 python main.py --help
 """
@@ -79,7 +82,7 @@ def main():
 		for i in datas:
 			if hasKey(i[0], dStruct):
 				dStruct[i[0]] = eval(i[1])
-		runNeuralNet(sys.argv[3], eval(sys.argv[4]))
+		runNeuralNet(sys.argv[3], dStruct['lineNumForNet'])
 	elif (sys.argv[1] == "-t"):
 		if (not len(sys.argv) == 3):
 			raise ValueError('main.py: wrong number of command line arguments. Asks for 2, %d given.' % (len(sys.argv) - 1))
@@ -114,11 +117,6 @@ save the weights somewhere.
 """
 def trainNeuralNet():
 	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
-
-# I'm testing the neural nets with fixed weights to start off with right now, so the loop below fixes the weights.
-	#for i in inputNeuralNet.layers[0].neurons:
-	#	i.putWeights([.5, .5])
-
 	backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
 	print('ok, so my neural net has %.20f rate of learning and %.20f error threshhold' % (dStruct['rateOfLearning'], dStruct['error_threshhold']))
 	answer = eval(raw_input('do you want to run some input on the neural net? (enter True or False): '))
@@ -127,8 +125,13 @@ def trainNeuralNet():
 		print("\n\n\done ..\n\n")
 		answer2 = eval(raw_input('\nok .. liek ... do you want to save your neural net? (enter True or False): '))
 		if answer2:
+			now = datetime.datetime.now()
 			filename = raw_input('\nok .. liek ... what is your filename?: ')
 			lineNo = saveNeuralNet(inputNeuralNet, filename)
+			saveDataToFile(['lineNumForNet', lineNo], 'params/' + sys.argv[2])
+			file = open(os.getcwd() + '/params/' + sys.argv[2], "a")
+			file.write('\n\n' + now + ' : ' + str(lineNo))
+			file.close()
 			print("\nthe line number it got saved at is: %d" % lineNo)
 		answer = eval(raw_input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
 	return
@@ -140,6 +143,10 @@ if __name__ == "__main__": main()
 =================================
 ---------------------------------
 ---------------------------------
+
+# I'm testing the neural nets with fixed weights to start off with right now, so the loop below fixes the weights.
+	#for i in inputNeuralNet.layers[0].neurons:
+	#	i.putWeights([.5, .5])
 
 	if (not len(sys.argv) == 2):
 		raise ValueError('Main.py: wrong number of command line arguments. Asks for 1, %d given.' % (len(sys.argv) - 1))

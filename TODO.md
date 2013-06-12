@@ -40,6 +40,8 @@ Components:
   * getDataFromFile
   * saveNeuralNet
   * loadNeuralNet
+  * saveDataToFile
+  * hasSubString
   * todo:
      * looks done for now
 * imagePreProcessing
