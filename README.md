@@ -42,7 +42,7 @@ Components:
   * runNeuralNet
   * trainNeuralNet
   * imax
-  * get_class_match
+  * getClassMatch
   * runNeuralNetImageToText
   * hasKey
   * indent
