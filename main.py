@@ -65,7 +65,7 @@ def hasKey(string, dictionary):
 	return False
 
 """
-main trains the net and then runs it interactively
+sorts the options and calls appropriate functions respectively
 
 python main.py -r params.dat neuralNets.dat 2
 python main.py -t params.dat
@@ -75,11 +75,19 @@ def main():
 	if (sys.argv[1] == "-r"):
 		if (not len(sys.argv) == 5):
 			raise ValueError('main.py: wrong number of command line arguments. Asks for 4, %d given.' % (len(sys.argv) - 1))
-		runNeuralNet(sys.argv[2], sys.argv[3], sys.argv[4])
+		datas = getDataFromFile(sys.argv[2])
+		for i in datas:
+			if hasKey(i[0], dStruct):
+				dStruct[i[0]] = eval(i[1])
+		runNeuralNet(sys.argv[3], eval(sys.argv[4]))
 	elif (sys.argv[1] == "-t"):
 		if (not len(sys.argv) == 3):
 			raise ValueError('main.py: wrong number of command line arguments. Asks for 2, %d given.' % (len(sys.argv) - 1))
-		trainNeuralNet(sys.argv[2])
+		datas = getDataFromFile(sys.argv[2])
+		for i in datas:
+			if hasKey(i[0], dStruct):
+				dStruct[i[0]] = eval(i[1])
+		trainNeuralNet()
 	elif (sys.argv[1] == "--help"):
 		print("\nexamples:\npython main.py -r params.dat neuralNets.dat 2\npython main.py -t params.dat\n")
 	else:
@@ -87,15 +95,12 @@ def main():
 	return
 
 """
+takes a filename to get the neural net weights from (neuralNetFile)
+and a line number to look for the weights at (neuralNetLineNum)
 """
-def runNeuralNet(inputFile, neuralNetFile, neuralNetLineNum):
-	n = neuralNet()
-	datas = getDataFromFile(sys.argv[2])
-	for i in datas:
-		if hasKey(i[0], dStruct):
-			dStruct[i[0]] = eval(i[1])
-	inputNN = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
-	loadNeuralNet(inptuNN, neuralNetFile, neuralNetLineNum)
+def runNeuralNet(neuralNetFile, neuralNetLineNum):
+	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
+	loadNeuralNet(inputNeuralNet, neuralNetFile, neuralNetLineNum)
 	answer = eval(raw_input('do you want to run some input on the neural net? (enter True or False): '))
 	while (answer):
 		print("output:\n%s" % inputNeuralNet.update(dStruct['input'][eval(raw_input('which input do you want to use from the input patterns?(enter an int): '))]))
@@ -104,13 +109,10 @@ def runNeuralNet(inputFile, neuralNetFile, neuralNetLineNum):
 	return
 
 """
+takes no params and trains the neural net, asks if the user wants to
+save the weights somewhere.
 """
-def trainNeuralNet(inputFile):
-	datas = getDataFromFile(sys.argv[2])
-	for i in datas:
-		if hasKey(i[0], dStruct):
-			dStruct[i[0]] = eval(i[1])
-	print dStruct
+def trainNeuralNet():
 	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
 
 # I'm testing the neural nets with fixed weights to start off with right now, so the loop below fixes the weights.
@@ -125,7 +127,7 @@ def trainNeuralNet(inputFile):
 		print("\n\n\done ..\n\n")
 		answer2 = eval(raw_input('\nok .. liek ... do you want to save your neural net? (enter True or False): '))
 		if answer2:
-			filename = eval(raw_input('\nok .. liek ... what is your filename?: '))
+			filename = raw_input('\nok .. liek ... what is your filename?: ')
 			lineNo = saveNeuralNet(inputNeuralNet, filename)
 			print("\nthe line number it got saved at is: %d" % lineNo)
 		answer = eval(raw_input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
