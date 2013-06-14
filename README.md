@@ -8,7 +8,7 @@ handwritten characters and to give the unicode equivalents using neural networks
 the current goal of this project is to implement optical character recognition
 for computer generated images of text with some fonts.
 
-**dependancies**: python2.7 or python3 with some small modification
+**dependancies**: python2.x, PIL
 
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 
@@ -17,8 +17,6 @@ my params file params.dat, so I run my neural net back propagation by typing the
 ```
 python main.py -t params.dat
 ```
-In the training prompt you have the option to save your weights. The line number at which the weights were saved will be written in the params file with the time and date when you saved the weights.
-
 You can run a saved neural net by running a command of the following form. This option will take the most recently written line number for weights data.
 ```
 python main.py -r params.dat neuralNet.dat
