@@ -8,11 +8,7 @@ handwritten characters and to give the unicode equivalents using neural networks
 the current goal of this project is to implement optical character recognition
 for computer generated images of text with some fonts.
 
-<<<<<<< HEAD
 **dependancies**: python2.7, PIL & pylab. python3 with some small modification
-=======
-**dependancies**: python2.x, PIL
->>>>>>> 1d93cbac897cba976f0b958630d5af576be1763a
 
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 
@@ -21,11 +17,8 @@ my params file params.dat, so I run my neural net back propagation by typing the
 ```
 python main.py -t params.dat
 ```
-<<<<<<< HEAD
 The training will save the neural net automatically and it will show up in your params file.
 
-=======
->>>>>>> 1d93cbac897cba976f0b958630d5af576be1763a
 You can run a saved neural net by running a command of the following form. This option will take the most recently written line number for weights data.
 ```
 python main.py -r params.dat neuralNet.dat
