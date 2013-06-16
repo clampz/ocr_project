@@ -2,7 +2,7 @@
 
 """
   main.py
-  by David Weinman & Jesse Frankley
+  by David Weinman
   4/23/13, 3:25a
 """
 
@@ -11,16 +11,16 @@ import sys
 import datetime
 from copy import deepcopy
 from neuralNet import *
-from propagate import *
+from propagate import backProp
+from file import getDataFromFile, loadNeuralNet, saveNeuralNet
 from capture import *
-from file import *
 
 # these are string constants for neural net and training printouts
 mapTitle = "=================================\nNeural Net Map\n================================="
 backPropTitle = "=================================\nBack Propagation\n================================="
 propLoopTitle = "---------------------------------\nBack Propagation (Loop: %d)\n---------------------------------"
 
-# dictionary of params for the neural net training algorithm
+# dictionary of params for the neural net training algorithm and image preprocessing
 dStruct = {
 	'input' : [],
 	'max_iterations' : 0,

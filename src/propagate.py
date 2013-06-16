@@ -5,13 +5,39 @@
 """
 
 from neuralNet import *
-from main import *
-from decimal import *
+from pylab import xlabel, ylabel, show, plot, title, grid, savefig
+from decimal import Decimal, getcontext
 from copy import deepcopy as deepcopy
 from random import randint as randint
 
+"""
+sources:
+@Article{Hunter:2007,
+  Author    = {Hunter, J. D.},
+  Title     = {Matplotlib: A 2D graphics environment},
+  Journal   = {Computing In Science \& Engineering},
+  Volume    = {9},
+  Number    = {3},
+  Pages     = {90--95},
+  abstract  = {Matplotlib is a 2D graphics package used for Python
+  for application development, interactive scripting, and
+  publication-quality image generation across user
+  interfaces and operating systems.},
+  publisher = {IEEE COMPUTER SOC},
+  year      = 2007
+}
+
+"""
+
+mapTitle = "=================================\nNeural Net Map\n================================="
+backPropTitle = "=================================\nBack Propagation\n================================="
+propLoopTitle = "---------------------------------\nBack Propagation (Loop: %d)\n---------------------------------"
+
+
 # this sets the precision of the decimal object
 getcontext().prec = 8
+
+errorArray = iterations = []
 
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
@@ -28,7 +54,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 	print(backPropTitle)
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
 		print(propLoopTitle % n_iterations)
-		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
+#		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0 # counter for the number of patterns into input the loop is
 		input = randLst(zip(trainingSet, targets))
 		for i in input: #for every pattern in the training set 
@@ -77,17 +103,26 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k]))) # collect the outputs to use for input to the next layer
 
-## -------------- network total error calculation
-			print('inputs: %s' % i[0])
-			print('outputs: %s' % outputCurrentPattern)
-			for j in range(0, len(inputNN.l_layers)):
-				print('error for layer %d: %s' % (j, error2DArray[j]))
+## -------------- network total error calculation and visualization
+#			print('inputs: %s' % i[0])
+#			print('outputs: %s' % outputCurrentPattern)
+#			for j in range(0, len(inputNN.l_layers)):
+#				print('error for layer %d: %s' % (j, error2DArray[j]))
 		n_iterations += 1
 		errorVal = float(0) # sum unit for the net error
 		for j in range(0, len(input)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
 				errorVal += float(errorSignal(targets[j], outputs[j][h]))
 		netError = .5  *  errorVal #calc the error fn for the net?
+		errorArray.append(netError)
+		iterations.append(n_iterations)
+		plot(iterations, errorArray, linewidth=1.0)
+		xlabel('iterations')
+		ylabel('error')
+		title('error while training')
+		grid(True)
+		savefig('errorGraph.png')
+		show()
 
 ## -------------- print stuff
 		print(mapTitle)
@@ -136,7 +171,7 @@ value for the same neuron, n (targetN) and produces the basic error gradient
 f'n for some output neuron. [this f'n is specific to the output layer of neurons]
 """
 def errorGradientOutputLayer(outputN, targetN):
-	print('errorGradientOutputLayer(outputN value: %s, targetN value: %s)' % (str(outputN), str(targetN)))
+#	print('errorGradientOutputLayer(outputN value: %s, targetN value: %s)' % (str(outputN), str(targetN)))
 	return outputN * (1 - outputN) * (targetN - outputN)
 
 """
