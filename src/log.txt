@@ -1561,3 +1561,114 @@ output:
 
 ok .. liek  ... do you want to run some more input on the neural net? (enter True or False): 0
 [03:44][Inspector_Detector@detection-squad:~/Desktop/cpat_project]$
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+[20:12][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+
+** (process:4522): WARNING **: Trying to register gtype 'GMountMountFlags' as enum when in fact it is of type 'GFlags'
+
+** (process:4522): WARNING **: Trying to register gtype 'GDriveStartFlags' as enum when in fact it is of type 'GFlags'
+
+** (process:4522): WARNING **: Trying to register gtype 'GSocketMsgFlags' as enum when in fact it is of type 'GFlags'
+=================================
+Back Propagation
+=================================
+---------------------------------
+Back Propagation (Loop: 0)
+---------------------------------
+/home/nab/Documents/ocr_project-master/src/propagate.py:158: RuntimeWarning: overflow encountered in longdouble_scalars
+  return np.longfloat(math.e**activation - math.e**((-1) * activation)/(math.e**activation + math.e**((-1) * activation)))
+/home/nab/Documents/ocr_project-master/src/propagate.py:158: RuntimeWarning: invalid value encountered in longdouble_scalars
+  return np.longfloat(math.e**activation - math.e**((-1) * activation)/(math.e**activation + math.e**((-1) * activation)))
+/home/nab/Documents/ocr_project-master/src/propagate.py:225: RuntimeWarning: invalid value encountered in longdouble_scalars
+  return oldWeight + (learningRate * errorValue * derivAct * x)
+/home/nab/Documents/ocr_project-master/src/propagate.py:198: RuntimeWarning: invalid value encountered in longdouble_scalars
+  activationValue += p[i] * n.l_weights[i]
+Traceback (most recent call last):
+  File "main.py", line 207, in <module>
+    if __name__ == "__main__": main()
+  File "main.py", line 193, in main
+    backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 116, in backProp
+    errorVal += float(errorSignal(targets[j], outputs[j][h]))
+TypeError: only length-1 arrays can be converted to Python scalars
+[21:18][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+Traceback (most recent call last):
+  File "main.py", line 13, in <module>
+    from neuralNet import *
+  File "/home/nab/Documents/ocr_project-master/src/neuralNet.py", line 11, in <module>
+    import propagate
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 115
+    errorVal += np.longfloat(errorSignal(targets[j] outputs[j][h]))
+                                                          ^
+SyntaxError: invalid syntax
+[00:21][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+Traceback (most recent call last):
+  File "main.py", line 13, in <module>
+    from neuralNet import *
+  File "/home/nab/Documents/ocr_project-master/src/neuralNet.py", line 11, in <module>
+    import propagate
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 115
+    errorVal += errorSignal(targets[j] outputs[j][h])
+                                             ^
+SyntaxError: invalid syntax
+[00:22][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+Traceback (most recent call last):
+  File "main.py", line 13, in <module>
+    from neuralNet import *
+  File "/home/nab/Documents/ocr_project-master/src/neuralNet.py", line 11, in <module>
+    import propagate
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 115
+    errorVal += errorSignal(targets[j] outputs[0][j][h])
+                                             ^
+SyntaxError: invalid syntax
+[00:28][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+Traceback (most recent call last):
+  File "main.py", line 13, in <module>
+    from neuralNet import *
+  File "/home/nab/Documents/ocr_project-master/src/neuralNet.py", line 11, in <module>
+    import propagate
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 115
+    errorVal += errorSignal(targets[j] outputs[j][h])
+                                             ^
+SyntaxError: invalid syntax
+[00:34][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+Traceback (most recent call last):
+  File "main.py", line 13, in <module>
+    from neuralNet import *
+  File "/home/nab/Documents/ocr_project-master/src/neuralNet.py", line 11, in <module>
+    import propagate
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 115
+    errorVal += errorSignal(targets[j][h] outputs[j][h])
+                                                ^
+SyntaxError: invalid syntax
+[00:35][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+Traceback (most recent call last):
+  File "main.py", line 13, in <module>
+    from neuralNet import *
+  File "/home/nab/Documents/ocr_project-master/src/neuralNet.py", line 11, in <module>
+    import propagate
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 115
+    errorVal += errorSignal(targets[j] outputs[j][h])
+                                             ^
+SyntaxError: invalid syntax
+[00:35][nab@deimos:~/Documents/ocr_project-master/src]$ python main.py -i -t params.dat
+Traceback (most recent call last):
+  File "main.py", line 13, in <module>
+    from neuralNet import *
+  File "/home/nab/Documents/ocr_project-master/src/neuralNet.py", line 11, in <module>
+    import propagate
+  File "/home/nab/Documents/ocr_project-master/src/propagate.py", line 115
+    errorVal += errorSignal(targets[j] outputs[h])
+                                             ^
+SyntaxError: invalid syntax
+[00:35][nab@deimos:~/Documents/ocr_project-master/src]$ 
+
+
+

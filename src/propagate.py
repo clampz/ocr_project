@@ -4,28 +4,14 @@
   4/26/13, 9:10p
 """
 
+import numpy as np
 from neuralNet import *
 from pylab import xlabel, ylabel, show, plot, title, grid, savefig
 from decimal import Decimal, getcontext
 from copy import deepcopy as deepcopy
 from random import randint as randint
 
-"""
-sources:
-@Article{Hunter:2007,
-  Author    = {Hunter, J. D.},
-  Title     = {Matplotlib: A 2D graphics environment},
-  Journal   = {Computing In Science \& Engineering},
-  Volume    = {9},
-  Number    = {3},
-  Pages     = {90--95},
-  abstract  = {Matplotlib is a 2D graphics package used for Python
-  for application development, interactive scripting, and
-  publication-quality image generation across user
-  interfaces and operating systems.},
-  publisher = {IEEE COMPUTER SOC},
-  year      = 2007
-}
+""" SOURCES:
 
 """
 
@@ -50,7 +36,7 @@ for training a neural network.
 def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
 	netError = float(error_threshhold + 0.1)
-	outputs = [[0]] * len(targets)
+	outputs = [[]] * len(targets)
 	print(backPropTitle)
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
 		print(propLoopTitle % n_iterations)
@@ -89,7 +75,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 					error2DArray[j] = outputLayerError
 
 ## -------------- weight / threshold update
-			for j in range(0, inputNN.n_hiddenLayers + 2): # for every layer, + 2 in range for output and input layers.
+			for j in range(1, inputNN.n_hiddenLayers + 2): # for every layer, + 1 in range for output layer.
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					newWeights = []
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
@@ -112,7 +98,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		errorVal = float(0) # sum unit for the net error
 		for j in range(0, len(input)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
-				errorVal += float(errorSignal(targets[j], outputs[j][h]))
+				errorVal += errorSignal(targets[j] outputs[h])
 		netError = .5  *  errorVal #calc the error fn for the net?
 		errorArray.append(netError)
 		iterations.append(n_iterations)
@@ -137,7 +123,7 @@ and the output value for that given neuron (activation) and
 returns the error for some given neuron and input
 """
 def errorSignal(target, activation):
-	return (target - activation)**2
+	return np.longfloat((target - activation)**2)
 
 """
 y takes a set of patterns or inputs (p), and a neuron (n) and returns the 
@@ -154,7 +140,7 @@ sigmoid takes an activation value (activation) and calculates the sigmoid
 function on the activation value. [here I use the tanh function]
 """
 def sigmoid(activation):
-	return float(Decimal(Decimal(str(math.e**activation - math.e**((-1) * activation)))/Decimal(str(math.e**activation + math.e**((-1) * activation)))))
+	return np.longfloat(math.e**activation - math.e**((-1) * activation)/(math.e**activation + math.e**((-1) * activation)))
 
     #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
@@ -220,7 +206,7 @@ that neuron (x), the error value for the neuron (errorValue), and the derivative
 activation for that neuron (derivAct) and returns the change in weight for the given oldWeight
 """
 def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
-	print('deltaWeight(oldWeight: %s, learningRate: %s,  x: %s, errorValue: %s, derivAct: %s)' % (oldWeight, learningRate,  x, errorValue, derivAct))
+	#print('deltaWeight(oldWeight: %s, learningRate: %s,  x: %s, errorValue: %s, derivAct: %s)' % (oldWeight, learningRate,  x, errorValue, derivAct))
 	return oldWeight + (learningRate * errorValue * derivAct * x)
 #def deltaWeight(targetP, outputP, inputPI):
 #	return (targetP - outputP) * inputPI
