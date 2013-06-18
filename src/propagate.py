@@ -98,7 +98,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		errorVal = float(0) # sum unit for the net error
 		for j in range(0, len(input)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
-				errorVal += errorSignal(targets[j] outputs[h])
+				errorVal += errorSignal(targets[j], outputs[j][h])
 		netError = .5  *  errorVal #calc the error fn for the net?
 		errorArray.append(netError)
 		iterations.append(n_iterations)
