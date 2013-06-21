@@ -47,7 +47,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		for i in input: #for every pattern in the training set 
 
 ## -------------- foward propagate input through net
-			outputs[n_iterations % len(input)] = outputCurrentPattern = inputNN.update(i[0])
+			outputs[n_iterations % len(input)] = outputCurrentPattern = inputNN.update(i[0]) # OUTPUTS NEED TO BE COLLECTED EARLIER
 
 ## -------------- error calculation -> setup arrays to propagate error backwards
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
@@ -95,8 +95,10 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		n_iterations += 1
 		errorVal = float(0) # sum unit for the net error
 		print('len(targets):%d, len(l_layers[-1]):%d, len(outputs):%d, len(outputs[1]):%d, len(targets[1]):%d.' % (len(targets), inputNN.l_layers[-1].n_neurons, len(outputs), len(outputs[1]), len(targets[1])))
+		print('targets: %s, outputs: %s' % (str(targets), str(outputs)))
 		for j in range(0, len(targets)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
+				# maybe it should be errorVal += errorSignal(input[j][1], outputs[j][h])
 				errorVal += errorSignal(targets[j], outputs[j][h])
 		netError = .5  *  errorVal #calc the error fn for the net?
 		errorArray.append(netError)
