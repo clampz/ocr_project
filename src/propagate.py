@@ -15,14 +15,15 @@ from random import randint as randint
 
 """
 
+# constants for printing
 mapTitle = "=================================\nNeural Net Map\n================================="
 backPropTitle = "=================================\nBack Propagation\n================================="
 propLoopTitle = "---------------------------------\nBack Propagation (Loop: %d)\n---------------------------------"
 
-
 # this sets the precision of the decimal object
 getcontext().prec = 8
 
+# these are arrays to log neural network error values to visualize a graph while training
 errorArray = iterations = []
 
 """
@@ -39,7 +40,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 	outputs = [[]] * len(targets)
 	print(backPropTitle)
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
-		print(propLoopTitle % n_iterations)
+		print(propLoopTitle % n_iterations) # see global constants. prints which loop is training
 #		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0 # counter for the number of patterns into input the loop is
 		input = randLst(zip(trainingSet, targets))
@@ -80,29 +81,27 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 					newWeights = []
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
 #def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
-						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k]))) # get the change in weight
+						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k])))
+#                                                 ^^^^ get the change in weight
 					inputNN.l_layers[j].l_neurons[k].putWeights(newWeights) #update the weights
 			#COMMENT OUT LINE BELOW -- IF KEEPING THRESHOLD CONSTANT
 					inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) # update the threshold
 				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
-					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k]))) # collect the outputs to use for input to the next layer
+										    inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k]))) # collect the outputs to use for input to the next layer
 
 ## -------------- network total error calculation and visualization
-#			print('inputs: %s' % i[0])
-#			print('outputs: %s' % outputCurrentPattern)
-#			for j in range(0, len(inputNN.l_layers)):
-#				print('error for layer %d: %s' % (j, error2DArray[j]))
 		n_iterations += 1
 		errorVal = float(0) # sum unit for the net error
-		for j in range(0, len(input)): # for every pattern in the trainingset
+		print('len(targets):%d, len(l_layers[-1]):%d, len(outputs):%d, len(outputs[1]):%d, len(targets[1]):%d.' % (len(targets), inputNN.l_layers[-1].n_neurons, len(outputs), len(outputs[1]), len(targets[1])))
+		for j in range(0, len(targets)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
 				errorVal += errorSignal(targets[j], outputs[j][h])
 		netError = .5  *  errorVal #calc the error fn for the net?
 		errorArray.append(netError)
 		iterations.append(n_iterations)
-		plot(iterations, errorArray, linewidth=1.0)
+		plot(iterations, errorArray, linewidth=1.0) # plot(xArray, yArray, ...) from pylab lib
 		xlabel('iterations')
 		ylabel('error')
 		title('error while training')
@@ -232,7 +231,8 @@ def sum(lst):
 		output += lst[i]
 	return output
 
-"""
+""" PSEUDO CODE
+
 backprop algorithm:
 while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
@@ -270,6 +270,14 @@ while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
 }
 
+
 """
 
+""" COPYPASTA
+#			print('inputs: %s' % i[0])
+#			print('outputs: %s' % outputCurrentPattern)
+#			for j in range(0, len(inputNN.l_layers)):
+#				print('error for layer %d: %s' % (j, error2DArray[j]))
+
+"""
 

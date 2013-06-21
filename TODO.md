@@ -1,4 +1,4 @@
-
+getting an index error that i need to debug. the error is shown at the bottom of *log.txt*.
 
 Components:
 ============

@@ -12,7 +12,7 @@ for computer generated images of text with some fonts.
 
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 
-there you can change the inputs to the neural network in the *params* subfolder. I named
+there you can change the inputs to the neural network in the *params* subfolder within the *src* folder. I named
 my params file params.dat, so I run my neural net back propagation by typing the following in the command line
 ```
 python main.py -t params.dat
@@ -23,6 +23,11 @@ You can run a saved neural net by running a command of the following form. This 
 ```
 python main.py -r params.dat neuralNet.dat
 ```
+
+the majority of the optical character recognition goal is the implementation of
+error back propagation training of a neural network. most of that code is in the
+propagate module. then there's image preprocessing which mostly happens in the
+capture module. the high level image manipulation happens in the main module.
 
 the following sources are the inspiration for the code
 i've written and the resources that i have used to understand
