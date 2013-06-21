@@ -12,7 +12,7 @@ import datetime
 from copy import deepcopy
 from neuralNet import *
 from propagate import backProp
-from file import getDataFromFile, loadNeuralNet, saveNeuralNet
+from file import saveDataToFile, getDataFromFile, loadNeuralNet, saveNeuralNet
 from capture import *
 
 # these are string constants for neural net and training printouts
@@ -116,7 +116,7 @@ def trainNeuralNet():
 			lineNo = saveNeuralNet(inputNeuralNet, filename)
 			saveDataToFile(['lineNumForNet', lineNo], 'params/' + sys.argv[2])
 			file = open(os.getcwd() + '/params/' + sys.argv[2], "a")
-			file.write('\n\n' + now + ' : ' + str(lineNo))
+			file.write('\n\n' + str(now) + ' : ' + str(lineNo))
 			file.close()
 			print("\nthe line number it got saved at is: %d" % lineNo)
 		answer = eval(raw_input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))

@@ -4,6 +4,8 @@
   4/26/13, 9:10p
 """
 
+import os
+import datetime
 import numpy as np
 from neuralNet import *
 from pylab import xlabel, ylabel, show, plot, title, grid, savefig
@@ -24,7 +26,8 @@ propLoopTitle = "---------------------------------\nBack Propagation (Loop: %d)\
 getcontext().prec = 8
 
 # these are arrays to log neural network error values to visualize a graph while training
-errorArray = iterations = []
+errorArray = []
+iterations = []
 
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
@@ -37,7 +40,17 @@ for training a neural network.
 def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, learningRate):
 	n_iterations = 0 # counter for the number of propagation loops
 	netError = float(error_threshhold + 0.1)
+
+## -------------- foward propagate inputs through net and populate a list of outputs for training
 	outputs = [[]] * len(targets)
+	for i in range(0, len(targets)):
+		outputs[i] = inputNN.update(trainingSet[i])
+
+	now = datetime.datetime.now()
+	print('now: ' + str(now))
+	originalDir = os.getcwd()
+	os.mkdir('errorGraphs_' + str(now))
+	os.chdir('errorGraphs_' + str(now))
 	print(backPropTitle)
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
 		print(propLoopTitle % n_iterations) # see global constants. prints which loop is training
@@ -47,7 +60,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		for i in input: #for every pattern in the training set 
 
 ## -------------- foward propagate input through net
-			outputs[n_iterations % len(input)] = outputCurrentPattern = inputNN.update(i[0]) # OUTPUTS NEED TO BE COLLECTED EARLIER
+			outputCurrentPattern = inputNN.update(i[0])
 
 ## -------------- error calculation -> setup arrays to propagate error backwards
 			outputLayerError = [] # create empty array for the error of the nodes in output layer
@@ -90,17 +103,15 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 										    inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k]))) # collect the outputs to use for input to the next layer
+			outputs[n_iterations % len(input)] = inputNN.update(i[0])
 
 ## -------------- network total error calculation and visualization
 		n_iterations += 1
 		errorVal = float(0) # sum unit for the net error
-		print('len(targets):%d, len(l_layers[-1]):%d, len(outputs):%d, len(outputs[1]):%d, len(targets[1]):%d.' % (len(targets), inputNN.l_layers[-1].n_neurons, len(outputs), len(outputs[1]), len(targets[1])))
-		print('targets: %s, outputs: %s' % (str(targets), str(outputs)))
 		for j in range(0, len(targets)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
-				# maybe it should be errorVal += errorSignal(input[j][1], outputs[j][h])
 				errorVal += errorSignal(targets[j], outputs[j][h])
-		netError = .5  *  errorVal #calc the error fn for the net?
+		netError = .5 * errorVal #calc the error fn for the net?
 		errorArray.append(netError)
 		iterations.append(n_iterations)
 		plot(iterations, errorArray, linewidth=1.0) # plot(xArray, yArray, ...) from pylab lib
@@ -108,14 +119,13 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		ylabel('error')
 		title('error while training')
 		grid(True)
-		savefig('errorGraph.png')
-		show()
+		savefig('errorGraph' + str(n_iterations) + '.png')
 
 ## -------------- print stuff
 		print(mapTitle)
 		inputNN.printNN()
-		print('2backProp iteration = %d, netError = %.20f' % (n_iterations - 1, netError))
-	#print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
+	print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
+	os.chdir('..') # go to parent dir for calling f'ns purposes
 	return
 
 """
