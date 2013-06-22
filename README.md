@@ -67,7 +67,7 @@ backgroundValue = 0
 ```
 where the target array should be of the length equal to the number of characters used in your training set. where the background value should be a pixel RGB value which can be found using the python PIL method *getpixel(xPos, yPos)* for an image object.
 
-*some more description of project organization*
+**some more description of project organization**
 
 the majority of the project goal is the implementation of
 error back propagation training of a neural network. most of that code is in the
