@@ -12,7 +12,7 @@ for computer generated images of text with some fonts.
 
 Instructions:
 ------------
-*regular (numeric) options*
+**regular (numeric) options**
 
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 there you can change the inputs to the neural network in the *params* subfolder within the *src* folder. I named
@@ -39,7 +39,7 @@ max_iterations = 15000
 error_threshhold = 0.09
 input = [[1, 1], [1, 0], [0, 1], [0, 0]]
 ```
-*ocr options*
+**ocr options**
 
 Ocr options can be accessed by using the -i option and then the same options can be used as above with modification to the params file.
 for example, 
