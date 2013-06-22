@@ -11,9 +11,10 @@ import sys
 import datetime
 from copy import deepcopy
 from neuralNet import *
+from indenter import indenter
 from propagate import backProp
 from file import saveDataToFile, getDataFromFile, loadNeuralNet, saveNeuralNet
-from capture import *
+from capture import decomposeParagraph
 
 # these are string constants for neural net and training printouts
 mapTitle = "=================================\nNeural Net Map\n================================="
@@ -37,31 +38,6 @@ dStruct = {
 }
 
 """
-indentation object for net printout
-"""
-class indent():
-	indentorUnit = ''
-	outputString = ''
-
-	def __init__(self, unit):
-		self.indentorUnit = unit
-		self.outputString = ''
-
-	# makes it bigger
-	def increment(self):
-		self.outputString = self.outputString + self.indentorUnit
-		return self.outputString
-
-	# returns current string
-	def currentString(self):
-		return self.outputString
-
-	# makes it smaller
-	def decrement(self):
-		self.outputString = self.outputString[0:(len(self.outputString) - len(self.indentorUnit))]
-		return self.outputString
-
-"""
 basic hash function. takes a string to search with (string),
 and a dictionary object (dictionary) and returns a boolean
 represenation of whether the key is in the dictionary.
@@ -72,12 +48,16 @@ def hasKey(string, dictionary):
 	return False
 
 """
+takes a list (lst) and returns a list containing a single element;
+the index of the max number in lst
 """
 def imax(lst):
    m = max(lst)
    return [i for i, j in enumerate(lst) if j == m]
 
 """
+takes a list containing the output of an ocr nn (lst) and returns the char
+corresponding to the output
 """
 def getClassMatch(lst):
    classes     = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "?"]
@@ -199,7 +179,7 @@ def main():
                 file.write('\n\n' + str(now) + ' : ' + str(lineNo))
                 file.close()
 	elif (sys.argv[1] == "--help"):
-		print("\nexamples:\npython main.py -r params.dat neuralNets.dat\npython main.py -t params.dat\npython main.py -i -r params.dat neuralNets.dat\npython main.py -i -t params.dat\n")
+		print("\nexamples:\npython main.py -r params.dat neuralNet.dat\npython main.py -t params.dat\npython main.py -i -r params.dat neuralNets.dat\npython main.py -i -t params.dat\npython main.py --help\n")
 	else:
 		raise ValueError('main.py: invalid option specified: %s' % sys.argv[1])
 	return

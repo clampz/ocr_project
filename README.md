@@ -10,6 +10,8 @@ for computer generated images of text with some fonts.
 
 **dependancies**: python2.7, PIL & pylab. python3 with some small modification
 
+Instruction:
+------------
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 
 there you can change the inputs to the neural network in the *params* subfolder within the *src* folder. I named
@@ -24,10 +26,15 @@ You can run a saved neural net by running a command of the following form. This 
 python main.py -r params.dat neuralNet.dat
 ```
 
+Ocr options can be accessed by using the -i option and then the same options can be used as above with modification to the params file.
+for example, 
+
 the majority of the optical character recognition goal is the implementation of
 error back propagation training of a neural network. most of that code is in the
 propagate module. then there's image preprocessing which mostly happens in the
 capture module. the high level image manipulation happens in the main module.
+
+the *components* section at the bottom depicts the namespace a collection of trees by module name at the root
 
 the following sources are the inspiration for the code
 i've written and the resources that i have used to understand
@@ -56,6 +63,8 @@ Components:
   * neuron
   * neuralNetLayer
   * neuralNet
+* preprocess
+  * receptor
 * propagate
   * backprop
   * sigmoid
@@ -69,14 +78,6 @@ Components:
   * deltaWeight
   * sum
   * randLst
-* preprocess
-  * receptor
-* file
-  * saveNeuralNet
-  * loadNeuralNet
-  * saveDataToFile
-  * getDataFromFile
-  * hasSubString
 * capture
   * decomposeParagraph
   * decomposeLine
@@ -88,3 +89,11 @@ Components:
   * isEmptyVertical
   * isEmptyImage
   * isEmptyPixel
+* indenter
+  * indenter
+* file
+  * saveNeuralNet
+  * loadNeuralNet
+  * saveDataToFile
+  * getDataFromFile
+  * hasSubString

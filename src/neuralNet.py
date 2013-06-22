@@ -2,14 +2,13 @@
   neuralNet.py
   by David Weinman
   4/21/13, 5:30p
-
 """
 
 import sys
 import random
 import math
 import propagate
-from main import *
+from indenter import indenter
 
 """
 neuron object takes a number which specifies the number
@@ -98,7 +97,7 @@ class neuralNet():
 
 	# takes no params and prints a string represenation of the net
 	def printNN(self):
-		indentor = indent('  ')
+		indentor = indenter('  ')
 		print(indentor.currentString() + 'neural net printout:')
 		for i in range(0, len(self.l_layers)):
 			print('layer %d' % i)

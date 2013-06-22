@@ -4,9 +4,6 @@
   5/1/13, 11:25p
 """
 
-"""
-"""
-
 import os
 from neuralNet import *
 from ast import literal_eval
