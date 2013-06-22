@@ -1,4 +1,5 @@
-getting an index error that i need to debug. the error is shown at the bottom of *log.txt*.
+README.md
+* touch on how images with text are broken down
 
 Components:
 ============
@@ -10,7 +11,6 @@ Components:
   * get_class_match
   * runNeuralNetImageToText
   * hasKey
-  * indent
   * dStruct
   * todo:
      * want to make visualization (ui ?), need to refine cl options
@@ -39,6 +39,8 @@ Components:
   * receptor
   * todo:
      * finish implementing and start testing, merge with current code
+* indenter
+  * indenter
 * file
   * getDataFromFile
   * saveNeuralNet

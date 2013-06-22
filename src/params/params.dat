@@ -9,5 +9,6 @@ error_threshhold = 0.55
 input = ['images/courier_characters.png']
 lineNumForNet = 0
 imageSize = (25, 25)
+backgroundValue = 0
 
 2013-06-12 05:40:32.529699 : 0
