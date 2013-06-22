@@ -10,7 +10,7 @@ for computer generated images of text with some fonts.
 
 **dependancies**: python2.7, PIL & pylab. python3 with some small modification
 
-Instruction:
+Instructions:
 ------------
 in order to run, download the repo and navigate to the downloaded folder in the command line.
 
@@ -28,6 +28,13 @@ python main.py -r params.dat neuralNet.dat
 
 Ocr options can be accessed by using the -i option and then the same options can be used as above with modification to the params file.
 for example, 
+```
+python main.py -i -t params.dat
+```
+trains a neural net to recognize the text in the training set you give it via the params file. the training data should be of the following form.
+```
+input = ['images/courier_characters.png']
+```
 
 the majority of the optical character recognition goal is the implementation of
 error back propagation training of a neural network. most of that code is in the
