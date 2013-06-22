@@ -67,9 +67,8 @@ backgroundValue = 0
 ```
 where the target array should be of the length equal to the number of characters used in your training set. where the background value should be a pixel RGB value which can be found using the python PIL method *getpixel(xPos, yPos)* for an image object.
 
-A more detailed description of the project:
--------------------------------------------
-the majority of the optical character recognition goal is the implementation of
+*some more description of project organization*
+the majority of the project goal is the implementation of
 error back propagation training of a neural network. most of that code is in the
 propagate module. then there's image preprocessing which mostly happens in the
 capture module. the high level image manipulation happens in the main module.
