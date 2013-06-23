@@ -1,5 +1,8 @@
-README.md
-* touch on how images with text are broken down
+ABSTRACT:
+========
+* touch on how images with text are broken down in README.md
+* refine instructions in README
+* refine cl options / interaction & naming, make a man page
 
 Components:
 ============
@@ -13,13 +16,13 @@ Components:
   * hasKey
   * dStruct
   * todo:
-     * want to make visualization (ui ?), need to refine cl options
+     * refine interaction in numeric options, & OCR training
 * neuralNet
   * neuron
   * neuralNetLayer
   * neuralNet
   * todo:
-     * might need some more tools, implement receptors
+     * fix nan in printout
 * propagate
   * backprop
   * sigmoid
@@ -34,13 +37,15 @@ Components:
   * sum
   * randLst
   * todo:
-     * test neural nets with hidden layers
+     * test hidden layers?
 * preprocess
   * receptor
   * todo:
      * finish implementing and start testing, merge with current code
 * indenter
   * indenter
+  * todo:
+     * n/a
 * file
   * getDataFromFile
   * saveNeuralNet
@@ -48,7 +53,7 @@ Components:
   * saveDataToFile
   * hasSubString
   * todo:
-     * looks done for now
+     * n/a
 * capture
   * decomposeParagraph
   * decomposeLine
@@ -61,6 +66,6 @@ Components:
   * isEmptyImage
   * isEmptyPixel
   * todo:
-     * need to merge code into a cl option
+     * n/a
 
 

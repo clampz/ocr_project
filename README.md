@@ -38,15 +38,16 @@ rateOfLearning = .2890
 max_iterations = 15000
 error_threshhold = 0.09
 input = [[1, 1], [1, 0], [0, 1], [0, 0]]
+lineNumForNet = 0
 ```
 **ocr options**
 
-Ocr options can be accessed by using the -i option and then the same options can be used as above with modification to the params file.
+OCR options can be accessed by using the -i option and then the same options can be used as above with modification to the params file.
 for example, 
 ```
 python main.py -i -t params.dat
 ```
-trains a neural net to recognize the text in the training set you give it via the params file. the training data should be of the following form.
+trains a neural net to recognize the text in the training set you give it via the params file. the training data should be of the following form in the params.
 ```
 input = ['images/courier_characters.png']
 ```
@@ -65,7 +66,7 @@ lineNumForNet = 0
 imageSize = (25, 25)
 backgroundValue = 0
 ```
-where the target array should be of the length equal to the number of characters used in your training set. where the background value should be a pixel RGB value which can be found using the python PIL method *getpixel(xPos, yPos)* for an image object.
+where the target array should be an array of length equal to the number of characters used in your training set and where the background value should be a pixel RGB value which can be found using the python PIL method *getpixel(xPos, yPos)* for an image object.
 
 **some more description of project organization**
 
