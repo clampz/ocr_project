@@ -66,16 +66,18 @@ lineNumForNet = 0
 imageSize = (25, 25)
 backgroundValue = 0
 ```
-where the target array should be an array of length equal to the number of characters used in your training set and where the background value should be a pixel RGB value which can be found using the python PIL method *getpixel(xPos, yPos)* for an image object.
+where the target array should be an array of length equal to the number of characters
+ used in your training set and where the background value should be a pixel RGB value which 
+can be found using the python PIL method *getpixel(xPos, yPos)* for an image object.
 
 **some more description of project organization**
 
 the majority of the project goal is the implementation of
-error back propagation training of a neural network. most of that code is in the
+error back propagation training of a neural network. that code is in the
 propagate module. then there's image preprocessing which mostly happens in the
 capture module. the high level image manipulation happens in the main module.
 
-the *components* section at the bottom depicts the namespace a collection of trees by module name at the root
+the *components* section at the bottom of this readme depicts the namespace in the src as a collection of trees by module name at the root
 
 the following sources are the inspiration for the code
 i've written and the resources that i have used to understand

@@ -11,7 +11,7 @@ Components:
   * trainNeuralNet
   * runNeuralNet
   * imax
-  * get_class_match
+  * getClassMatch
   * runNeuralNetImageToText
   * hasKey
   * dStruct
