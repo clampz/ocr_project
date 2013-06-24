@@ -89,6 +89,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 					error2DArray[j] = outputLayerError
 
 ## -------------- weight / threshold update
+##################### I THINK THERE'S SOMETHING WRONG IN THE RANGE CALL IN THE LINE BELOW
 			for j in range(1, inputNN.n_hiddenLayers + 2): # for every layer, + 1 in range for output layer.
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					newWeights = []

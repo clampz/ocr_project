@@ -38,7 +38,7 @@ def loadNeuralNet(inputNN, filename, n_line):
 getDataFromFile takes a file name (fileName) and returns a list
 of the fields and their respective values split at equals
 signs. this f'n assumes that every line in the fileName is
-of the form 'data = value'
+of the form 'dataLabel = dataValue'
 """
 def getDataFromFile(fileName):
 	file = open(os.getcwd() + '/params/' + fileName)
@@ -54,7 +54,8 @@ def getDataFromFile(fileName):
 """
 takes a list containing a key and a value to save to a given filename
 (data), and a filename (fileName). if the data already exists in the
-file then it will replace it, if not it appends it to the file
+file (assuming the form dataLabel = dataValue) then it will replace it, 
+if not it appends it to the file in the form dataLabel = dataValue.
 """
 def saveDataToFile(data, fileName):
 	file = open(os.getcwd() + '/' + fileName)
@@ -91,5 +92,4 @@ def hasSubString(string, fileName):
 		if i.count(string) > 0:
 			return True
 	return False
-
 

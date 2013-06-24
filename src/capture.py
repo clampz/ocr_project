@@ -2,11 +2,10 @@
   capture.py
   by David Weinman & Jesse Frankley
   6/12/13, 1:37a
-
 """
 
 import Image
-from os import listdir
+from os import getcwd, remove, listdir
 
 """
 takes a list of numbers and returns the same list with each value
@@ -41,10 +40,15 @@ and a background RGB value emptyval which defaults to 0 if not specified. the fu
 breaks up the possibly multiple lines of characters in the image into individual characters.
 """
 def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
+	cleanupList = []
 	while (not isEmptyImage(Image.open(filename), emptyval)):
 		cropLargestTopmost(filename, emptyval)
 		decomposeLine(filename[0:-4] + 'C.png', imageStorage, emptyval)
 		filename = filename[0:-4] + 'N.png'
+		cleanupList.append(filename[0:-4] + 'N.png')
+		cleanupList.append(filename[0:-4] + 'C.png')
+	for i in cleanupList:
+		os.remove(i)
 	for i in imageStorage:
 		im = Image.open(i)
 		newImage = im.resize((sizex, sizey))
@@ -54,10 +58,14 @@ def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 does the same as the function above except it breaks up lines, and it doesn't resize images.
 """
 def decomposeLine(filename, imageStorage, emptyval = 0):
+	cleanupList = []
 	while (not isEmptyImage(Image.open(filename), emptyval)):
 		cropLargestLeftMost(filename, emptyval)
 		imageStorage.append(filename[0:-4] + 'L.png')
 		filename = filename[0:-4] + 'LN.png'
+		cleanupList.append(filename[0:-4] + 'LN.png')
+	for i in cleanupList:
+		os.remove(i)
 
 """
 takes the name of a .png file (filename) and a
@@ -97,7 +105,7 @@ def cropLargestLeftMost(filename, emptyval = 0):
 	try:
 		output.save(filename[0:-4] + 'L.png')
 	except SystemError:
-		pass
+		print('capture -> cropLargestLeftMost; warning: couldn\'t save ' + filename[0:-4] + 'L.png')
 	return output
 
 """
