@@ -35,7 +35,10 @@ def getImageValues(filename):
 	return output
 
 """
-while paragraph is not empty, call decomposeLine, then resize images
+takes an image file name (filename), a tuple indicating the size of images
+of characters to end up as ((sizex, sizey)), an image storage array (imageStorage),
+and a background RGB value emptyval which defaults to 0 if not specified. the function
+breaks up the possibly multiple lines of characters in the image into individual characters.
 """
 def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 	while (not isEmptyImage(Image.open(filename), emptyval)):
@@ -48,7 +51,7 @@ def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 		newImage.save(i)
 
 """
-while line is not empty
+does the same as the function above except it breaks up lines, and it doesn't resize images.
 """
 def decomposeLine(filename, imageStorage, emptyval = 0):
 	while (not isEmptyImage(Image.open(filename), emptyval)):
