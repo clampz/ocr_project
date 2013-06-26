@@ -72,7 +72,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 
 ## -------------- error calculation -> calculate and store for weight updates
 			counter = 0 # used for a condition to compute the error value in the hidden layer above the output layer.
-			layersFromOut = list(range(0, inputNN.n_hiddenLayers + 2)) # this is in order to get the reverse of a list to do a backwards propagation,  + 2 for input & output layers
+			layersFromOut = list(range(1, inputNN.n_hiddenLayers + 2)) # this is in order to get the reverse of a list to do a backwards propagation,  + 1 for output layer
 			layersFromOut.reverse() # reverses the list
 			error2DArray = [] # this collects error values for use in the change of the weights
 			for j in layersFromOut: # for every layer, starting with the output
@@ -90,7 +90,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 
 ## -------------- weight / threshold update
 ##################### I THINK THERE'S SOMETHING WRONG IN THE RANGE CALL IN THE LINE BELOW
-			for j in range(1, inputNN.n_hiddenLayers + 2): # for every layer, + 1 in range for output layer.
+			for j in range(1, inputNN.n_hiddenLayers + 2): # for every hidden layer, + 2 in range for output layer. (the + 2 is weird, but it makes it so the output layer is always updated)
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					newWeights = []
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
@@ -111,7 +111,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		errorVal = float(0) # sum unit for the net error
 		for j in range(0, len(targets)): # for every pattern in the trainingset
 			for h in range(0, inputNN.l_layers[-1].n_neurons): # for every output to the net
-				errorVal += errorSignal(targets[j], outputs[j][h])
+				errorVal += errorSignal(targets[j][h], outputs[j][h])
 		netError = .5 * errorVal #calc the error fn for the net?
 		errorArray.append(netError)
 		iterations.append(n_iterations)
@@ -135,7 +135,7 @@ and the output value for that given neuron (activation) and
 returns the error for some given neuron and input
 """
 def errorSignal(target, activation):
-	return np.longfloat((target - activation)**2)
+	return float((target - activation)**2)
 
 """
 y takes a set of patterns or inputs (p), and a neuron (n) and returns the 
@@ -152,9 +152,9 @@ sigmoid takes an activation value (activation) and calculates the sigmoid
 function on the activation value. [here I use the tanh function]
 """
 def sigmoid(activation):
-	return np.longfloat(math.e**activation - math.e**((-1) * activation)/(math.e**activation + math.e**((-1) * activation)))
+	#return np.longfloat(math.e**activation - math.e**((-1) * activation)/np.longfloat(math.e**activation + math.e**((-1) * activation)))
 
-    #return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
+    return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
 """
 sigmoid f'ns derivative. takes an activation value (activation) and returns the 
