@@ -1,0 +1,20 @@
+n_inputs = 2
+n_outputs = 1
+n_hiddenLayers = 0
+neuronsInHidden = []
+target = [[1], [1], [1], [0]]
+rateOfLearning = 0.25332
+max_iterations = 450
+error_threshhold = 0.2
+input = [[1, 1], [1, 0], [0, 1], [0, 0]]
+lineNumForNet = 1
+
+2013-06-12 05:40:32.529699 : 0
+
+
+2013-06-21 16:01:10.461890 : 1
+
+2013-06-21 16:23:33.923764 : 2
+
+
+2013-06-26 01:29:29.393857 : 1

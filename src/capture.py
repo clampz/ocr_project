@@ -48,7 +48,10 @@ def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 		cleanupList.append(filename[0:-4] + 'N.png')
 		cleanupList.append(filename[0:-4] + 'C.png')
 	for i in cleanupList:
-		os.remove(i)
+		try:
+			remove(i)
+		except OSError:
+			print("capture -> decomposeLine -> warning: no such file: %s" % i)
 	for i in imageStorage:
 		im = Image.open(i)
 		newImage = im.resize((sizex, sizey))
@@ -65,7 +68,10 @@ def decomposeLine(filename, imageStorage, emptyval = 0):
 		filename = filename[0:-4] + 'LN.png'
 		cleanupList.append(filename[0:-4] + 'LN.png')
 	for i in cleanupList:
-		os.remove(i)
+		try:
+			remove(i)
+		except OSError:
+			print("capture -> decomposeLine -> warning: no such file: %s" % i)
 
 """
 takes the name of a .png file (filename) and a

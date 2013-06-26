@@ -3,8 +3,9 @@ ABSTRACT:
 * touch on how images with text are broken down in README.md
 * refine instructions in README
 * refine cl options / interaction & naming, make a man page
+* write readme on doing image recognition stuff and reading graphs
 
-Components:
+DETAILED:
 ============
 * main
   * main
@@ -22,7 +23,7 @@ Components:
   * neuralNetLayer
   * neuralNet
   * todo:
-     * fix nan in printout
+     * n/a
 * propagate
   * backprop
   * sigmoid
@@ -66,6 +67,6 @@ Components:
   * isEmptyImage
   * isEmptyPixel
   * todo:
-     * n/a
+     * make a way to save net printout to file
 
 

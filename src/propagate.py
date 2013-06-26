@@ -12,6 +12,7 @@ from pylab import xlabel, ylabel, show, plot, title, grid, savefig
 from decimal import Decimal, getcontext
 from copy import deepcopy as deepcopy
 from random import randint as randint
+#import Image
 
 """ SOURCES:
 
@@ -121,6 +122,8 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		title('error while training')
 		grid(True)
 		savefig('errorGraph' + str(n_iterations) + '.png')
+		#im = Image.open('errorGraph' + str(n_iterations) + '.png') #### it would be so cool to display the error (GUI) instead of just saving it to files
+		#im.show()                                                  #### I need to learn to use Popen in subprocess
 
 ## -------------- print stuff
 		print(mapTitle)

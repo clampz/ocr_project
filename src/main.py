@@ -14,7 +14,7 @@ from neuralNet import *
 from indenter import indenter
 from propagate import backProp
 from file import saveDataToFile, getDataFromFile, loadNeuralNet, saveNeuralNet
-from capture import decomposeParagraph
+from capture import getImageValues, decomposeParagraph
 
 # these are string constants for neural net and training printouts
 mapTitle = "=================================\nNeural Net Map\n================================="
@@ -185,6 +185,34 @@ def main():
 	return
 
 if __name__ == "__main__": main()
+
+"""PSEUDO
+
+notConverged = False
+while (notConverged == False)
+	run the neural net with the given input 10 times unless the neural net converges
+	if it converges:
+		if input is "correct":
+			notConverged = True
+		else:
+			if there is a history with more than one training session:
+				find the minimum error in that training, and continue changing params slightly in that direction
+			else:
+				if the number of occurences of minimum errors is decreasing in the direction of params change:
+					continue the params change in the direction of minimum errors
+				else:
+					prompt user for params change
+	else:
+		if there is a history with more than one training session:
+			find the minimum error in that training, and continue changing params slightly in that direction
+		else:
+			ask the user to change params if there's no history to base a decision on
+			if the number of occurences of minimum errors is decreasing in the direction of params change:
+				continue the params change in the direction of minimum errors
+			else:
+				prompt user for params change
+
+"""
 
 """ JUNK
 
