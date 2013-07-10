@@ -12,11 +12,6 @@ from pylab import xlabel, ylabel, show, plot, title, grid, savefig
 from decimal import Decimal, getcontext
 from copy import deepcopy as deepcopy
 from random import randint as randint
-#import Image
-
-""" SOURCES:
-
-"""
 
 # constants for printing
 mapTitle = "=================================\nNeural Net Map\n================================="
@@ -47,17 +42,21 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 	for i in range(0, len(targets)):
 		outputs[i] = inputNN.update(trainingSet[i])
 
+## -------------- get the current time, make a directory labeled with it to put error graphs in and make it the cwd
 	now = datetime.datetime.now()
 	print('now: ' + str(now))
 	originalDir = os.getcwd()
 	os.mkdir('errorGraphs_' + str(now))
 	os.chdir('errorGraphs_' + str(now))
-	print(backPropTitle)
+
+	print(backPropTitle) # prints out prompt to label the beginning of training
+
 	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
+
 		print(propLoopTitle % n_iterations) # see global constants. prints which loop is training
-#		print('1backProp iteration = %d, netError = %.20f' % (n_iterations, netError))
 		countPatterns = 0 # counter for the number of patterns into input the loop is
-		input = randLst(zip(trainingSet, targets))
+
+		input = randLst(zip(trainingSet, targets)) # makes a randomized list of tuples with the training inputs and their respective targets
 		for i in input: #for every pattern in the training set 
 
 ## -------------- foward propagate input through net
@@ -90,18 +89,20 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 					error2DArray[j] = outputLayerError
 
 ## -------------- weight / threshold update
-##################### I THINK THERE'S SOMETHING WRONG IN THE RANGE CALL IN THE LINE BELOW
-			for j in range(1, inputNN.n_hiddenLayers + 2): # for every hidden layer, + 2 in range for output layer. (the + 2 is weird, but it makes it so the output layer is always updated)
+			for j in range(1, inputNN.n_hiddenLayers + 1): # for every hidden layer, + 1 in range for output layer. (the + 2 was weird, but it made it so the output layer was always updated)
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 					newWeights = []
 					for h in range(0, inputNN.l_layers[j].l_neurons[k].n_inputs): #for every weight in the neuron
-#def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
+
+								 # def deltaWeight(oldWeight, learningRate,  x, errorValue, derivAct):
 						newWeights.append(deltaWeight(inputNN.l_layers[j].l_neurons[k].l_weights[h], learningRate, inputsForWeightChangeLoop[h], error2DArray[j][k], derivActivation(inputsForWeightChangeLoop, inputNN.l_layers[j].l_neurons[k])))
-#                                                 ^^^^ get the change in weight
+                                                # ^^^^ get the change in weight
+
 					inputNN.l_layers[j].l_neurons[k].putWeights(newWeights) #update the weights
-			#COMMENT OUT LINE BELOW -- IF KEEPING THRESHOLD CONSTANT
+
 					inputNN.l_layers[j].l_neurons[k].l_weights[-1] = deltaThreshold(inputNN.l_layers[j].l_neurons[k], error2DArray[j][k], learningRate) # update the threshold
-				oldInputsWeightChange = inputsForWeightChangeLoop # this is used to calculate the new inputs for the change in weight
+
+				oldInputsWeightChange = inputsForWeightChangeLoop # this var is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
 										    inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k]))) # collect the outputs to use for input to the next layer
