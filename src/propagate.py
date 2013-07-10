@@ -102,7 +102,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 				oldInputsWeightChange = inputsForWeightChangeLoop # this var is used to calculate the new inputs for the change in weight
 				inputsForWeightChangeLoop = [] # clear it to re-populate
 				for k in range(0, inputNN.l_layers[j].n_neurons): # for every neuron in the layer
-										    inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k]))) # collect the outputs to use for input to the next layer
+					inputsForWeightChangeLoop.append(float(y(oldInputsWeightChange, inputNN.l_layers[j].l_neurons[k]))) # collect the outputs to use for input to the next layer
 			outputs[n_iterations % len(input)] = inputNN.update(i[0])
 
 ## -------------- network total error calculation and visualization
