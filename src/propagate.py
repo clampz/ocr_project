@@ -18,9 +18,6 @@ mapTitle = "=================================\nNeural Net Map\n=================
 backPropTitle = "=================================\nBack Propagation\n================================="
 propLoopTitle = "---------------------------------\nBack Propagation (Loop: %d)\n---------------------------------"
 
-# this sets the precision of the decimal object
-getcontext().prec = 8
-
 # these are arrays to log neural network error values to visualize a graph while training
 errorArray = []
 iterations = []
@@ -129,6 +126,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 ## -------------- print stuff
 		print(mapTitle)
 		inputNN.printNN()
+
 	print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
 	os.chdir('..') # go to parent dir for calling f'ns purposes
 	return
@@ -157,7 +155,6 @@ function on the activation value. [here I use the tanh function]
 """
 def sigmoid(activation):
 	#return np.longfloat(math.e**activation - math.e**((-1) * activation)/np.longfloat(math.e**activation + math.e**((-1) * activation)))
-
     return 1/float(1 + (math.e**((-activation) / 1.0))) # where curve shape or 'p' is set to 1.0
 
 """
