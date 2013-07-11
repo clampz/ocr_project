@@ -245,9 +245,9 @@ def sum(lst):
 		output += lst[i]
 	return output
 
-""" PSEUDO CODE
+""" PSEUDO
 
-backprop algorithm:
+def backprop():
 while (number of iterations < max_iterations && error_fn > error_threshhold) {
 
         for every pattern in the training set {
