@@ -192,7 +192,7 @@ notConverged = False
 while (notConverged == False)
 	run the neural net with the given input 10 times unless the neural net converges
 	if it converges:
-		if input is "correct":
+		if output is "correct":
 			notConverged = True
 		else:
 			if there is a history with more than one training session:
@@ -211,6 +211,19 @@ while (notConverged == False)
 				continue the params change in the direction of minimum errors
 			else:
 				prompt user for params change
+
+"""
+
+""" SCRATCH
+
+fp ; trainParams(float errorThreshold, net neuralNet, lst inputs, lst targets, float learningRate)
+
+def trainParams():
+
+
+fp ; 
+
+def userPromptNewParams():
 
 """
 
