@@ -4,6 +4,7 @@ ABSTRACT:
 * refine instructions in README
 * refine cl options / interaction & naming, make a man page
 * write readme on doing image recognition stuff and reading graphs
+* write trainParams in main
 
 DETAILED:
 ============

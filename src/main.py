@@ -189,7 +189,6 @@ if __name__ == "__main__": main()
 """PSEUDO
 
 def trainParams():
-
 notConverged = False
 while (notConverged == False)
 {
@@ -273,6 +272,9 @@ while (notConverged == False)
 fp ; trainParams(float errorThreshold, net neuralNet, lst inputs, lst targets, float learningRate)
 
 def trainParams():
+	isConverged = False
+	while (not isConverged):
+		
 
 
 fp ; 
