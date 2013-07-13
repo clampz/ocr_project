@@ -193,7 +193,7 @@ notConverged = False
 while (notConverged == False)
 {
 
-	run the neural net with the given input 10 times unless the neural net converges
+	run the neural net training with the given input 10 times unless the neural net converges
 	if it converges:
 	{
 
@@ -274,8 +274,17 @@ fp ; trainParams(float errorThreshold, net neuralNet, lst inputs, lst targets, f
 def trainParams():
 	isConverged = False
 	while (not isConverged):
-		
-
+		for i in range(1, 11):
+			if (not isConverged):
+				trainNeuralNet()
+			else:
+				if (): # test if input is correct
+					isConverged = True
+				else:
+					if (): # test if there is a history with more than one training session
+					else:
+						if (): # test if the number of occurences of minimum errors is decreasing in the direction of params change
+						
 
 fp ; 
 
