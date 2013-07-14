@@ -48,20 +48,12 @@ def hasKey(string, dictionary):
 	return False
 
 """
-takes a list (lst) and returns a list containing a single element;
-the index of the max number in lst
-"""
-def imax(lst):
-   m = max(lst)
-   return [i for i, j in enumerate(lst) if j == m]
-
-"""
 takes a list containing the output of an ocr nn (lst) and returns the char
 corresponding to the output
 """
 def getClassMatch(lst):
    classes     = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "?"]
-   return classes[imax(lst)[0]]
+   return classes[lst.index(max(lst))]
 
 """
 takes a filename to get the neural net weights from (neuralNetFile)
@@ -79,11 +71,12 @@ def runNeuralNet(neuralNetFile, neuralNetLineNum):
 
 """
 takes no params and trains the neural net, asks if the user wants to
-save the weights somewhere.
+save the weights somewhere. returns boolean rep of whether backprop finished
+by error or maxIter
 """
 def trainNeuralNet():
 	inputNeuralNet = neuralNet(dStruct['n_inputs'], dStruct['n_outputs'], dStruct['n_hiddenLayers'], dStruct['neuronsInHidden'])
-	backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
+	isConverged = backProp(inputNeuralNet, dStruct['input'], dStruct['target'], dStruct['max_iterations'], dStruct['error_threshhold'], dStruct['rateOfLearning'])
 	print('ok, so my neural net has %.20f rate of learning and %.20f error threshhold' % (dStruct['rateOfLearning'], dStruct['error_threshhold']))
 	answer = eval(raw_input('do you want to run some input on the neural net? (enter True or False): '))
 	while (answer):
@@ -100,7 +93,7 @@ def trainNeuralNet():
 			file.close()
 			print("\nthe line number it got saved at is: %d" % lineNo)
 		answer = eval(raw_input('\nok .. liek  ... do you want to run some more input on the neural net? (enter True or False): '))
-	return
+	return isConverged
 
 """
 takes a filename to get the neural net weights from (neuralNetFile)
