@@ -28,3 +28,4 @@ class indenter():
 	def decrement(self):
 		self.outputString = self.outputString[0:(len(self.outputString) - len(self.indenterUnit))]
 		return self.outputString
+

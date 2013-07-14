@@ -144,6 +144,10 @@ def cropLargestTopmost(filename, emptyval = 0):
 	nextCrop.save(filename[0:-4] + 'N.png')
 
 """
+takes an int y index (y) where y is an index in im.size[1],
+an image object (img), and a background value (emptyval) which
+defaults to 0 and returns a boolean representation of whether
+or not the horizontal is all background values.
 """
 def isEmptyHorizontal(y, img, emptyval = 0):
    for i in range(0, img.size[0]):

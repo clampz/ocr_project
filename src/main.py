@@ -268,16 +268,25 @@ def trainParams():
 	isConverged = False
 	while (not isConverged):
 		for i in range(1, 11):
-			if (not isConverged):
-				trainNeuralNet()
-			else:
+			# trainNeuralNet() added return val to check for convergence
+			if (trainNeuralNet()):
 				if (): # test if input is correct
 					isConverged = True
+					break # i need this break to get out of the for loop.
 				else:
 					if (): # test if there is a history with more than one training session
 					else:
 						if (): # test if the number of occurences of minimum errors is decreasing in the direction of params change
-						
+							# continue the params change in the direction of minimum errors
+						else:
+							# prompt user for params change
+							# break
+			else:
+				# if there is a history with more than one training session:
+					# find the minimum error in that training, and continue changing params slightly in that direction
+				else:
+					# prompt user for params change
+					break
 
 fp ; 
 
