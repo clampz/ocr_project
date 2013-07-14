@@ -25,14 +25,16 @@ iterations = []
 """
 backProp takes a neural network (inputNN), a set of input training values (input),
 a number of maximum allowed iterations (max_iterations), a threshold for the
-calculated error values (error_threshhold) in order to tell when the network has
+calculated error values (error_threshold) in order to tell when the network has
 been sufficiently trained, and a constant learning rate for weight and threshold updates
-(learningRate). backProp returns nothing, back propagation is a supervised training algorithm
-for training a neural network.
+(learningRate). backProp returns a boolean representation of how it finished training, 
+True if it finished by error_threshold and False if by max_iterations. back propagation 
+is a supervised training algorithm for training a neural network.
 """
-def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, learningRate):
+def backProp(inputNN, trainingSet, targets, max_iterations, error_threshold, learningRate):
+	finish_status = False
 	n_iterations = 0 # counter for the number of propagation loops
-	netError = float(error_threshhold + 0.1)
+	netError = float(error_threshold + 0.1)
 
 ## -------------- foward propagate inputs through net and populate a list of outputs for training
 	outputs = [[]] * len(targets)
@@ -48,7 +50,7 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 
 	print(backPropTitle) # prints out prompt to label the beginning of training
 
-	while ((n_iterations < max_iterations) and (netError > error_threshhold)):
+	while ((n_iterations < max_iterations) and (netError > error_threshold)):
 
 		print(propLoopTitle % n_iterations) # see global constants. prints which loop is training
 		countPatterns = 0 # counter for the number of patterns into input the loop is
@@ -123,13 +125,17 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshhold, le
 		#im = Image.open('errorGraph' + str(n_iterations) + '.png') #### it would be so cool to display the error (GUI) instead of just saving it to files
 		#im.show()                                                  #### I need to learn to use Popen in subprocess
 
+## -------------- change finish status if the net converges.
+		if (netError < error_threshold):
+			finish_status = True
+
 ## -------------- print stuff
 		print(mapTitle)
 		inputNN.printNN()
 
 	print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
 	os.chdir('..') # go to parent dir for calling f'ns purposes
-	return
+	return finish_status
 
 """
 errorSignal takes a target value for some given neuron (target)
@@ -248,7 +254,7 @@ def sum(lst):
 """ PSEUDO
 
 def backprop():
-while (number of iterations < max_iterations && error_fn > error_threshhold) {
+while (number of iterations < max_iterations && error_fn > error_threshold) {
 
         for every pattern in the training set {
 

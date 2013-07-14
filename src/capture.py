@@ -5,7 +5,7 @@
 """
 
 import Image
-from os import getcwd, remove, listdir
+import os
 
 """
 takes a list of numbers and returns the same list with each value
@@ -40,18 +40,22 @@ and a background RGB value emptyval which defaults to 0 if not specified. the fu
 breaks up the possibly multiple lines of characters in the image into individual characters.
 """
 def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
-	cleanupList = []
 	while (not isEmptyImage(Image.open(filename), emptyval)):
 		cropLargestTopmost(filename, emptyval)
 		decomposeLine(filename[0:-4] + 'C.png', imageStorage, emptyval)
 		filename = filename[0:-4] + 'N.png'
-		cleanupList.append(filename[0:-4] + 'N.png')
-		cleanupList.append(filename[0:-4] + 'C.png')
-	for i in cleanupList:
-		try:
-			remove(i)
-		except OSError:
-			print("capture -> decomposeLine -> warning: no such file: %s" % i)
+#		cleanupList.append(filename[0:-4] + 'N.png')
+#		cleanupList.append(filename[0:-4] + 'C.png')
+	ls = os.listdir(os.getcwd())
+	for i in ls:
+		if ((filename[0:-4] + 'C' in i) or (filename[0:-4] + 'N' in i)) and ('.png' in i) and (not 'L.png' in i):
+			os.remove(i)
+#	print('\n' + str(cleanupList) + '\n')
+#	for i in cleanupList:
+#		try:
+#			remove(i)
+#		except OSError:
+#			print("capture -> decomposeLine -> warning: no such file: %s" % i)
 	for i in imageStorage:
 		im = Image.open(i)
 		newImage = im.resize((sizex, sizey))
@@ -61,17 +65,10 @@ def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 does the same as the function above except it breaks up lines, and it doesn't resize images.
 """
 def decomposeLine(filename, imageStorage, emptyval = 0):
-	cleanupList = []
 	while (not isEmptyImage(Image.open(filename), emptyval)):
 		cropLargestLeftMost(filename, emptyval)
 		imageStorage.append(filename[0:-4] + 'L.png')
 		filename = filename[0:-4] + 'LN.png'
-		cleanupList.append(filename[0:-4] + 'LN.png')
-	for i in cleanupList:
-		try:
-			remove(i)
-		except OSError:
-			print("capture -> decomposeLine -> warning: no such file: %s" % i)
 
 """
 takes the name of a .png file (filename) and a
