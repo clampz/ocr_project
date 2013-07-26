@@ -176,7 +176,7 @@ def main():
 		print("\nexamples:\npython main.py -r params.dat neuralNet.dat\npython main.py -t params.dat\npython main.py -i -r params.dat neuralNets.dat\npython main.py -i -t params.dat\npython main.py --help\n")
 
 	else:
-		raise ValueError('main.py: invalid option specified: %s' % sys.argv[1])
+		raise ValueError('main.py: invalid option specified: %s, try \'--help\'.' % sys.argv[1])
 
 	return
 
