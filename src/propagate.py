@@ -32,7 +32,6 @@ True if it finished by error_threshold and False if by max_iterations. back prop
 is a supervised training algorithm for training a neural network.
 """
 def backProp(inputNN, trainingSet, targets, max_iterations, error_threshold, learningRate):
-	finish_status = False
 	n_iterations = 0 # counter for the number of propagation loops
 	netError = float(error_threshold + 0.1)
 
@@ -125,17 +124,13 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshold, lea
 		#im = Image.open('errorGraph' + str(n_iterations) + '.png') #### it would be so cool to display the error (GUI) instead of just saving it to files
 		#im.show()                                                  #### I need to learn to use Popen in subprocess
 
-## -------------- change finish status if the net converges.
-		if (netError < error_threshold):
-			finish_status = True
-
 ## -------------- print stuff
 		print(mapTitle)
 		inputNN.printNN()
 
 	print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
 	os.chdir('..') # go to parent dir for calling f'ns purposes
-	return finish_status
+	return (netError < error_threshold)
 
 """
 errorSignal takes a target value for some given neuron (target)
