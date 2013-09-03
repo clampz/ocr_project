@@ -1,5 +1,6 @@
 ABSTRACT:
 ========
+* re-write intro to readme, for readability and clarity's sake
 * touch on how images with text are broken down in README.md
 * refine instructions in README
 * refine cl options / interaction & naming, make a man page
