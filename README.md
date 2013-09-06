@@ -20,9 +20,9 @@ my params file params.dat, so I run my neural net back propagation training by t
 ```
 python main.py -t params.dat
 ```
-The training will save the neural net automatically and it will show up in your params file.
+the training will save the neural net automatically and it will show up in your params file.
 
-You can run a saved neural net by running a command of the following form. This option will take the most recently written line number for weights data.
+you can run a saved neural net by running a command of the following form. This option will take the most recently written line number for weights data.
 ```
 python main.py -r params.dat neuralNet.dat
 ```
