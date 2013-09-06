@@ -15,14 +15,14 @@ Instructions:
 **regular (numeric) options**
 
 in order to run, download the repo and navigate to the downloaded folder in the command line.
-there you can change the inputs to the neural network in the *params* subfolder within the *src* folder. I named
+there you can change the inputs to the neural network in the *params* subfolder within the *src* folder. i named
 my params file params.dat, so I run my neural net back propagation training by typing the following in the command line
 ```
 python main.py -t params.dat
 ```
 the training will save the neural net automatically and it will show up in your params file.
 
-you can run a saved neural net by running a command of the following form. This option will take the most recently written line number for weights data.
+you can run a saved neural net by running a command of the following form. this option will take the most recently written line number for weights data.
 ```
 python main.py -r params.dat neuralNet.dat
 ```
