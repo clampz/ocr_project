@@ -131,6 +131,9 @@ def backProp(inputNN, trainingSet, targets, max_iterations, error_threshold, lea
 	print('propagate finished with %d iterations and %f net error' % (n_iterations, netError))
 	os.chdir('..') # go to parent dir for calling f'ns purposes
 	return (netError < error_threshold)
+"""
+backProp
+"""
 
 """
 errorSignal takes a target value for some given neuron (target)

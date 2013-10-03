@@ -41,7 +41,7 @@ breaks up the possibly multiple lines of characters in the image into individual
 """
 def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 	while (not isEmptyImage(Image.open(filename), emptyval)):
-		cropLargestTopmost(filename, emptyval)
+		cropLargestToMost(filename, emptyval)
 		decomposeLine(filename[0:-4] + 'C.png', imageStorage, emptyval)
 		filename = filename[0:-4] + 'N.png'
 #		cleanupList.append(filename[0:-4] + 'N.png')
@@ -110,6 +110,9 @@ def cropLargestLeftMost(filename, emptyval = 0):
 	except SystemError:
 		print('capture -> cropLargestLeftMost; warning: couldn\'t save ' + filename[0:-4] + 'L.png')
 	return output
+"""
+cropLargestLeftMost
+"""
 
 """
 cropLargestTopmost takes an image filename and a background value (emptyval)
@@ -139,6 +142,9 @@ def cropLargestTopmost(filename, emptyval = 0):
 	output.save(filename[0:-4] + 'C.png')
 	nextCrop = im.crop((0, lower - 1, im.size[0], im.size[1]))
 	nextCrop.save(filename[0:-4] + 'N.png')
+"""
+cropLargestTopMost
+"""
 
 """
 takes an int y index (y) where y is an index in im.size[1],
@@ -153,6 +159,10 @@ def isEmptyHorizontal(y, img, emptyval = 0):
    return True
 
 """
+isEmptyVertical takes an int x index (x) where x is an index in
+im.size[0], an image object (img), and a background value (emptyval)
+which defaults to 0 and returns a boolean representation of whether
+or not the vertical is all background values.
 """
 def isEmptyVertical(x, img, emptyval = 0):
    for i in range(0, img.size[1]):
@@ -161,6 +171,9 @@ def isEmptyVertical(x, img, emptyval = 0):
    return True
 
 """
+isEmptyImage takes an image object (img), and a background value
+(emptyval) which defaults to 0 and returns a boolean representation
+of whether or not the image object is empty.
 """
 def isEmptyImage(img, emptyval = 0):
 	for i in range(0, img.size[1]):
@@ -169,31 +182,10 @@ def isEmptyImage(img, emptyval = 0):
 	return True
 
 """
+isEmptyPixel takes a pair of ints representing the pixels location
+((x,y)), an image object img, and a background value (emptyval) which
+defaults to 0 and returns True if it's the emptyval and false if not.
 """
 def isEmptyPixel((x,y), img, emptyval = 0):
    return img.getpixel((x,y)) == emptyval
 
-
-""" JUNK
-
-import Image
-from capture import *
-from os import listdir
-path = '../images/'
-image = 'times_new_roman_characters.png'
-
-def displayImage(img):
-   x = img.size[0]
-   y = img.size[1]
-   s = ''
-   for i in range(0,y):
-      s = s + '\n'
-      for j in range(0,x):
-         z = img.getpixel((j,i))
-         if z > 0:
-            s = s + '#'
-         else:
-            s = s + ' '
-   return s
-
-"""
