@@ -39,7 +39,7 @@ dStruct = {
 }
 
 """
-basic hash function. takes a string to search with (string),
+basic mapping function. takes a string to search with (string),
 and a dictionary object (dictionary) and returns a boolean
 represenation of whether the key is in the dictionary.
 """
