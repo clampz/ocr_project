@@ -4,6 +4,10 @@
   4/21/13, 5:30p
 """
 
+"""
+This file is licensed under the MIT License, see LICENSE for details.
+"""
+
 import sys
 import random
 import math

@@ -4,6 +4,10 @@
   6/12/13, 1:37a
 """
 
+"""
+This file is licensed under the MIT License, see LICENSE for details.
+"""
+
 import Image
 import os
 

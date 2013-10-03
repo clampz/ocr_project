@@ -4,6 +4,10 @@
   4/26/13, 9:10p
 """
 
+"""
+This file is licensed under the MIT License, see LICENSE for details.
+"""
+
 import os
 import datetime
 import numpy as np

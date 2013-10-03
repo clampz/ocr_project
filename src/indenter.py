@@ -5,6 +5,10 @@
 """
 
 """
+This file is licensed under the MIT License, see LICENSE for details.
+"""
+
+"""
 indentation object for net printout
 """
 class indenter():

@@ -4,6 +4,10 @@
   5/1/13, 11:25p
 """
 
+"""
+This file is licensed under the MIT License, see LICENSE for details.
+"""
+
 import os
 from neuralNet import *
 from ast import literal_eval
