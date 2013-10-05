@@ -42,7 +42,7 @@ lineNumForNet = 0
 ```
 **ocr options**
 
-OCR options can be accessed by using the -i option and then the same options as above can be used with modification to the params file.
+OCR options are used by first typing the -i option and then the same options as above can be used with modification to the params file.
 For example, ```python main.py -i -t params.dat``` trains a neural net to recognize the text in the training set you give it via the params file. The training data in the params file should be of the following form:
 ```
 input = ['images/courier_characters.png']
