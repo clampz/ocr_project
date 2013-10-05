@@ -1,33 +1,33 @@
 OCR with Neural Nets
 ====================
 
-this project is for computing practice & theory at the evergreen state college.
+This project is for Computing Practice and Theory at the Evergreen State College.
 
-the end goal of this project is to implement optical character recognition for
+The end goal of this project is to implement optical character recognition for
 handwritten characters and to give the unicode equivalents using neural networks.
-the current goal of this project is to implement optical character recognition
+The current goal of this project is to implement optical character recognition
 for computer generated images of text with some fonts.
 
-**dependancies**: python2.7, PIL & pylab. python3 with some small modification
+**dependancies**: Python2.7, Python Image Library and Pylab. Python3 can be used with some small modification in the 'main' module.
 
 Instructions:
 ------------
 **regular (numeric) options**
 
-in order to run, download the repo and navigate to the downloaded folder in the command line.
-there you can change the inputs to the neural network in the *params* subfolder within the *src* folder. i named
-my params file params.dat, so I run my neural net back propagation training by typing the following in the command line
+In order to run, download the repo and navigate to the downloaded folder in the command line.
+There you can change the inputs to the neural network in the *params* subfolder within the *src* folder. I named
+my params file params.dat, so I run my neural net back propagation training by typing the following in the command line:
 ```
 python main.py -t params.dat
 ```
-the training will save the neural net automatically and it will show up in your params file.
+The training option saves the neural net automatically which will show up in your params file.
 
-you can run a saved neural net by running a command of the following form. this option will take the most recently written line number for weights data.
+You can run a saved neural net by running a command of the following form. This option will take the most recently written line number for weights data.
 ```
 python main.py -r params.dat neuralNet.dat
 ```
 
-the params should be of the following form (this example is designed for an AND logical gate neural net):
+The params should be of the following form (this example is designed for an AND logical gate neural net):
 ```
 n_inputs = 2
 n_outputs = 1
@@ -42,16 +42,12 @@ lineNumForNet = 0
 ```
 **ocr options**
 
-OCR options can be accessed by using the -i option and then the same options can be used as above with modification to the params file.
-for example, 
-```
-python main.py -i -t params.dat
-```
-trains a neural net to recognize the text in the training set you give it via the params file. the training data should be of the following form in the params.
+OCR options can be accessed by using the -i option and then the same options as above can be used with modification to the params file.
+For example, ```python main.py -i -t params.dat``` trains a neural net to recognize the text in the training set you give it via the params file. The training data in the params file should be of the following form:
 ```
 input = ['images/courier_characters.png']
 ```
-the rest of the params should be of the following form for an ocr implementation:
+the rest of the params for an ocr implementation should be of the following form:
 ```
 n_inputs = 625
 n_outputs = 39
@@ -67,19 +63,19 @@ imageSize = (25, 25)
 backgroundValue = 0
 ```
 where the target array should be an array of length equal to the number of characters
- used in your training set and where the background value should be a pixel RGB value which 
+ used in your training set, and where the background value should be a pixel RGB value which 
 can be found using the python PIL method *getpixel(xPos, yPos)* for an image object.
 
 **some more description of project organization**
 
-the majority of the project goal is the implementation of
+The majority of the project goal is the implementation of
 error back propagation training of a neural network. that code is in the
-propagate module. then there's image preprocessing which mostly happens in the
-capture module. the high level image manipulation happens in the main module.
+propagate module. Then there's image preprocessing which mostly happens in the
+capture module. The high level image manipulation happens in the main module.
 
-the *components* section at the bottom of this readme depicts the namespace in the src as a collection of trees by module name at the root
+The *components* section at the bottom of this readme depicts the namespace in the src as a collection of trees with the module name at the root.
 
-the following sources are the inspiration for the code
+The following sources are the inspiration for the code
 i've written and the resources that i have used to understand
 the fundamentals of my implementation.
 
