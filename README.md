@@ -65,7 +65,7 @@ can be found using the python PIL method *getpixel(xPos, yPos)* for an image obj
 **some more description of project organization**
 
 The majority of the project goal is the implementation of
-error back propagation training of a neural network. that code is in the
+error back propagation training of a neural network, which is in the
 propagate module. Then there's image preprocessing which mostly happens in the
 capture module. The high level image manipulation happens in the main module.
 
