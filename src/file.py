@@ -2,6 +2,11 @@
   file.py
   by David Weinman
   5/1/13, 11:25p
+
+---
+Contains the functions needed for reading /
+writing the data in the neural nets and the
+parameters for training to files.
 """
 
 """

@@ -2,6 +2,10 @@
   indenter.py
   by David Weinman
   6/22/13, 12:05p
+
+---
+Contains a class for indenting training
+printouts to the command line.
 """
 
 """

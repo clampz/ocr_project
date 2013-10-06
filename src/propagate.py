@@ -2,6 +2,10 @@
   propagate.py
   by David Weinman
   4/26/13, 9:10p
+
+---
+Contains the functions needed to train a neural
+net (namely backProp).
 """
 
 """

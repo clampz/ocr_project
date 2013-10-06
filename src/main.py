@@ -4,6 +4,12 @@
   main.py
   by David Weinman
   4/23/13, 3:25a
+
+---
+The main module for a program intended to
+be a neural network training utility and an
+implementation of the error back propagation
+training algorithm.
 """
 
 """

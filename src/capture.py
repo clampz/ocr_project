@@ -2,6 +2,15 @@
   capture.py
   by David Weinman & Jesse Frankley
   6/12/13, 1:37a
+
+---
+Contains the functions needed to break
+apart an image of computer generated
+text and yield images of the characters
+in the given image (namely, decomposeParagraph),
+and the function needed to get an array of
+inputs to a neural net from an image of a
+character (getImageValues).
 """
 
 """
@@ -39,9 +48,10 @@ def getImageValues(filename):
 
 """
 takes an image file name (filename), a tuple indicating the size of images
-of characters to end up as ((sizex, sizey)), an image storage array (imageStorage),
-and a background RGB value emptyval which defaults to 0 if not specified. the function
-breaks up the possibly multiple lines of characters in the image into individual characters.
+of characters to end up as ((sizex, sizey)), an image storage array
+(imageStorage), and a background RGB value emptyval which defaults to 0 if
+not specified. the function breaks up the line(s) of characters in the image
+into images of characters.
 """
 def decomposeParagraph(filename, (sizex, sizey), imageStorage, emptyval = 0):
 	while (not isEmptyImage(Image.open(filename), emptyval)):

@@ -2,6 +2,10 @@
   neuralNet.py
   by David Weinman
   4/21/13, 5:30p
+
+---
+Contains the classes needed to model the weights
+to a neural net.
 """
 
 """
