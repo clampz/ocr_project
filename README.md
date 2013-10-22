@@ -43,6 +43,7 @@ input = [[1, 1], [1, 0], [0, 1], [0, 0]]
 lineNumForNet = 0
 ```
 (ideally) your neuralNet.dat file should look something like the following:
+
 **neuralNet.dat:**
 ```
 [[[-0.39725262623150326, -0.8602391480346498, 0], [-0.16426851080883842, 0.7416152579958843, 0]], [[1.0280738744542512, -0.18036987550222963, 14.536195359339487]]]
@@ -52,6 +53,7 @@ lineNumForNet = 0
 
 OCR options are used by first typing the -i option and then the same options as above can be used with modification to the params file.
 For example, ```python main.py -i -t params2.dat``` trains a neural net to recognize the text in the training set you give it via the params file. The training data in the params file should be of the following form: ```input = ['images/courier_characters.png']```. The rest of the params for an ocr implementation should be of the following form:
+
 **params2.dat:**
 ```
 n_inputs = 625
