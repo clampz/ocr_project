@@ -28,6 +28,7 @@ python main.py -r params.dat neuralNet.dat
 ```
 
 The params should be of the following form (this example is designed for an AND logical gate neural net):
+
 **params.dat:**
 ```
 n_inputs = 2
