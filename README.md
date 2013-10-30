@@ -88,10 +88,10 @@ the fundamentals of my implementation.
 
 Sources:
 --------
-   - http://www.codeproject.com/Articles/11285/Neural-Network-OCR
-   - http://www.ibm.com/developerworks/library/l-neural/
-   - http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html
-   - http://itee.uq.edu.au/~cogs2010/cmc/chapters/BackProp/
+* http://www.codeproject.com/Articles/11285/Neural-Network-OCR
+* http://www.ibm.com/developerworks/library/l-neural/
+* http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html
+* http://itee.uq.edu.au/~cogs2010/cmc/chapters/BackProp/
 
 Components:
 -----------
