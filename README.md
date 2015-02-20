@@ -8,7 +8,7 @@ handwritten characters and to give the unicode equivalents using neural networks
 The current goal of this project is to implement optical character recognition
 for computer generated images of text with some fonts.
 
-**dependancies**: Python2.7, Python Image Library and Pylab. Python3 can be used with some small modification in the 'main' module.
+**dependancies**: Python2.7, Python Image Library, numpy and Pylab. Python3 can be used with some small modification in the 'main' module.
 
 Instructions:
 ------------
